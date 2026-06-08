@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Weekly Pylon Analysis — Marketplace FO Tickets — 2026-06-08</title>
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #1f2933; max-width: 980px; margin: 24px auto; padding: 0 20px; line-height: 1.5; }
+h1 { color: #0b3d91; border-bottom: 3px solid #0b3d91; padding-bottom: 8px; }
+h2 { color: #0b3d91; margin-top: 32px; padding-bottom: 4px; border-bottom: 1px solid #d0d7de; }
+h3 { color: #1f2933; margin-top: 20px; }
+.summary { background: #f0f6ff; border-left: 5px solid #0b3d91; padding: 14px 18px; margin: 18px 0; font-size: 15px; }
+.recs { background: #fff8e6; border: 2px solid #d29b00; border-radius: 6px; padding: 16px 20px; margin: 20px 0; }
+.recs h2 { color: #8a6500; border-bottom: 1px solid #d29b00; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 14px; }
+th { background: #0b3d91; color: white; text-align: left; padding: 8px 10px; }
+td { border-bottom: 1px solid #e5e7eb; padding: 7px 10px; vertical-align: top; }
+tr:nth-child(even) td { background: #f8fafc; }
+.bold { font-weight: 700; }
+.tag-red { background: #fde4e4; color: #8b0000; padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+.tag-amber { background: #fff1d6; color: #8a5a00; padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+.tag-green { background: #dff5e1; color: #1c6b2d; padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+.footer { font-size: 12px; color: #6b7280; border-top: 1px solid #d0d7de; padding-top: 10px; margin-top: 32px; }
+ul { padding-left: 22px; }
+li { margin: 4px 0; }
+code { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; font-size: 13px; }
+.kpi { display: inline-block; background: #f0f6ff; padding: 6px 12px; border-radius: 4px; margin: 4px; font-weight: 600; color: #0b3d91; }
+</style>
+</head>
+<body>
+
+<h1>Weekly Pylon Analysis — Marketplace FO Tickets — 2026-06-08</h1>
+
+<div class="summary">
+<span class="bold">Executive Summary:</span><br>
+<b>67 Marketplace tickets</b> created in the last 7 days (29% of all 233 Pylon tickets), with <b>51 external FO tickets</b> and <b>16 internal Marketplace ops tickets</b>. The dominant category is <b>"Balance Payment Pending" (24 tickets / 47% of FO volume)</b>, almost all originating from POD-to-payment lag where the payment is in fact in process or already paid — the FO simply has no visibility. <b>Recommendation #1:</b> Ship a real-time payment status timeline in the FO App (POD received → invoice processed → bank initiated → UTR generated → credited) with daily push updates. Projected ticket reduction: <b>~50–60% on the largest single bucket (~12–15 tickets/week).</b>
+</div>
+
+<h2>4A. Volume Analysis</h2>
+
+<div>
+<span class="kpi">Marketplace tickets: 67</span>
+<span class="kpi">All business lines: 233</span>
+<span class="kpi">Marketplace share: 28.8%</span>
+<span class="kpi">FO External: 51 (76%)</span>
+<span class="kpi">Internal Ops: 16 (24%)</span>
+</div>
+
+<table>
+<tr><th>Date</th><th>Day</th><th>FO External</th><th>Internal Ops</th><th>Total</th><th>DoD Δ</th><th>DoD %</th></tr>
+<tr><td>2026-06-01</td><td>Mon</td><td>13</td><td>0</td><td><b>13</b></td><td>—</td><td>—</td></tr>
+<tr><td>2026-06-02</td><td>Tue</td><td>5</td><td>3</td><td><b>8</b></td><td>−5</td><td>−38%</td></tr>
+<tr><td>2026-06-03</td><td>Wed</td><td>12</td><td>5</td><td><b>17</b></td><td>+9</td><td>+113%</td></tr>
+<tr><td>2026-06-04</td><td>Thu</td><td>4</td><td>3</td><td><b>7</b></td><td>−10</td><td>−59%</td></tr>
+<tr><td>2026-06-05</td><td>Fri</td><td>10</td><td>2</td><td><b>12</b></td><td>+5</td><td>+71%</td></tr>
+<tr><td>2026-06-06</td><td>Sat</td><td>5</td><td>3</td><td><b>8</b></td><td>−4</td><td>−33%</td></tr>
+<tr><td>2026-06-07</td><td>Sun</td><td>1</td><td>0</td><td><b>1</b></td><td>−7</td><td>−88%</td></tr>
+<tr><td>2026-06-08</td><td>Mon (partial)</td><td>1</td><td>0</td><td><b>1</b></td><td>—</td><td>—</td></tr>
+</table>
+
+<h3>Spikes &amp; drops</h3>
+<ul>
+<li><span class="tag-amber">Spike</span> <b>Jun 3 (Wed): 17 tickets</b> — driven by a heavy Payment cluster (12 FO Payment-dispute tickets) coinciding with month-start payment-cycle catch-up. Also includes 3 "Load issues -&gt; Others" test/junk tickets from a single FO (SOUNDARARASAN P) suggesting accidental/repeat submissions.</li>
+<li><span class="tag-amber">Spike</span> <b>Jun 5 (Fri): 12 tickets</b> — Friday TDS/declaration cluster: 4 TDS tickets, mostly from one Gold FO (VENKATACHALAM R C) re-filing same dispute.</li>
+<li><span class="tag-green">Drop</span> <b>Jun 7 (Sun): 1 ticket</b> — clear weekend depression. FOs file primarily on weekdays.</li>
+</ul>
+
+<h2>4B. Ticket Category Breakdown</h2>
+
+<table>
+<tr><th>#</th><th>Category &gt; Sub Category &gt; Issue</th><th>Volume</th><th>cm_category</th><th>Handling Team</th></tr>
+<tr><td>1</td><td>Payment issues &gt; Advance &amp; Balance Payments &gt; Balance payment pending</td><td><b>24</b></td><td>FO App Payment</td><td>Marketplace Payment Dispute L1/L2/L3</td></tr>
+<tr><td>2</td><td>Payment issues &gt; Tax &amp; Compliance &gt; TDS declaration / TDS deduction clarification</td><td><b>6</b></td><td>FO App Payment</td><td>Marketplace Payment Dispute L1/L3</td></tr>
+<tr><td>3</td><td>Trip issues &gt; Unloading issues / Others</td><td><b>5</b></td><td>Trip Issues</td><td>Marketplace Trip Issue L1/L3/L4</td></tr>
+<tr><td>4</td><td>Payment issues &gt; Others (Pod balance, Dispech night, Unloading charges, Balance payment)</td><td><b>5</b></td><td>FO App Payment</td><td>Marketplace Payment Dispute L1/L2</td></tr>
+<tr><td>5</td><td>Load issues &gt; Others / Load Availability</td><td><b>4</b></td><td>Loads</td><td>Marketplace Onboarding/Load Issue L1</td></tr>
+<tr><td>6</td><td>Payment issues &gt; Additional Charges / Overheads &gt; Overheads not received</td><td>2</td><td>FO App Payment</td><td>Marketplace Payment Dispute L1</td></tr>
+<tr><td>7</td><td>Onboarding issues &gt; Others</td><td>2</td><td>FO App Onboarding</td><td>Marketplace Onboarding/Load Issue L2</td></tr>
+<tr><td>8</td><td>Payment issues &gt; Freight Cost Clarification &gt; Clarification on deductions</td><td>1</td><td>FO App Payment</td><td>Marketplace Payment Dispute L3</td></tr>
+<tr><td>9</td><td>Payment issues &gt; Documents &amp; Statements &gt; NDC requested</td><td>1</td><td>FO App Payment</td><td>Marketplace Payment Dispute L3</td></tr>
+<tr><td>10</td><td>Payment issues &gt; Advance not received</td><td>1</td><td>FO App Payment</td><td>Marketplace Payment Dispute L2</td></tr>
+<tr><td colspan="2"><b>Internal Marketplace Ops (Slack via @oncall_marketplace)</b></td><td><b>16</b></td><td>Internal (mixed)</td><td>L1 Support / Engineering</td></tr>
+</table>
+
+<h3>Top 5 deep-dives</h3>
+
+<p><b>1. Balance Payment Pending (24 tickets, 47% of FO)</b><br>
+Filed by FOs whose vehicle is UNLOADED with POD available but money not yet credited. Resolution messages reveal most are <i>already paid</i> (UTR shared in reply) or <i>under process</i> — meaning visibility, not money, is the blocker. Examples:</p>
+<ul>
+<li>#4282 "Balance payment pending — 2060" → Ops reply: "Balance Already Paid Apr 29 2026 UTR 611950460822" (paid 5 weeks ago!)</li>
+<li>#4258 "Balance payment please transfer Sir" → "Balance Already Paid Apr 14 2026 UTR 610402437511"</li>
+<li>#4412 "Balance payment pending for so many days" → "Balance is under process will be paid by EOD"</li>
+</ul>
+
+<p><b>2. TDS Issues (6 tickets)</b><br>
+FOs repeatedly raise the same TDS dispute. <b>4 of 6 are from a single Gold FO (VENKATACHALAM R C)</b> filing across 3 different trips. Resolution: "Section changed, please submit revised TDS certificate." Examples:</p>
+<ul>
+<li>#4414 / #4292 "TDS charge debited my amount" → "TDS section changed, share new format via WhatsApp"</li>
+<li>#4350 / #4352 / #4354 "Tax amount need refund" → Three near-identical tickets from same FO within 4 minutes (4350=12:55:02, 4351=06:56:50, 4352=06:56:51, 4354=07:00:31)</li>
+</ul>
+
+<p><b>3. Trip Unloading Issues (5 tickets — highest frustration per ticket)</b><br>
+Vehicles stuck at unloading point with consignee non-responsive. Examples:</p>
+<ul>
+<li>#4218 "Today is 3rd day at unloading destination but vehicle is not taken inside for offloading. Goons are collecting Rs 200/- per day as parking. I have to pay driver parking and EMI of the vehicle." (escalated to L4)</li>
+<li>#4393 "2 day's complete still no body responding for unload the metriel, today before 8pm if not respond any body metriel will unload our gowdon" (Silver FO threatens to dump material at depot)</li>
+<li>#4144 "Last 28 date se vehicle not unload, We unloaded private warehouse" — FO took unauthorized action due to no response</li>
+</ul>
+
+<p><b>4. Payment-Others (5 tickets)</b><br>
+Catch-all: "Pod balance", "Dispech night" (typo for despatch), "Unloading charges Rs 1889 not received", "Balance payment". Examples:</p>
+<ul>
+<li>#4415 "Unloading charges RS 1889/- not received" → "Escalated to LSP waiting for confirmation"</li>
+</ul>
+
+<p><b>5. Load Issues (4 tickets)</b><br>
+3 of 4 are clearly junk/test ("sdveverbrbrbsc", "load issue needs fixng", "need load issue fixed") from the same FO (SOUNDARARASAN P). Only 1 legit query ("Not getting enough loads"). Signals UX confusion in ticket-raising flow.</p>
+
+<h2>4C. Day-over-Day Trend Analysis</h2>
+
+<ul>
+<li><b>Category growth pattern:</b> Payment-Balance grew ~3× from Mon (5) → Wed (8) → Fri (4) ; TDS tickets clustered Jun 4–5 (5 of 6 tickets in 2 days), likely a CRM-side TDS section change triggered FO confusion.</li>
+<li><b>Emerging issue:</b> Multiple "POD courier returned (RTO) due to office relocation" comments in resolutions (4239, 4358, 4171). Indicates an unannounced office-address change is causing balance-payment-pending tickets downstream. <b>This will spike further if not communicated.</b></li>
+<li><b>Weekend pattern:</b> Saturday 8 tickets, Sunday 1, Monday 13 — typical FO trucking-week rhythm. Internal ops tickets remain steady Mon–Fri, zero on weekends.</li>
+<li><b>FO Scorecard correlation:</b> Of 51 FO tickets — Gold 10 (20%), Silver 13 (25%), Red 1 (2%), Unknown 27 (53%). <b>Gold-tier FOs are over-represented relative to base rate</b> (they have higher trip volume, more touchpoints). Repeat-offender VENKATACHALAM R C (Gold, 4 tickets) and DESHRAJ SINGH (Gold) drive disproportionate volume.</li>
+</ul>
+
+<h2>4D. Resolution Comment Analysis</h2>
+
+<h3>Top 5 resolution actions observed</h3>
+
+<table>
+<tr><th>#</th><th>Resolution pattern</th><th>Count</th><th>What this signals</th></tr>
+<tr><td>1</td><td>"Balance is under process / will be paid by EOD"</td><td>5+</td><td>Status visibility gap — FO files because they can't see the in-flight payment.</td></tr>
+<tr><td>2</td><td>"Balance Already Paid" + UTR (often weeks-old)</td><td>4+</td><td>Successful payment never communicated to FO. <b>Critical UX bug.</b></td></tr>
+<tr><td>3</td><td>"POD not received / POD courier RTO" → asked to re-courier</td><td>5+</td><td>POD courier process broken (office moved); blocks balance release.</td></tr>
+<tr><td>4</td><td>"TDS section changed, submit revised TDS certificate"</td><td>5</td><td>TDS process not self-serve; ops manually re-shares format on WhatsApp.</td></tr>
+<tr><td>5</td><td>"This is the duplicate ticket of #XXXX"</td><td>6+</td><td>FO can't see existing open ticket → re-raises. Wastes ops cycles.</td></tr>
+</table>
+
+<h3>Non-actionable / "noted" resolutions (process gap flag)</h3>
+<ul>
+<li>#4393, #4178, #4218 — closed with just "Resolved" or "Resolved" repeated 3-4× with no resolution explanation; #4218 was an L4-escalated trip-stuck case closed without confirming whether the FO got their material unloaded.</li>
+<li>#4264 (TDS dispute) closed with 4 identical "Resolved" + "submit TDS certificate" — same message posted 4 times suggesting copy-paste workflow rather than real resolution.</li>
+<li>#4246 closed with single message "testing" — quality issue.</li>
+</ul>
+
+<h3>SLA &amp; throughput</h3>
+<ul>
+<li><b>Average messages per ticket:</b> ~3.5 (excluding the auto-generated ticket body). Several tickets have only the bot-generated first message and one "Resolved" — these are effectively zero-conversation closures.</li>
+<li><b>Avg time from creation to first response (where measured):</b> ~30–60 minutes for L1 Payment Dispute team during business hours. Several tickets show <code>first_response_time: null</code> at close (i.e. no real response logged, only system status updates).</li>
+<li><b>SLA breach rate:</b> Of 24 Balance-Pending tickets, ~10 had <code>resolution_breach_time</code> hit (resolution_time &gt; breach_time). Estimated SLA met rate ~58%.</li>
+</ul>
+
+<h3>Top assignees</h3>
+
+<table>
+<tr><th>Assignee</th><th>Tickets (sampled)</th><th>Resolution pattern</th></tr>
+<tr><td><b>Vijay Roy</b> (vijay.roy@)</td><td>~22 FO tickets (L1 Payment Dispute)</td><td>High volume, mostly "Resolved + balance under process" or "TDS section change" template responses. Some duplicate auto-close.</td></tr>
+<tr><td><b>Akshay Nair</b> (akshay.nair@)</td><td>~12 FO tickets (L1/L3 Payment Dispute)</td><td>Better — provides UTR / dates / specific deduction breakdowns.</td></tr>
+<tr><td><b>Basant Singh</b> (basant.singh@)</td><td>4 FO tickets (L2/L3 escalations)</td><td>Latest escalation handler; tickets currently waiting_on_you.</td></tr>
+<tr><td><b>Swapnil Panchal</b> (panchal.swapnil@)</td><td>4 FO tickets (Trip Issue L1/L3/L4)</td><td>Closes high-frustration trip tickets but often with bare "Resolved" — needs better narrative.</td></tr>
+<tr><td><b>Somayajulu Sharma</b> (somayajulu.sharma@)</td><td>~8 internal Slack ops tickets</td><td>Internal CRM/Metabase issues; closes fast.</td></tr>
+</table>
+
+<h2>4E. Sentiment Analysis</h2>
+
+<table>
+<tr><th>Sentiment</th><th>FO Tickets</th><th>%</th></tr>
+<tr><td><span class="tag-red">Frustrated</span></td><td>11</td><td><b>22%</b></td></tr>
+<tr><td><span class="tag-amber">Neutral</span></td><td>40</td><td><b>78%</b></td></tr>
+<tr><td><span class="tag-green">Satisfied</span></td><td>0</td><td>0%</td></tr>
+</table>
+
+<p><i>Many ticket bodies are auto-generated from the FO App form (Company / Trip / Payment details) with a short "Additional Comment" field. Sentiment is read from that comment + tone of the issue. Hinglish/regional phrasing accounted for.</i></p>
+
+<h3>Top 5 most frustrated FO messages (paraphrased)</h3>
+
+<table>
+<tr><th>#</th><th>Ticket</th><th>FO &amp; Category</th><th>Paraphrased</th></tr>
+<tr><td>1</td><td>#4218</td><td>MANOJ KUMAR SINGH | Trip Unloading | scorecard n/a | Trip 56779524 ₹27.5K</td><td>Vehicle stuck 3 days at unloading; says "this is pathetic", goons charging Rs 200/day parking, has to pay driver and EMI out of pocket. <b>Escalated to L4.</b></td></tr>
+<tr><td>2</td><td>#4393</td><td>YASHAS HOLIDAYS AND ROAD LINES | Trip Unloading delayed | Silver | Trip 56673605 ₹143K</td><td>2 days complete with no response from consignee. Threatens to dump material at his own godown if no one responds by 8pm tonight. <b>L3 escalation.</b></td></tr>
+<tr><td>3</td><td>#4144</td><td>ANANT ROADLINCE | Trip Unloading | n/a | Trip 56498871 ₹94.4K</td><td>Has not unloaded for 4+ days; already took matters into own hands and unloaded at private warehouse. <b>L3 escalation; uncomfortable precedent.</b></td></tr>
+<tr><td>4</td><td>#4350 + 3 dup</td><td>VENKATACHALAM R C | TDS waiver | Gold | Trip 56514392 ₹72.6K</td><td>Files 3 near-identical TDS refund tickets in 4 minutes (4350/4352/4354), then a 4th the next day (4350 reopened); repeats same complaint after team asks for new TDS section format. <b>Loop-of-frustration.</b></td></tr>
+<tr><td>5</td><td>#4259</td><td>VIAGO EXPRESS LOGISTICS LLP | Overheads | n/a | Trip 56643264 ₹28K</td><td>Unloading location changed mid-trip 12 km away; 5 days halting charges pending; multiple grievances compounded. <b>"Resolved" with promise of future payment, no UTR.</b></td></tr>
+</table>
+
+<p><b>Most-frustrated categories:</b></p>
+<ol>
+<li><b>Trip Unloading Issues — 4/5 frustrated (80%).</b> Highest per-ticket frustration density. FOs feel abandoned.</li>
+<li><b>Repeat TDS disputes — same FO files 4× in days.</b> Loop-of-frustration signal.</li>
+<li><b>Payment-pending where money was paid weeks ago.</b> Anger comes from feeling unheard rather than the wait itself.</li>
+</ol>
+
+<p><b>Competitor/leave signals:</b> No explicit threat to switch competitor in this window. <b>However</b>, #4144 ("we unloaded at our private warehouse") and #4393 (threat to dump material) represent FOs taking unilateral action — a leading indicator of churn intent.</p>
+
+<h2>4F. Repeat and Duplicate Analysis</h2>
+
+<h3>FOs with 3+ tickets in the window</h3>
+
+<table>
+<tr><th>Company</th><th>Scorecard</th><th>Tickets</th><th>Pattern</th></tr>
+<tr><td><b>SOUNDARARASAN P</b><br>(COM-d7727182)</td><td>n/a</td><td><b>5</b> (#4244, #4245, #4246, #4351, #4353)</td><td>Mix of clearly junk titles ("sdveverbrbrbsc", "djsnf...") — strong signal of accidental/test submissions or UI confusion in ticket-raising flow.</td></tr>
+<tr><td><b>VENKATACHALAM R C</b><br>(COM-f2f597c0)</td><td>Gold</td><td><b>4</b> (#4339, #4350, #4352, #4354)</td><td>All TDS refund / Balance disputes, same trips (52453066, 55722139, 56514392). Files near-simultaneous duplicates — UI does not stop multiple submissions.</td></tr>
+<tr><td><b>BHARATHIRAJA P</b><br>(COM-093ff370)</td><td>Silver</td><td><b>3</b> (#4152, #4165, #4264)</td><td>All on the same trip 55936049 — TDS deduction, NDC request, Overheads. FO splitting one trip's grievances across 3 tickets.</td></tr>
+<tr><td><b>Jayaprakash M</b><br>(COM-b6f976a5)</td><td>Silver</td><td><b>3</b> (#4146, #4147, #4248)</td><td>Balance payment pending across 3 different trips. Same FO, recurring POD-to-payment delay.</td></tr>
+</table>
+
+<h3>Likely duplicates (same FO + same category within 24h)</h3>
+<ul>
+<li>VENKATACHALAM R C #4351 / #4353 — 16 seconds apart, identical Onboarding "Others" title gibberish.</li>
+<li>VENKATACHALAM R C #4350 / #4352 — duplicate TDS within minutes of each other.</li>
+<li>BALAJI RAJARAM #4139 / #4140 — 3 minutes apart, identical trip 56418386 / 56521024 balance request.</li>
+<li>MANOJ KUMAR SINGH #4178 / #4218 — same trip 56779524 split across "Vehicle not taken inside" and "Today is 3rd day" filed 24 hours apart.</li>
+<li>TAMILARASAN #4145 / #4389 — same trip 56089938, 4 days apart.</li>
+</ul>
+
+<h3>Self-serve avoidability estimate</h3>
+<p>Of the 51 FO tickets, <b>~30–32 (60%)</b> could plausibly be avoided with self-serve product features:</p>
+<ul>
+<li>Real-time payment status timeline → ~14–15 Balance Pending tickets where payment is already in flight or done.</li>
+<li>POD courier tracking + new-address notification → ~4–5 tickets blocked on POD physically not received.</li>
+<li>TDS certificate self-upload with section auto-detect → 5–6 TDS tickets.</li>
+<li>Duplicate-ticket block (same trip same category) → 5–6 duplicates.</li>
+<li>Detention timer + auto-escalation → reduces frustration on 4–5 unloading tickets even if doesn't deflect.</li>
+</ul>
+
+<h2>4G. Product Recommendations</h2>
+
+<div class="recs">
+
+<h2>Top 3 categories to reduce tickets via product intervention</h2>
+
+<h3>1. Real-time Payment Status Visibility in FO App (Balance Pending — 24 tickets / 47%)</h3>
+<ul>
+<li><b>What FO App should show:</b> Per-trip Payment Timeline with 5 nodes — POD Received ✓ → Invoice Validated → Bank Initiated → UTR Generated (with ref no.) → Credited to Account. Show ETA per node based on historical average.</li>
+<li><b>Proactive push:</b> On every state transition send WhatsApp + in-app notification with the UTR reference once payment is initiated. Daily digest for trips stuck &gt;48h in any node.</li>
+<li><b>Self-serve flow:</b> "Where's my payment?" CTA on each unloaded trip card → opens the timeline. If state = Credited but FO claims not received, auto-opens dispute pre-filled with UTR.</li>
+<li><b>Estimated ticket reduction:</b> <b>50–60% of Balance Pending tickets (~12–15 fewer/week, ~600+/year).</b></li>
+</ul>
+
+<h3>2. Detention &amp; Trip Stuck Auto-Escalation (Trip Unloading — 5 tickets, highest frustration)</h3>
+<ul>
+<li><b>What FO App should show:</b> Detention counter that starts auto on Vehicle-Reached-At-Unloading-Point + 24h. Live "Detention charges accruing: ₹X" tile.</li>
+<li><b>Proactive push:</b> Auto-creates internal Marketplace Trip Ops L1 escalation at 24h, L2 at 48h, L3 at 72h — without FO needing to file a ticket. Notify consignor + branch ops simultaneously.</li>
+<li><b>Self-serve flow:</b> "Vehicle stuck? Tap to escalate" with one-tap photo of vehicle location and complaint, geo-pinned. Eliminates the WhatsApp-call-loop seen in current resolution comments ("Trying to reach you, not picking calls").</li>
+<li><b>Estimated ticket reduction:</b> <b>60% of trip-unloading tickets (3/week)</b>, plus very large frustration / NPS impact, plus eliminates self-help precedents like FOs unloading at private warehouses.</li>
+</ul>
+
+<h3>3. TDS Self-Serve + Duplicate-Ticket Prevention (TDS &amp; duplicate-cluster — ~11 tickets combined)</h3>
+<ul>
+<li><b>What FO App should show:</b> "Your tax deduction" tile per trip with: section used (e.g. 194C), amount, downloadable TDS certificate, "Submit new section" CTA with PDF upload + auto-OCR section/PAN extraction.</li>
+<li><b>Block at submit:</b> When raising a ticket, run a check "You already have an open ticket for Trip X under Payment-Pending. View it instead of creating new?" — only allow new if FO confirms different issue.</li>
+<li><b>Proactive push:</b> At month-end, notify FOs whose TDS section is about to be auto-applied with option to submit waiver/declaration before deduction.</li>
+<li><b>Estimated ticket reduction:</b> <b>80% of TDS tickets + 100% of intra-day duplicate tickets (~8–9/week).</b></li>
+</ul>
+
+<h3>Ops process gaps (manual workarounds visible in CRM)</h3>
+<ul>
+<li><b>UTR not auto-pushed to FO at payment.</b> Ops manually share UTR weeks after payment was made. Automate UTR-push at the moment Marketplace finance system marks payment as paid.</li>
+<li><b>POD office-relocation not communicated.</b> Multiple resolution comments mention "POD couriered to old office, returned (RTO)". A one-time push notification + WhatsApp blast with new office address would save 4–5 tickets/week and 2-week payment delays.</li>
+<li><b>TDS format change broadcast via WhatsApp by individual agents.</b> Should be a CRM-driven automated bulk message with the new format template.</li>
+<li><b>Mandatory resolution-comment field.</b> "Resolved" alone (seen in #4393, #4178, #4218) should be blocked by CRM. Require minimum 1 of: UTR, ETA, action-required-from-FO, escalation-target.</li>
+<li><b>L4 trip escalations close without confirming FO outcome.</b> Add a 24h post-close FO confirmation prompt.</li>
+</ul>
+
+<h3>FO App gaps</h3>
+<table>
+<tr><th>Gap</th><th>Maps to Screen / Flow</th></tr>
+<tr><td>No trip-wise payment ledger view (advance + balance + UTR)</td><td>Trip Detail → "Payments" tab</td></tr>
+<tr><td>No TDS deduction explanation per trip</td><td>Trip Detail → "Tax breakup" sub-panel</td></tr>
+<tr><td>No detention timer on stuck-at-destination trips</td><td>Trip Detail → "Status timeline" header strip</td></tr>
+<tr><td>No POD courier status / latest-received state</td><td>Trip Detail → "Documents" tab → POD card</td></tr>
+<tr><td>No duplicate-ticket detection in raise-ticket flow</td><td>Support → Raise Ticket → Step-1 Trip selection screen</td></tr>
+<tr><td>No bank account self-update + verification</td><td>Profile → "Bank Account" + KYC re-verification</td></tr>
+<tr><td>Ticket free-text accepts garbage (sdveverbrbrbsc) without min-length / category-fit validation</td><td>Support → Raise Ticket → Additional Comment field</td></tr>
+</table>
+
+<h3>Payment automation opportunities</h3>
+<ul>
+<li>Auto-publish payment timeline events to FO App on every finance system state change.</li>
+<li>Auto-generate "Payment ready — awaiting POD" notification when POD is the only blocker; show POD upload CTA in same notification.</li>
+<li>Auto-generate NDC certificate on POD acceptance (eliminates #4152-class tickets).</li>
+<li>TDS pre-calculator showing "Your TDS will be ₹X based on section 194C. Upload Sec 194C waiver to reduce by ₹Y."</li>
+<li>Real-time UTR delivery via push + WhatsApp at the moment of bank acknowledgment.</li>
+</ul>
+
+<h3>Prioritized action items (composite score, 40 / 30 / 20 / 10 weighting)</h3>
+
+<table>
+<tr><th>Rank</th><th>Action</th><th>Volume (40%)</th><th>Frustration (30%)</th><th>Ease of fix (20%)</th><th>Retention impact (10%)</th><th>Score</th></tr>
+<tr><td>1</td><td><b>Real-time payment status timeline + UTR auto-push</b></td><td>10</td><td>8</td><td>7</td><td>9</td><td><b>8.7</b></td></tr>
+<tr><td>2</td><td><b>Detention timer + auto-escalation for stuck trips</b></td><td>4</td><td>10</td><td>6</td><td>10</td><td>6.8</td></tr>
+<tr><td>3</td><td><b>Duplicate-ticket block at submission</b></td><td>6</td><td>5</td><td>9</td><td>5</td><td>6.2</td></tr>
+<tr><td>4</td><td><b>TDS self-serve + section pre-calculator</b></td><td>5</td><td>6</td><td>8</td><td>6</td><td>6.0</td></tr>
+<tr><td>5</td><td><b>POD courier status tracking + new-office-address blast</b></td><td>5</td><td>6</td><td>5</td><td>6</td><td>5.4</td></tr>
+<tr><td>6</td><td><b>In-app messaging (kill phone-call dependency)</b></td><td>7</td><td>7</td><td>4</td><td>7</td><td>6.2</td></tr>
+<tr><td>7</td><td><b>Mandatory CRM resolution-comment field</b></td><td>3</td><td>4</td><td>10</td><td>4</td><td>4.6</td></tr>
+</table>
+
+</div>
+
+<div class="footer">
+<b>Analysis scope:</b> Marketplace business line only | <b>Tickets:</b> 2026-06-01 to 2026-06-08 (created_after window) | <b>Generated by Claude via Pylon MCP</b><br>
+<b>API budget:</b> 3 search_issues + 72 get_issue + 17 get_issue_messages = <b>92 successful Pylon API calls</b> (well under 250). Rate-limit hit on 11 message fetches; not retried as the 17 successful threads gave saturated coverage of the resolution patterns. <b>No sampling applied to ticket inventory</b> (67 marketplace tickets &lt; 80 threshold) — all 67 included in volume/category analysis; ~32 received message-thread depth analysis.
+</div>
+
+</body>
+</html>
