@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @page {
+    size: A4;
+    margin: 11mm 12mm 12mm 12mm;
+    @bottom-right { content: "Page " counter(page) " of 2"; font-size: 7.5pt; color: #94a3b8; font-family: 'DejaVu Sans', sans-serif; }
+    @bottom-left { content: "Freight Tiger Marketplace — Confidential"; font-size: 7.5pt; color: #94a3b8; font-family: 'DejaVu Sans', sans-serif; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DejaVu Sans', sans-serif; font-size: 8.6pt; color: #1e293b; line-height: 1.42; }
+
+  .titlebar { background: #0f2a4a; color: #fff; padding: 10px 14px; border-radius: 6px; margin-bottom: 10px; }
+  .titlebar h1 { font-size: 14.5pt; font-weight: bold; letter-spacing: .2px; }
+  .titlebar .sub { font-size: 8.5pt; color: #bcd3ec; margin-top: 3px; }
+
+  h2 { font-size: 10pt; color: #0f2a4a; margin: 11px 0 6px 0; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 3px; }
+  h2 .num { display: inline-block; background: #0f2a4a; color: #fff; border-radius: 3px; width: 15px; height: 15px; text-align: center; font-size: 8.5pt; line-height: 15px; margin-right: 6px; vertical-align: 1px; }
+
+  /* flow diagrams */
+  .flow { text-align: center; margin: 8px 0 4px 0; }
+  .frow { white-space: nowrap; margin-bottom: 6px; }
+  .box { display: inline-block; vertical-align: middle; border-radius: 5px; padding: 6px 6px; font-size: 7.6pt; line-height: 1.3; text-align: center; white-space: normal; }
+  .box b { display: block; font-size: 8.2pt; margin-bottom: 2px; }
+  .box-grey  { background: #f1f5f9; border: 1.2px solid #94a3b8; width: 112px; }
+  .box-red   { background: #fef2f2; border: 1.2px solid #ef9a9a; width: 122px; }
+  .box-blue  { background: #eaf2fb; border: 1.2px solid #6f9fd0; width: 124px; }
+  .box-green { background: #f0faf2; border: 1.2px solid #7fc08c; width: 124px; }
+  .box-dash  { background: #fbfdff; border: 1.2px dashed #9bb6d3; width: 124px; color:#475569; }
+  .arr { display: inline-block; vertical-align: middle; color: #64748b; font-size: 10pt; padding: 0 2px; }
+  .result-strip { margin: 6px auto 0 auto; width: 92%; border-radius: 5px; padding: 6px 10px; font-size: 8.2pt; text-align: center; }
+  .strip-red   { background: #b3392f; color: #fff; }
+  .strip-green { background: #2e7d44; color: #fff; }
+
+  /* gaps grid */
+  table.gaps { width: 100%; border-collapse: separate; border-spacing: 5px 5px; margin-top: 2px; }
+  table.gaps td { width: 50%; background: #fff7f0; border: 1px solid #f0cdaa; border-left: 3.5px solid #d97a2b; border-radius: 4px; padding: 6px 9px; vertical-align: top; font-size: 8.4pt; }
+  table.gaps td b { color: #9a4e0e; }
+
+  /* needs grid */
+  table.needs { width: 100%; border-collapse: separate; border-spacing: 5px 5px; margin-top: 2px; }
+  table.needs td { width: 50%; background: #f4faf5; border: 1px solid #bfdec5; border-left: 3.5px solid #2e7d44; border-radius: 4px; padding: 6px 9px; vertical-align: top; font-size: 8.4pt; }
+  table.needs td b { color: #1f5c31; }
+
+  /* compare table */
+  table.cmp { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 8.2pt; }
+  table.cmp th { background: #0f2a4a; color: #fff; padding: 5px 8px; text-align: left; font-size: 8.4pt; }
+  table.cmp th.bld { background: #2e7d44; }
+  table.cmp td { border: 1px solid #dbe3ec; padding: 5px 8px; vertical-align: top; }
+  table.cmp tr:nth-child(even) td { background: #f7fafc; }
+  table.cmp td.dim { font-weight: bold; color: #0f2a4a; width: 17%; background: #eef3f8 !important; }
+  table.cmp td.win { background: #f0faf2 !important; }
+  .tick { color: #2e7d44; font-weight: bold; }
+  .cross { color: #b3392f; font-weight: bold; }
+
+  .reco { background: #f0faf2; border: 1.5px solid #2e7d44; border-radius: 6px; padding: 9px 12px; margin-top: 10px; }
+  .reco h3 { color: #1f5c31; font-size: 9.5pt; margin-bottom: 4px; }
+  .pagebreak { page-break-before: always; }
+  .note { font-size: 7.8pt; color: #64748b; margin-top: 3px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+  <h1>Marketplace Ledger &mdash; Build vs Buy</h1>
+  <div class="sub">Decision note for go-ahead &nbsp;&bull;&nbsp; Recommendation: build the ledger in-house as the system of record &nbsp;&bull;&nbsp; June 2026</div>
+</div>
+
+<h2><span class="num">1</span>How money flows today (current process)</h2>
+<div class="flow">
+  <div class="frow">
+    <span class="box box-grey"><b>Trip created</b>Ops team sets up the trip in CRM</span><span class="arr">&#8594;</span>
+    <span class="box box-red"><b>Amounts typed into trip fields</b>Freight, charges, deductions &mdash; every edit overwrites the old value</span><span class="arr">&#8594;</span>
+    <span class="box box-red"><b>Payments recorded one-to-one</b>One payment must match one charge; no part-payment, no wallet</span><span class="arr">&#8594;</span>
+    <span class="box box-red"><b>Finance fixes it by hand</b>Spreadsheet reconciliation, manual Bill of Supply, TDS &amp; recoveries</span><span class="arr">&#8594;</span>
+    <span class="box box-grey"><b>Reports cleaned manually</b>Metabase data corrected before anyone can use it</span>
+  </div>
+  <div class="result-strip strip-red"><b>Result:</b> 500+ finance hours every month on manual work &nbsp;&bull;&nbsp; disputed balances we cannot defend &nbsp;&bull;&nbsp; payments are our #1 support-ticket driver</div>
+</div>
+
+<h2><span class="num">2</span>Gaps in the current process and system</h2>
+<table class="gaps">
+  <tr>
+    <td><b>No history.</b> Edits overwrite old values, so we cannot show what a balance was on a given date. When a payment is disputed, we have nothing to point to.</td>
+    <td><b>Balances drift.</b> Totals across a trip stop adding up over time, creating reconciliation mismatches between us, fleet owners and LSPs.</td>
+  </tr>
+  <tr>
+    <td><b>Rigid payments.</b> One payment cannot settle many charges, be paid in parts, or sit in a wallet. Overpayments and cancelled-trip advances have no clean home.</td>
+    <td><b>No clear per-party picture.</b> We can&rsquo;t reliably see what each LSP owes us, what we owe each fleet owner, or our margin per trip.</td>
+  </tr>
+  <tr>
+    <td><b>Compliance is manual.</b> Bill of Supply, credit notes and TDS are computed and issued by hand &mdash; ~37 compliance line items, all error-prone.</td>
+    <td><b>Heavy ongoing cost.</b> All of the above lands on the finance team as repeated manual effort, month after month.</td>
+  </tr>
+</table>
+
+<h2><span class="num">3</span>What is needed to solve this</h2>
+<div class="flow">
+  <div class="frow">
+    <span class="box box-grey" style="width:110px;"><b>CRM stays the front end</b>Teams keep working exactly where they do today</span><span class="arr">&#8594;</span>
+    <span class="box box-blue" style="width:142px;"><b>Ledger: the single source of truth</b>Every change is saved as a new entry &mdash; nothing is ever overwritten</span><span class="arr">&#8594;</span>
+    <span class="box box-green"><b>Clear balances</b>Receivable / payable &amp; margin per trip, per party, as of any date</span><span class="arr">&#8594;</span>
+    <span class="box box-green"><b>Flexible settlement</b>One payment &#8594; many charges, part-payments, FO &amp; LSP wallets</span>
+  </div>
+  <div class="frow">
+    <span class="box box-green" style="width:150px;"><b>Documents auto-generated</b>Bill of Supply, credit notes, TDS &mdash; amounts frozen when issued</span><span class="arr">&#8594;</span>
+    <span class="box box-green" style="width:150px;"><b>Payments connected</b>Razorpay payouts and bank-receipt matching, driven by the ledger</span><span class="arr">&#8594;</span>
+    <span class="box box-dash" style="width:170px;"><b>Optional: Zoho downstream</b>If statutory books are needed, send summarised entries to Zoho &mdash; not the live system</span>
+  </div>
+  <div class="result-strip strip-green"><b>Result:</b> defensible balances on any date &nbsp;&bull;&nbsp; automated compliance &nbsp;&bull;&nbsp; 500+ finance hours/month back &nbsp;&bull;&nbsp; ledger visible to FOs &amp; LSPs later for trust</div>
+</div>
+
+<div class="pagebreak"></div>
+
+<h2><span class="num">4</span>Build vs Buy &mdash; the decision in one view</h2>
+<table class="cmp">
+  <tr>
+    <th style="width:17%;">What matters</th>
+    <th class="bld" style="width:41.5%;">Build in-house (recommended)</th>
+    <th style="width:41.5%;">Buy &mdash; Zoho Books as the live system</th>
+  </tr>
+  <tr>
+    <td class="dim">Fits our business model</td>
+    <td class="win"><span class="tick">&#10003;</span> Designed for a broker: per-trip receivable (LSP) and payable (FO) with our margin in between.</td>
+    <td><span class="cross">&#10007;</span> Treats us as one company issuing invoices. No concept of two counterparties on one trip, or our margin.</td>
+  </tr>
+  <tr>
+    <td class="dim">Wallets &amp; flexible settlement</td>
+    <td class="win"><span class="tick">&#10003;</span> Native wallets for FOs and LSPs; one payment can cover many charges or be part-paid.</td>
+    <td><span class="cross">&#10007;</span> No per-party wallets; settlement forced into Zoho&rsquo;s invoice/bill structure.</td>
+  </tr>
+  <tr>
+    <td class="dim">Work we still do either way</td>
+    <td class="win"><span class="tick">&#10003;</span> One system to maintain. Business logic already lives in the marketplace.</td>
+    <td><span class="cross">&#10007;</span> Same work, plus more: onboard every FO &amp; LSP into Zoho, keep records in sync, format data to Zoho&rsquo;s rules.</td>
+  </tr>
+  <tr>
+    <td class="dim">When something breaks</td>
+    <td class="win"><span class="tick">&#10003;</span> We see and fix issues in our own system, directly.</td>
+    <td><span class="cross">&#10007;</span> Sync failures still land on our team &mdash; we carry the break-fix burden but debug across two systems.</td>
+  </tr>
+  <tr>
+    <td class="dim">Speed of change</td>
+    <td class="win"><span class="tick">&#10003;</span> New charge types, tax rules, wallet rules: we change and ship.</td>
+    <td><span class="cross">&#10007;</span> Constrained to Zoho&rsquo;s object model; changes wait on what Zoho allows.</td>
+  </tr>
+  <tr>
+    <td class="dim">Reliability of live balances</td>
+    <td class="win"><span class="tick">&#10003;</span> Balances computed in our own system, in real time.</td>
+    <td><span class="cross">&#10007;</span> Live balances depend on Zoho&rsquo;s sync reliability and API limits (~15&ndash;24k API calls/month at current volume).</td>
+  </tr>
+  <tr>
+    <td class="dim">Cost &amp; control</td>
+    <td class="win"><span class="tick">&#10003;</span> No per-seat licences; runs on existing infrastructure; full control of audit trail, data retention, INR/TDS handling.</td>
+    <td><span class="cross">&#10007;</span> Per-seat licensing that grows with the team; audit trail and retention live outside our control.</td>
+  </tr>
+  <tr>
+    <td class="dim">Where Zoho does help</td>
+    <td class="win">Statutory books, if needed: receive summarised entries from our ledger downstream.</td>
+    <td><span class="tick">&#10003;</span> Strong at standard statutory accounting &mdash; the one place it genuinely fits.</td>
+  </tr>
+</table>
+<div class="note">The key point: buying does not remove the work. Onboarding, mapping, data formatting and reconciliation stay with us in both options &mdash; Zoho only adds a runtime dependency.</div>
+
+<div class="reco">
+  <h3>Recommendation &amp; ask</h3>
+  <p><b>Build the ledger natively in the marketplace as the system of record.</b> Every financial change is stored as a new entry (never overwritten), giving us defensible point-in-time balances, flexible settlement with wallets, a clean receivable/payable and margin view per party, and automated Bill of Supply, credit notes and TDS. If statutory books are required, we sync summarised entries to Zoho downstream rather than running it as the live system.</p>
+  <p style="margin-top:5px;"><b>Ask:</b> go-ahead to start Phase&nbsp;1 (ledger foundation, run in parallel with current process &mdash; zero business disruption), followed by compliance automation, reconciliation &amp; reporting, and finally surfacing the ledger to fleet owners and LSPs.</p>
+</div>
+
+</body>
+</html>
