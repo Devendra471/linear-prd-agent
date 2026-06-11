@@ -30,6 +30,11 @@
   .box-green { background: #f0faf2; border: 1.2px solid #7fc08c; width: 124px; }
   .box-dash  { background: #fbfdff; border: 1.2px dashed #9bb6d3; width: 124px; color:#475569; }
   .arr { display: inline-block; vertical-align: middle; color: #64748b; font-size: 10pt; padding: 0 2px; }
+  .arr-lbl { display: inline-block; vertical-align: middle; text-align: center; padding: 0 3px; }
+  .arr-lbl .arr { display: block; padding: 0; line-height: 1; }
+  .lbl { display: block; font-size: 6.8pt; font-weight: bold; border-radius: 3px; padding: 1px 5px; margin-bottom: 1px; }
+  .lbl-in  { color: #1f5c31; background: #e2f3e6; }
+  .lbl-out { color: #7a3306; background: #fdebd7; }
   .result-strip { margin: 6px auto 0 auto; width: 92%; border-radius: 5px; padding: 6px 10px; font-size: 8.2pt; text-align: center; }
   .strip-red   { background: #b3392f; color: #fff; }
   .strip-green { background: #2e7d44; color: #fff; }
@@ -71,10 +76,16 @@
 <h2><span class="num">1</span>How money flows today (current process)</h2>
 <div class="flow">
   <div class="frow">
+    <span class="box box-blue" style="width:128px;"><b>LSP (customer)</b>Books the trip and owes us freight</span><span class="arr-lbl"><span class="lbl lbl-in">Money IN &mdash; Receivable (AR)</span><span class="arr">&#8594;</span></span>
+    <span class="box box-grey" style="width:140px;"><b>Freight Tiger (marketplace)</b>Sits in the middle &mdash; collects from LSP, pays FO, keeps the margin</span><span class="arr-lbl"><span class="lbl lbl-out">Money OUT &mdash; Payable (AP)</span><span class="arr">&#8594;</span></span>
+    <span class="box box-blue" style="width:128px;"><b>Fleet Owner (vendor)</b>Runs the trip and is owed the payout</span>
+  </div>
+  <div class="note" style="margin-bottom:7px;">Today both sides are mixed into the same trip fields &mdash; there is no separate &ldquo;money in&rdquo; (AR) vs &ldquo;money out&rdquo; (AP) view, so margin is invisible.</div>
+  <div class="frow">
     <span class="box box-grey"><b>Trip created</b>Ops team sets up the trip in CRM</span><span class="arr">&#8594;</span>
     <span class="box box-red"><b>Amounts typed into trip fields</b>Freight, charges, deductions &mdash; every edit overwrites the old value</span><span class="arr">&#8594;</span>
     <span class="box box-red"><b>Payments recorded one-to-one</b>One payment must match one charge; no part-payment, no wallet</span><span class="arr">&#8594;</span>
-    <span class="box box-red"><b>Finance fixes it by hand</b>Spreadsheet reconciliation, manual Bill of Supply, TDS &amp; recoveries</span><span class="arr">&#8594;</span>
+    <span class="box box-red"><b>Finance cleans up the numbers manually</b>Team matches payments to trips in spreadsheets, and prepares Bill of Supply, TDS &amp; recovery entries by hand</span><span class="arr">&#8594;</span>
     <span class="box box-grey"><b>Reports cleaned manually</b>Metabase data corrected before anyone can use it</span>
   </div>
   <div class="result-strip strip-red"><b>Result:</b> 500+ finance hours every month on manual work &nbsp;&bull;&nbsp; disputed balances we cannot defend &nbsp;&bull;&nbsp; payments are our #1 support-ticket driver</div>

@@ -68,7 +68,7 @@ def cell_text(cell, runs, align="center", size=8, space_before=2, space_after=2)
 
 def heading(num, text):
     p = doc.add_paragraph()
-    p.paragraph_format.space_before = Pt(10); p.paragraph_format.space_after = Pt(4)
+    p.paragraph_format.space_before = Pt(7); p.paragraph_format.space_after = Pt(4)
     r = p.add_run(f" {num} ")
     r.bold = True; r.font.size = Pt(10); r.font.color.rgb = RGBColor.from_string("FFFFFF")
     r.font.highlight_color = None
@@ -123,15 +123,61 @@ p = c.add_paragraph(); p.paragraph_format.space_after = Pt(6)
 r = p.add_run("Decision note for go-ahead   •   Recommendation: build the ledger in-house as the system of record   •   June 2026")
 r.font.size = Pt(8.5); r.font.color.rgb = RGBColor.from_string("BCD3EC")
 
+def labeled_arrow(cell, label, label_color, label_bg):
+    cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+    shade(cell, "FFFFFF")
+    p = cell.paragraphs[0]
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.space_before = Pt(2); p.paragraph_format.space_after = Pt(0)
+    r = p.add_run(label)
+    r.bold = True; r.font.size = Pt(6.5); r.font.color.rgb = RGBColor.from_string(label_color)
+    rPr = r._element.get_or_add_rPr()
+    shd = OxmlElement("w:shd"); shd.set(qn("w:val"), "clear"); shd.set(qn("w:fill"), label_bg)
+    rPr.append(shd)
+    p2 = cell.add_paragraph()
+    p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p2.paragraph_format.space_after = Pt(2)
+    r2 = p2.add_run("→")
+    r2.bold = True; r2.font.size = Pt(12); r2.font.color.rgb = RGBColor.from_string("64748B")
+
 # ---------- SECTION 1 ----------
 heading("1", "How money flows today (current process)")
+
+# Money relationship strip: AR on the LSP side, AP on the FO side
+t = doc.add_table(rows=1, cols=5)
+t.alignment = WD_TABLE_ALIGNMENT.CENTER
+no_borders(t)
+mwidths = [Mm(48), Mm(28), Mm(52), Mm(28), Mm(48)]
+for j, w in enumerate(mwidths):
+    t.rows[0].cells[j].width = w
+c = t.rows[0].cells[0]
+shade(c, BLUE_BG); borders(c, "6F9FD0", sz=8)
+cell_text(c, [("LSP (customer)", True, "1E293B"),
+              ("\nBooks the trip and owes us freight", False, "334155")], size=7.5)
+labeled_arrow(t.rows[0].cells[1], " Money IN — Receivable (AR) ", "1F5C31", "E2F3E6")
+c = t.rows[0].cells[2]
+shade(c, GREY_BG); borders(c, "94A3B8", sz=8)
+cell_text(c, [("Freight Tiger (marketplace)", True, "1E293B"),
+              ("\nSits in the middle — collects from LSP, pays FO, keeps the margin", False, "334155")], size=7.5)
+labeled_arrow(t.rows[0].cells[3], " Money OUT — Payable (AP) ", "7A3306", "FDEBD7")
+c = t.rows[0].cells[4]
+shade(c, BLUE_BG); borders(c, "6F9FD0", sz=8)
+cell_text(c, [("Fleet Owner (vendor)", True, "1E293B"),
+              ("\nRuns the trip and is owed the payout", False, "334155")], size=7.5)
+
+p = doc.add_paragraph()
+p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p.paragraph_format.space_before = Pt(2); p.paragraph_format.space_after = Pt(4)
+r = p.add_run("Today both sides are mixed into the same trip fields — there is no separate “money in” (AR) vs “money out” (AP) view, so margin is invisible.")
+r.font.size = Pt(7.5); r.italic = True; r.font.color.rgb = RGBColor.from_string("64748B")
+
 flow_row([
     ("Trip created", "Ops team sets up the trip in CRM", GREY_BG, "94A3B8"), "->",
-    ("Amounts typed into trip fields", "Freight, charges, deductions — every edit overwrites the old value", RED_BG, "EF9A9A"), "->",
-    ("Payments recorded one-to-one", "One payment must match one charge; no part-payment, no wallet", RED_BG, "EF9A9A"), "->",
-    ("Finance fixes it by hand", "Spreadsheet reconciliation, manual Bill of Supply, TDS & recoveries", RED_BG, "EF9A9A"), "->",
-    ("Reports cleaned manually", "Metabase data corrected before anyone can use it", GREY_BG, "94A3B8"),
-], [32, 6, 34, 6, 34, 6, 34, 6, 32])
+    ("Amounts typed into trip fields", "Freight, charges, deductions — each edit overwrites the old value", RED_BG, "EF9A9A"), "->",
+    ("Payments recorded one-to-one", "One payment must match one charge; no part-payment or wallet", RED_BG, "EF9A9A"), "->",
+    ("Finance cleans up manually", "Payments matched to trips in spreadsheets; Bill of Supply & TDS by hand", RED_BG, "EF9A9A"), "->",
+    ("Reports cleaned manually", "Metabase data corrected before use", GREY_BG, "94A3B8"),
+], [33, 5, 35, 5, 35, 5, 35, 5, 33])
 spacer(2)
 strip([("Result: ", True, "FFFFFF"),
        ("500+ finance hours every month on manual work  •  disputed balances we cannot defend  •  payments are our #1 support-ticket driver", False, "FFFFFF")], RED)
@@ -171,7 +217,7 @@ flow_row([
 ], [46, 6, 46, 6, 52])
 spacer(2)
 strip([("Result: ", True, "FFFFFF"),
-       ("defensible balances on any date  •  automated compliance  •  500+ finance hours/month back  •  ledger visible to FOs & LSPs later for trust", False, "FFFFFF")], GREEN)
+       ("defensible balances on any date  •  automated compliance  •  500+ finance hours/month back  •  ledger visible to FOs & LSPs", False, "FFFFFF")], GREEN)
 
 # ---------- PAGE BREAK ----------
 doc.add_page_break()
