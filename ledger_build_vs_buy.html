@@ -120,6 +120,7 @@
     <span class="box box-green" style="width:150px;"><b>Payments connected</b>Razorpay payouts and bank-receipt matching, driven by the ledger</span><span class="arr">&#8594;</span>
     <span class="box box-dash" style="width:170px;"><b>Optional: Zoho downstream</b>If statutory books are needed, send summarised entries to Zoho &mdash; not the live system</span>
   </div>
+  <div class="note" style="margin-bottom:5px;"><b>Scope note on &ldquo;wallet&rdquo;:</b> this is only a basic internal balance in our ledger &mdash; to track overpayments, credits/debits and cross-trip settlement. We are <b>not</b> building a full-fledged wallet product: no money is stored and there is no external wallet integration.</div>
   <div class="result-strip strip-green"><b>Result:</b> defensible balances on any date &nbsp;&bull;&nbsp; automated compliance &nbsp;&bull;&nbsp; 500+ finance hours/month back &nbsp;&bull;&nbsp; ledger visible to FOs &amp; LSPs later for trust</div>
 </div>
 
@@ -139,7 +140,7 @@
   </tr>
   <tr>
     <td class="dim">Wallets &amp; flexible settlement</td>
-    <td class="win"><span class="tick">&#10003;</span> Native wallets for FOs and LSPs; one payment can cover many charges or be part-paid.</td>
+    <td class="win"><span class="tick">&#10003;</span> Basic internal wallet for FOs and LSPs &mdash; a ledger balance for overpayments, credits and cross-trip settlement only (not a full wallet product; no external integration). One payment can cover many charges or be part-paid.</td>
     <td><span class="cross">&#10007;</span> No per-party wallets; settlement forced into Zoho&rsquo;s invoice/bill structure.</td>
   </tr>
   <tr>
@@ -177,7 +178,7 @@
 
 <div class="reco">
   <h3>Recommendation &amp; ask</h3>
-  <p><b>Build the ledger natively in the marketplace as the system of record.</b> Every financial change is stored as a new entry (never overwritten), giving us defensible point-in-time balances, flexible settlement with wallets, a clean receivable/payable and margin view per party, and automated Bill of Supply, credit notes and TDS. If statutory books are required, we sync summarised entries to Zoho downstream rather than running it as the live system.</p>
+  <p><b>Build the ledger natively in the marketplace as the system of record.</b> Every financial change is stored as a new entry (never overwritten), giving us defensible point-in-time balances, flexible settlement with basic internal wallets (ledger balances only &mdash; not a full wallet product), a clean receivable/payable and margin view per party, and automated Bill of Supply, credit notes and TDS. If statutory books are required, we sync summarised entries to Zoho downstream rather than running it as the live system.</p>
   <p style="margin-top:5px;"><b>Ask:</b> go-ahead to start Phase&nbsp;1 (ledger foundation, run in parallel with current process &mdash; zero business disruption), followed by compliance automation, reconciliation &amp; reporting, and finally surfacing the ledger to fleet owners and LSPs.</p>
 </div>
 

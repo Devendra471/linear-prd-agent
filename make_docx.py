@@ -215,7 +215,17 @@ flow_row([
     ("Payments connected", "Razorpay payouts and bank-receipt matching, driven by the ledger", GREEN_BG, "7FC08C"), "->",
     ("Optional: Zoho downstream", "If statutory books are needed, send summarised entries to Zoho — not the live system", DASH_BG, "9BB6D3"),
 ], [46, 6, 46, 6, 52])
-spacer(2)
+p = doc.add_paragraph()
+p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p.paragraph_format.space_before = Pt(2); p.paragraph_format.space_after = Pt(3)
+r = p.add_run("Scope note on “wallet”: ")
+r.bold = True; r.italic = True; r.font.size = Pt(7.5); r.font.color.rgb = RGBColor.from_string("64748B")
+r = p.add_run("this is only a basic internal balance in our ledger — to track overpayments, credits/debits and cross-trip settlement. We are ")
+r.italic = True; r.font.size = Pt(7.5); r.font.color.rgb = RGBColor.from_string("64748B")
+r = p.add_run("not")
+r.bold = True; r.italic = True; r.font.size = Pt(7.5); r.font.color.rgb = RGBColor.from_string("64748B")
+r = p.add_run(" building a full-fledged wallet product: no money is stored and there is no external wallet integration.")
+r.italic = True; r.font.size = Pt(7.5); r.font.color.rgb = RGBColor.from_string("64748B")
 strip([("Result: ", True, "FFFFFF"),
        ("defensible balances on any date  •  automated compliance  •  500+ finance hours/month back  •  ledger visible to FOs & LSPs", False, "FFFFFF")], GREEN)
 
@@ -229,7 +239,7 @@ rows = [
      "✓ Designed for a broker: per-trip receivable (LSP) and payable (FO) with our margin in between.",
      "✗ Treats us as one company issuing invoices. No concept of two counterparties on one trip, or our margin."),
     ("Wallets & flexible settlement",
-     "✓ Native wallets for FOs and LSPs; one payment can cover many charges or be part-paid.",
+     "✓ Basic internal wallet for FOs and LSPs — a ledger balance for overpayments, credits and cross-trip settlement only (not a full wallet product; no external integration). One payment can cover many charges or be part-paid.",
      "✗ No per-party wallets; settlement forced into Zoho’s invoice/bill structure."),
     ("Work we still do either way",
      "✓ One system to maintain. Business logic already lives in the marketplace.",
@@ -290,7 +300,7 @@ cell_text(c, [("Recommendation & ask", True, "1F5C31")], align="left", size=10, 
 p = c.add_paragraph(); p.paragraph_format.space_after = Pt(3)
 r = p.add_run("Build the ledger natively in the marketplace as the system of record. ")
 r.bold = True; r.font.size = Pt(8.7)
-r = p.add_run("Every financial change is stored as a new entry (never overwritten), giving us defensible point-in-time balances, flexible settlement with wallets, a clean receivable/payable and margin view per party, and automated Bill of Supply, credit notes and TDS. If statutory books are required, we sync summarised entries to Zoho downstream rather than running it as the live system.")
+r = p.add_run("Every financial change is stored as a new entry (never overwritten), giving us defensible point-in-time balances, flexible settlement with basic internal wallets (ledger balances only — not a full wallet product), a clean receivable/payable and margin view per party, and automated Bill of Supply, credit notes and TDS. If statutory books are required, we sync summarised entries to Zoho downstream rather than running it as the live system.")
 r.font.size = Pt(8.7)
 p = c.add_paragraph(); p.paragraph_format.space_after = Pt(4)
 r = p.add_run("Ask: ")
