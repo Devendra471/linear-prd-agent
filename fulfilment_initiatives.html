@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @page {
+    size: A4;
+    margin: 8mm 11mm 8mm 11mm;
+    @bottom-right { content: "Page " counter(page) " of " counter(pages); font-size: 7.5pt; color: #94a3b8; font-family: 'DejaVu Sans', sans-serif; }
+    @bottom-left { content: "Marketplace Fulfilment — Note for Business Team — Confidential"; font-size: 7.5pt; color: #94a3b8; font-family: 'DejaVu Sans', sans-serif; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DejaVu Sans', sans-serif; font-size: 8.3pt; color: #1e293b; line-height: 1.34; }
+
+  .titlebar { background: #0f2a4a; color: #fff; padding: 7px 12px; border-radius: 6px; margin-bottom: 6px; }
+  .titlebar h1 { font-size: 13.5pt; font-weight: bold; }
+  .titlebar .sub { font-size: 8.1pt; color: #bcd3ec; margin-top: 2px; }
+
+  h2 { font-size: 9.4pt; color: #0f2a4a; margin: 7px 0 4px 0; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 2px; }
+  h2 .num { display: inline-block; background: #0f2a4a; color: #fff; border-radius: 3px; width: 15px; height: 15px; text-align: center; font-size: 8.4pt; line-height: 15px; margin-right: 6px; vertical-align: 1px; }
+
+  .bottomline { background: #eef3f8; border: 1.4px solid #6f9fd0; border-left: 4px solid #0f2a4a; border-radius: 5px; padding: 7px 10px; font-size: 8.4pt; }
+  .bottomline b { color: #0f2a4a; }
+
+  /* three initiative cards */
+  table.cards { width: 100%; border-collapse: separate; border-spacing: 5px 0; margin-top: 2px; }
+  table.cards td { width: 33.33%; background: #f7fafc; border: 1px solid #cdd9e6; border-top: 3px solid #3f72a8; border-radius: 4px; padding: 5px 7px; vertical-align: top; font-size: 8pt; }
+  table.cards td b { display: block; color: #0f2a4a; font-size: 8.4pt; margin-bottom: 2px; }
+  .backbone { margin-top: 4px; background: #f0faf2; border: 1px solid #bfdec5; border-left: 3.5px solid #2e7d44; border-radius: 4px; padding: 5px 9px; font-size: 8.1pt; }
+  .backbone b { color: #1f5c31; }
+
+  /* numbered start-now parts */
+  table.parts { width: 100%; border-collapse: separate; border-spacing: 5px 0; margin-top: 2px; }
+  table.parts td { width: 33.33%; background: #f4faf5; border: 1px solid #bfdec5; border-radius: 4px; padding: 5px 7px; vertical-align: top; font-size: 8pt; }
+  .pnum { display: inline-block; background: #2e7d44; color: #fff; border-radius: 50%; width: 14px; height: 14px; text-align: center; font-size: 7.6pt; line-height: 14px; font-weight: bold; margin-right: 4px; }
+  table.parts td b { color: #1f5c31; }
+  .owners { margin-top: 3px; font-size: 8pt; color: #475569; text-align: center; }
+
+  /* phasing */
+  table.phase { width: 100%; border-collapse: collapse; margin-top: 2px; font-size: 8pt; }
+  table.phase td { border: 1px solid #dbe3ec; padding: 4px 8px; vertical-align: top; }
+  table.phase td.pl { width: 16%; font-weight: bold; color: #fff; text-align: center; vertical-align: middle; }
+  .ph1 { background: #2e7d44; }
+  .ph2 { background: #3f72a8; }
+  .ph3 { background: #6b7f96; }
+  table.phase tr:nth-child(even) td { background: #f7fafc; }
+
+  /* alignment callout */
+  .alignment { background: #fff7f0; border: 1.4px solid #e0a868; border-left: 4px solid #d97a2b; border-radius: 5px; padding: 7px 10px; font-size: 8.4pt; }
+  .alignment h3 { color: #9a4e0e; font-size: 9pt; margin-bottom: 2px; }
+  .alignment b { color: #9a4e0e; }
+
+  /* actionables table */
+  table.act { width: 100%; border-collapse: collapse; margin-top: 3px; font-size: 8pt; }
+  table.act th { background: #0f2a4a; color: #fff; padding: 4px 8px; text-align: left; font-size: 8.1pt; }
+  table.act td { border: 1px solid #dbe3ec; padding: 3px 8px; vertical-align: top; }
+  table.act tr:nth-child(even) td { background: #f7fafc; }
+  .tag { display: inline-block; border-radius: 3px; padding: 1px 6px; font-size: 7.3pt; font-weight: bold; white-space: nowrap; }
+  .t-now  { background: #e2f3e6; color: #1f5c31; }
+  .t-month{ background: #eef3f8; color: #0f2a4a; }
+  .t-dec  { background: #fdebd7; color: #9a4e0e; }
+  .t-next { background: #f1f5f9; color: #475569; }
+  .ph     { color: #94a3b8; font-style: italic; }
+
+  .note { font-size: 7.6pt; color: #64748b; margin-top: 6px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+  <h1>Fulfilment Initiatives &mdash; What We Can Start Now</h1>
+  <div class="sub">Note for the business team &nbsp;&bull;&nbsp; Sequencing the three founder-led initiatives around current bandwidth &nbsp;&bull;&nbsp; June 2026</div>
+</div>
+
+<div class="bottomline">
+  <b>Bottom line.</b> For the next ~1 month, product &amp; tech bandwidth is committed to <b>Ledger and CT automation</b>, so the three fulfilment initiatives can&rsquo;t take full engineering effort yet. We can still <b>start the Onboarding Agent now</b> &mdash; its content/video track needs HR and Product, not engineering. But none of the three initiatives will pay off until <b>placement actually runs inside the CRM</b>, which today it largely does not. That alignment is the one thing we need from business first.
+</div>
+
+<h2><span class="num">1</span>The three founder-led initiatives &mdash; and their shared backbone</h2>
+<table class="cards">
+  <tr>
+    <td><b>Onboarding Agent</b>Cut time-to-productive for new Fulfilment Agents (14 days &rarr; Day&nbsp;2) using bite-size videos and a live call co-pilot.</td>
+    <td><b>AI Fulfilment Agent</b>An AI caller that places loads end-to-end on selected lanes &mdash; covering month-end peaks, night shifts and FA absences.</td>
+    <td><b>FO Movement Signal</b>Use FASTag + GPS to see where each FO&rsquo;s trucks actually run, and match demand to those real lanes.</td>
+  </tr>
+</table>
+<div class="backbone"><b>Shared backbone:</b> all three depend on <b>system-driven calling</b> (calls placed from CRM, auto-recorded and tagged) and a <b>library of top-agent call recordings</b>. We are already running calling for inventory and consent flows &mdash; that live experience directly feeds the fulfilment agent.</div>
+
+<h2><span class="num">2</span>Start now &mdash; Onboarding Agent content track (no/low tech)</h2>
+<table class="parts">
+  <tr>
+    <td><b><span class="pnum">1</span>HR docs &rarr; bite-size videos</b>Convert the onboarding material HR already has into short, mobile-first videos and micro-docs.</td>
+    <td><b><span class="pnum">2</span>Top-agent calls &rarr; clips</b>Curate recordings from our best Fulfilment Agents into short clips by scenario &mdash; e.g. how to negotiate rate with fleet owners.</td>
+    <td><b><span class="pnum">3</span>Product how-to videos</b>Short walkthroughs of the CRM placement flow, packaged alongside the negotiation clips.</td>
+  </tr>
+</table>
+<div class="owners"><b>Owners:</b> HR + Ravi + Product, working in parallel &mdash; <b>no engineering dependency.</b></div>
+
+<h2><span class="num">3</span>Then, as product bandwidth opens up &mdash; the phased path</h2>
+<table class="phase">
+  <tr><td class="pl ph1">Phase 1<br>Now</td><td><b>Onboarding content &amp; videos</b> (the three parts above). Doable immediately, in parallel, without engineering.</td></tr>
+  <tr><td class="pl ph2">Phase 2<br>With product</td><td><b>Embed the flows into the CRM</b> so new joiners watch the curated recordings in-product &mdash; and build the <b>Evolve agent</b> that listens to live call recordings, scores them, and gives agents specific feedback on what to improve.</td></tr>
+  <tr><td class="pl ph3">Phase 3<br>After Ledger</td><td><b>AI Fulfilment Agent</b> placing loads end-to-end on selected lanes &mdash; once the calling infrastructure and CRM adoption are solid.</td></tr>
+</table>
+
+<h2><span class="num">4</span>The one alignment we need from business first</h2>
+<div class="alignment">
+  <h3>Placement must run inside the CRM</h3>
+  <p>Today, CRM adoption for placement is <b>low</b> &mdash; a large share of placements still happen <b>outside the system</b>. When placement happens off-system, the supply and bids we collect go unused, and <b>none of these three initiatives can scale</b>, no matter how good the tooling is.</p>
+  <p style="margin-top:4px;"><b>Ask:</b> business to commit to (1)&nbsp;running every placement through the CRM, and (2)&nbsp;acting on every demand from the demand aggregator inside the system. This is the foundation everything else builds on.</p>
+</div>
+
+<h2><span class="num">5</span>Actionables</h2>
+<table class="act">
+  <tr><th style="width:46%;">Action</th><th style="width:34%;">Owner</th><th style="width:20%;">When</th></tr>
+  <tr><td>Continue Ledger + CT automation; limited fulfilment-tech bandwidth this month</td><td>Product / Tech</td><td><span class="tag t-month">This month</span></td></tr>
+  <tr><td>Onboarding content track &mdash; convert HR docs into bite-size videos</td><td>HR + Ravi + Product</td><td><span class="tag t-now">Start now</span></td></tr>
+  <tr><td>Curate top-agent call recordings into scenario clips</td><td><span class="ph">Fulfilment leads &mdash; [confirm]</span></td><td><span class="tag t-now">Start now</span></td></tr>
+  <tr><td>Product how-to / FO-negotiation videos</td><td>Product + Ravi</td><td><span class="tag t-now">Start now</span></td></tr>
+  <tr><td><b>Business alignment</b> &mdash; placement runs in CRM; act on all aggregator demand</td><td><span class="ph">Business heads &mdash; [confirm]</span></td><td><span class="tag t-dec">Decision needed</span></td></tr>
+  <tr><td>Scope calling-infrastructure gaps (Phase&nbsp;0/2 prerequisite)</td><td>Product</td><td><span class="tag t-next">Next</span></td></tr>
+  <tr><td>Evolve agent &amp; AI Fulfilment Agent build</td><td><span class="ph">[post-Ledger / CT &mdash; TBD]</span></td><td><span class="tag t-next">Later</span></td></tr>
+</table>
+
+<div class="note">Placeholders marked [confirm] / [TBD] need owners and dates filled in. &ldquo;CT automation&rdquo; refers to the in-flight compliance-automation workstream &mdash; confirm the exact name before sharing.</div>
+
+</body>
+</html>
