@@ -11,8 +11,8 @@ per project:
 | Column | Content |
 |--------|---------|
 | **PROJECT** | Objective + one-line approach |
-| **DELIVERED · APR–JUN'26** | What shipped in the quarter (outcomes + metric deltas) |
-| **TREND (JAN–JUN'26)** | Chart view — 6-month line per headline metric, Apr–Jun highlighted |
+| **DELIVERED · APR–JUN'26** | Product stories / features shipped in the quarter (named) |
+| **METRICS & TREND (JAN–JUN'26)** | Metric deltas and the 6-month trend chart together, Apr–Jun highlighted |
 | **NEXT FOCUS · JUL–AUG** | What's planned for the next two months |
 
 The ledger-automation row (new initiative picked in June) is highlighted in amber.
@@ -38,8 +38,9 @@ python3 build.py        # rebuild slide 1 from source_deck.pptx -> deck_out.pptx
 
 ## Note on source data
 
-The DELIVERED and NEXT FOCUS content was carried and reorganized from the existing
-deck plus the provided metrics. Linear was **not reachable in this session** (the
-connector needs authorization), so the columns were not pulled live from delivered
-stories / roadmap. Once Linear is authorized, these two columns can be enriched
-directly from the shipped stories (Apr–Jun) and the planned roadmap (Jul–Aug).
+The feature names in DELIVERED and the NEXT FOCUS items are **indicative** —
+derived from the existing deck plus the provided metrics. Linear was **not reachable
+in this session** (the connector needs authorization), so they were not pulled live
+from delivered stories / roadmap. Once Linear is authorized, replace the feature
+names with the actual shipped story titles (Apr–Jun) and align NEXT FOCUS with the
+planned roadmap (Jul–Aug).
