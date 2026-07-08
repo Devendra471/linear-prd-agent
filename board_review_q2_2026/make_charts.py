@@ -56,26 +56,22 @@ def save(fig, name):
                 transparent=True)
     plt.close(fig)
 
-# ---------- 1. FO App adoption: DAU / WAU / MAU ----------
+# ---------- 1. FO App adoption: MAU / DAU ----------
 DAU = [107,160,166,178,200,252]
-WAU = [262,467,487,582,641,747]
 MAU = [717,847,990,1027,1093,1325]
 fig, ax = base_ax()
 ax.plot(x, MAU, color=NAVY,  lw=1.9, marker="o", ms=2.6)
-ax.plot(x, WAU, color=GREEN, lw=1.7, marker="o", ms=2.4)
-ax.plot(x, DAU, color=PURPLE,lw=1.7, marker="o", ms=2.4)
+ax.plot(x, DAU, color=PURPLE,lw=1.9, marker="o", ms=2.6)
 endlabel(ax, x, MAU, NAVY,  dy=4)
-endlabel(ax, x, WAU, GREEN, dy=4)
-endlabel(ax, x, DAU, PURPLE,dy=-9)
+endlabel(ax, x, DAU, PURPLE,dy=6)
 ax.text(0, 1.14, "MAU", transform=ax.transAxes, color=NAVY, fontsize=7, fontweight="bold")
-ax.text(0.22, 1.14, "WAU", transform=ax.transAxes, color=GREEN, fontsize=7, fontweight="bold")
-ax.text(0.44, 1.14, "DAU", transform=ax.transAxes, color=PURPLE, fontsize=7, fontweight="bold")
+ax.text(0.22, 1.14, "DAU", transform=ax.transAxes, color=PURPLE, fontsize=7, fontweight="bold")
 ax.set_ylim(0, max(MAU)*1.18)
 save(fig, "row1_app")
 
 # ---------- 2. Demand fulfilment: Bids (bars) + Placeable Fulfilled % (line) ----------
 BIDS = [206,332,510,670,477,725]
-PF   = [57.7,33.6,18.7,31.0,29.3,43.5]
+PF   = [37.8,22.4,11.2,19.4,17.3,24.9]
 fig, ax = base_ax()
 ax.bar(x, BIDS, width=0.62, color="#D8DEE9", zorder=1)
 ax.bar(x[-1], BIDS[-1], width=0.62, color=NAVY, zorder=1)
