@@ -65,7 +65,7 @@ ax.set_ylim(0, max(MAU)*1.18)
 save(fig, "row1_app")
 
 # ---------- 2. Demand fulfilment: Placeable Fulfilled % (Apr-Jun) ----------
-PF = [19.4, 17.3, 24.9]
+PF = [13.7, 11.2, 17.1]
 fig, ax = base_ax()
 ax.fill_between(x, PF, color=GREEN, alpha=0.12, zorder=1)
 ax.plot(x, PF, color=GREEN, lw=2.0, marker="o", ms=3.4, zorder=2)

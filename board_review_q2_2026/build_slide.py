@@ -113,7 +113,7 @@ rows=[
       chart="row2_demand",
       delivery=[("Matching, bid ranges & live visibility shipped",False),
                 ("June rebound — Bids 477 → 725 (+52%)",True),
-                ("Placeable fulfilment 17.3% → 24.9%",True),
+                ("Placeable fulfilment 11.2% → 17.1%",True),
                 ("Unique FO bidders 189 → 267",False)],
       focus=[("Lift placement on inventory & FO bids",False),
              ("Convert bids → trips (Jun dipped to 10)",False),
