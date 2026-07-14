@@ -92,7 +92,7 @@ para(tf,"Apr–Jun'26  ·  Q2 Board Review + Monthly TML Review   |   Steady mom
 # ---------------- header row ----------------
 hy=690000; hh=300000
 hdr=[("PROJECT / GOAL",NAVY),("APR–JUN DELIVERY",GREEN),
-     ("TREND  (Jan–Jun'26)",SLATE),("NEXT FOCUS  (Jul–Aug)",PURPLE)]
+     ("TREND  (Apr–Jun'26)",SLATE),("NEXT FOCUS  (Jul–Aug)",PURPLE)]
 for (l,w),(txt,clr) in zip(cols,hdr):
     rect(l,hy,w-24000,hh,clr,rounded=True)
     _,tf=textbox(l+40000,hy,w-24000-40000,hh,anchor=MSO_ANCHOR.MIDDLE)
