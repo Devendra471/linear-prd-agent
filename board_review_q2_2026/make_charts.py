@@ -69,24 +69,24 @@ ax.text(0.22, 1.14, "DAU", transform=ax.transAxes, color=PURPLE, fontsize=7, fon
 ax.set_ylim(0, max(MAU)*1.18)
 save(fig, "row1_app")
 
-# ---------- 2. Demand fulfilment: Bids (bars) + Placeable Fulfilled % (line) ----------
-BIDS = [206,332,510,670,477,725]
-PF   = [37.8,22.4,11.2,19.4,17.3,24.9]
-fig, ax = base_ax()
-ax.bar(x, BIDS, width=0.62, color="#D8DEE9", zorder=1)
-ax.bar(x[-1], BIDS[-1], width=0.62, color=NAVY, zorder=1)
-ax.annotate(f"{BIDS[-1]:,}", (x[-1], BIDS[-1]), textcoords="offset points",
-            xytext=(0, 2), fontsize=7.4, fontweight="bold", color=NAVY, ha="center")
-ax2 = ax.twinx()
-ax2.plot(x, PF, color=GREEN, lw=1.9, marker="o", ms=2.6, zorder=3)
-for sp in ("top","right","left"): ax2.spines[sp].set_visible(False)
-ax2.set_yticks([]); ax2.tick_params(length=0)
-ax2.annotate(f"{PF[-1]:.0f}%", (x[-1], PF[-1]), textcoords="offset points",
-             xytext=(3, -2), fontsize=7.6, fontweight="bold", color=GREEN, ha="left")
-ax2.set_ylim(0, max(PF)*1.35)
-ax.set_ylim(0, max(BIDS)*1.25)
-ax.text(0, 1.14, "Bids placed", transform=ax.transAxes, color=NAVY, fontsize=7, fontweight="bold")
-ax.text(0.52, 1.14, "Placeable fulfilment %", transform=ax.transAxes, color=GREEN, fontsize=7, fontweight="bold")
+# ---------- 2. Demand fulfilment: Placeable Fulfilled % (Apr-Jun) ----------
+M3 = ["Apr","May","Jun"]; x3 = np.arange(3)
+PF3 = [19.4, 17.3, 24.9]
+fig, ax = plt.subplots(figsize=FIGSIZE, dpi=DPI)
+for sp in ("top", "right", "left"): ax.spines[sp].set_visible(False)
+ax.spines["bottom"].set_color("#C9CFD6")
+ax.tick_params(length=0, pad=1.5)
+ax.set_xticks(x3); ax.set_xticklabels(M3, fontsize=7.5)
+ax.set_yticks([]); ax.margins(x=0.14)
+ax.fill_between(x3, PF3, color=GREEN, alpha=0.12, zorder=1)
+ax.plot(x3, PF3, color=GREEN, lw=2.0, marker="o", ms=3.4, zorder=2)
+for xi, yi in zip(x3, PF3):
+    dy = 7 if yi == max(PF3) or xi == 0 else -11
+    ax.annotate(f"{yi:.1f}%", (xi, yi), textcoords="offset points",
+                xytext=(0, dy), fontsize=7.6, fontweight="bold", color=GREEN, ha="center")
+ax.set_ylim(0, max(PF3)*1.42)
+ax.text(0, 1.14, "Placeable fulfilment %  ·  Apr–Jun", transform=ax.transAxes,
+        color=GREEN, fontsize=7, fontweight="bold")
 save(fig, "row2_demand")
 
 # ---------- 3. Inventory: AI vs Manual (stacked bars) + conversion % ----------
