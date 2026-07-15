@@ -52,8 +52,8 @@ def save(fig, name):
     plt.close(fig)
 
 # ---------- 1. FO App adoption: MAU / DAU (Apr-Jun) ----------
-MAU = [1027, 1093, 1325]
-DAU = [178, 200, 252]
+MAU = [1027, 1093, 1377]
+DAU = [178, 200, 271]
 fig, ax = base_ax()
 ax.plot(x, MAU, color=NAVY,   lw=2.0, marker="o", ms=3.4)
 ax.plot(x, DAU, color=PURPLE, lw=2.0, marker="o", ms=3.4)
