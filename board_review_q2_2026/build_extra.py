@@ -157,69 +157,55 @@ para(tf,[("Network-lane conversion:  ",8.2,True,SLATE,False),
          ("Apr 13.7% → May 11.2% → Jun 17.1%  →  Q2 exit 20%",8.2,False,INK,False)],
      first=True,align=PP_ALIGN.RIGHT,space_after=0)
 
-STCLR={"Done":GREEN,"In Dev":NAVY,"Prioritised":PURPLE,"Planned":GREY,"On-hold":AMBER}
-BCLR={"L":NAVY,"F":GREEN,"D":PURPLE,"O":AMBER}
-
-def item(b,cm,desc,st): return (b,cm,desc,st)
+# Month -> Goal -> rolled-up task summary  (goal, colour, #stories, summary)
+def g(name,clr,n,summ): return (name,clr,n,summ)
 JULY=[
- item("L","CM-723","Immutable trip-level payment record (Net Payable/Receivable)","In Dev"),
- item("L","CM-722","Overpayment settlement via FO/LSP wallets","In Dev"),
- item("L","CM-734","Capture TDS details in CRM (Supplier KYC)","In Dev"),
- item("L","CM-735","Auto-calculate TDS for new & active trips","In Dev"),
- item("L","CM-746","Recalculate/reverse TDS on mid-month declaration change","Prioritised"),
- item("F","CM-682","Map agents to lanes for demand auto-assignment","Prioritised"),
- item("F","CM-731","Demand Bot: batch message context building","Prioritised"),
- item("F","CM-739","Near-match inventory logic + match quality on demand list","Done"),
- item("D","CM-819","FO App: reach PSA directly for placement (show PSA number)","Prioritised"),
- item("O","CM-785","Automate advance payments for Gold/Silver FOs","Prioritised"),
- item("O","CM-660","Automate SIM consent collection (pre-transit)","On-hold"),
- item("O","CM-665","Automated transit-delay detection & escalation","Prioritised"),
+ g("Ledger",NAVY,5,"Stand up the trip-level payment ledger — immutable Net Payable/Receivable record, wallet-based overpayment settlement, and automated TDS (capture, calculate & reverse)."),
+ g("Fulfilment %",GREEN,3,"Act on demand faster — lane-based agent auto-assignment, Demand-Bot context building, and near-match inventory with match-quality on the demand list."),
+ g("DAU",PURPLE,1,"Let FOs reach the PSA directly for placement from the app (PSA number in-app)."),
+ g("Reduce Ops Bandwidth",AMBER,3,"Automate ops — advance payments for Gold/Silver FOs, pre-transit SIM-consent collection, and transit-delay detection & escalation."),
 ]
 AUG=[
- item("L","—","Ledger Phase-1 production rollout (continues from July)","In Dev"),
- item("L","CM-784","Trip Statement — 3-yr financial ledger tab in FO App","Prioritised"),
- item("L","CM-736","FO App: show TDS rate at trip level","Prioritised"),
- item("L","CM-791","TDS transparency + self-serve TDS declaration in FO App","Prioritised"),
- item("F","CM-821","Auto CRM alerts: bids received / inventory matched / approval assigned","Prioritised"),
- item("F","CM-377","Sort demand by Demand Actionability Score to prioritise loads","Planned"),
- item("F","CM-823","Build vehicle heat-map for location movement","Planned"),
- item("F","—","Auto-add vehicle to tracking master on trip completion (raise trackable count)","Planned"),
- item("F","CM-824","In-CRM calling with callback on unanswered calls","Planned"),
- item("D","CM-826","Ticketing for FOs not on the app (WhatsApp / IVR / agent)","Planned"),
- item("O","CM-825","Auto-share loading location to driver (call + WhatsApp)","Planned"),
+ g("Ledger",NAVY,4,"Take Ledger Phase-1 to production and bring finance into the FO App — 3-yr trip statement, trip-level TDS rate, and self-serve TDS declaration."),
+ g("Fulfilment %",GREEN,5,"Prioritise placeable demand — auto CRM alerts, Demand-Actionability-Score sorting, vehicle heat-map, auto tracking-master updates, and in-CRM calling with callbacks."),
+ g("DAU",PURPLE,1,"Extend ticketing to FOs not on the app via WhatsApp / IVR / agent."),
+ g("Reduce Ops Bandwidth",AMBER,1,"Auto-share the loading location to drivers over call + WhatsApp."),
 ]
 SEP=[
- item("L","CM-828","Configurable LSP exposure limit + auto-disable on breach","Planned"),
- item("F","—","Agentic-AI calling for fulfilment agents","Planned"),
- item("F","CM-829","Live target dashboard — LSP / PSA-CSM / City-wise","Planned"),
- item("D","CM-820","FO App: capture trip charges directly with approval flow","Prioritised"),
- item("O","CM-827","Automate compliance document generation","Planned"),
- item("O","CM-822","Automate POD audit via OCR","Prioritised"),
+ g("Ledger",NAVY,1,"Add configurable LSP exposure limits with auto-disable on breach."),
+ g("Fulfilment %",GREEN,2,"Scale fulfilment — agentic-AI calling for agents and a live LSP / PSA-CSM / city target dashboard."),
+ g("DAU",PURPLE,1,"Capture trip charges directly in the FO App with an approval flow."),
+ g("Reduce Ops Bandwidth",AMBER,2,"Automate compliance-document generation and POD audit via OCR."),
 ]
-MONTHS=[("JULY",JULY),("AUGUST",AUG),("SEPTEMBER",SEP)]
+MONTHS=[("JULY",JULY,12),("AUGUST",AUG,11),("SEPTEMBER",SEP,6)]
 
 colw=(8686800-2*46000)//3
-top_hdr=966000; hh=250000
-body_top=1272000; body_bot=3820000
-for ci,(mn,items) in enumerate(MONTHS):
+top_hdr=980000; hh=250000
+body_top=1290000; body_bot=4300000
+slot=(body_bot-body_top)//4
+for ci,(mn,goals,total) in enumerate(MONTHS):
     cl=ML+ci*(colw+46000)
     # column card
     rect(s,cl,top_hdr,colw,body_bot-top_hdr,CARD,rounded=True,line=LINEC,lw=0.5)
     # month header
     rect(s,cl,top_hdr,colw,hh,SLATE,rounded=True)
-    _,tf=textbox(s,cl+70000,top_hdr,colw-90000,hh,anchor=MSO_ANCHOR.MIDDLE)
-    para(tf,[(mn+"   ",10,True,WHITE,False),("(%d)"%len(items),8.5,True,RGBColor(0xC5,0xCC,0xD6),False)],
+    _,tf=textbox(s,cl+80000,top_hdr,colw-100000,hh,anchor=MSO_ANCHOR.MIDDLE)
+    para(tf,[(mn+"    ",11,True,WHITE,False),
+             ("%d stories"%total,8,True,RGBColor(0xC5,0xCC,0xD6),False)],
          first=True,space_after=0)
-    # items
-    n=len(items); slot=(body_bot-body_top-40000)//max(n,1)
-    _,tf=textbox(s,cl+64000,body_top,colw-110000,body_bot-body_top,anchor=MSO_ANCHOR.TOP)
-    for j,(b,cm,desc,st) in enumerate(items):
-        bc=BCLR[b]; sc=STCLR[st]
-        runs=[("● ",7.0,False,bc,False)]
-        if cm!="—": runs.append((cm+"  ",7.2,True,INK,False))
-        runs.append((desc+"  ",7.2,False,INK,False))
-        runs.append((st,6.4,True,sc,True))
-        para(tf,runs,first=(j==0),space_after=3.2,line=1.02,bullet=True,indent=110000)
+    # goal blocks
+    for gi,(gname,gc,n,summ) in enumerate(goals):
+        gy=top_hdr+hh+gi*slot
+        if gi>0:
+            dv=s.shapes.add_connector(MSO_CONNECTOR.STRAIGHT,Emu(int(cl+70000)),Emu(int(gy)),
+                                      Emu(int(cl+colw-70000)),Emu(int(gy)))
+            dv.line.color.rgb=RGBColor(0xE4,0xE8,0xED); dv.line.width=Pt(0.5); dv.shadow.inherit=False
+        rect(s,cl+56000,gy+42000,44000,slot-92000,gc,rounded=True,radius=0.4)  # accent bar
+        _,tf=textbox(s,cl+140000,gy+34000,colw-200000,slot-58000,anchor=MSO_ANCHOR.MIDDLE)
+        para(tf,[(gname+"   ",9,True,gc,False),
+                 ("· %d %s"%(n,"story" if n==1 else "stories"),7,True,GREY,False)],
+             first=True,space_after=3,line=1.0)
+        para(tf,[(summ,7.6,False,INK,False)],space_after=0,line=1.08)
 
 # notes-for-leadership band
 nby=body_bot+40000
