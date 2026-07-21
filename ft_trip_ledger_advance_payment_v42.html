@@ -2294,6 +2294,41 @@ function seedTrips(){
         walletLines:[{type:'movedOut',amount:64000,txnId:'WT-FO218-70',date:'23 Jul 2026, 13:30',addedBy:'System',desc:'Trip cancelled — advance ₹64,000 moved to FO Overpaid Wallet',effect:'Advance paid amount updated to ₹0'}],
         payments:[{stage:'advance',amount:0,movedToWallet:true,movedToWalletAmount:64000,walletRef:'WT-FO218-70',date:'23 Jul 2026',time:'13:30',utr:'RZPAY8877001',mode:'Razorpay',editable:false,history:[]}] },
       lsp:{ base:0, charges:[], deductions:[], receipts:[] } },
+
+    { id:'75708788', code:'7570788', shipment:'29380088', demand:'10890088', createdAt:'06 May 2026, 09:15', date:'06 May 2026, 09:15', age:76, status:'LOADED', pod:'PENDING', consent:true, tags:['SHORT-HAUL'], exception:false,
+      origin:'Chennai', dest:'Coimbatore', oCode:'MAA', dCode:'CJB', oCluster:'Chennai', dCluster:'Coimbatore', supercluster:'South', zone:'South Zone', distance:'505 km', eta:'At loading point', vehicle:'TN10 AL 5521', vahan:'VERIFIED', driver:'+91 90031 55210',
+      lspId:'LSP-0042', foId:'FO-0095', dala:500,
+      tracking:[{milestone:'Trip Created',at:'06 May 2026, 09:15',by:'System',history:[]},{milestone:'Vehicle Placed',at:'06 May 2026, 10:00',by:'Ops · Asha',history:[]},{milestone:'Vehicle Loaded',at:'06 May 2026, 13:20',by:'Ops · Asha',history:[]}],
+      fo:{ base:70000, advancePct:75, charges:[{name:'Loading Charges',amount:1000,by:'Ops · Asha',email:'asha@freightiger.com',at:'06 May 2026, 13:25',history:[]}], deductions:[], payments:[] },
+      lsp:{ base:88000, charges:[], deductions:[], receipts:[] } },
+
+    { id:'75708790', code:'7570790', shipment:'29390090', demand:'10900090', createdAt:'12 May 2026, 08:00', date:'12 May 2026, 08:00', age:70, status:'UNLOADED', pod:'SUBMITTED', consent:true, tags:[], exception:false,
+      origin:'Pune', dest:'Mumbai', oCode:'PNQ', dCode:'BOM', oCluster:'Pune', dCluster:'Mumbai', supercluster:'West', zone:'West Zone', distance:'150 km', eta:'Delivered', vehicle:'MH12 KT 3390', vahan:'VERIFIED', driver:'+91 98220 77145',
+      lspId:'LSP-0078', foId:'FO-0218', dala:0,
+      tracking:[{milestone:'Trip Created',at:'12 May 2026, 08:00',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'12 May 2026, 10:30',by:'Ops · Ravi',history:[]},{milestone:'Vehicle Unloaded',at:'13 May 2026, 09:15',by:'Ops · Ravi',history:[]}],
+      fo:{ base:60000, advancePct:80, charges:[], deductions:[], payments:[{stage:'advance',amount:48000,date:'12 May 2026',time:'16:00',utr:'RZPAY7900012',mode:'Razorpay',editable:false,history:[]},{stage:'balance',amount:11400,date:'14 May 2026',time:'11:00',utr:'NEFT7900045',mode:'NEFT',editable:true,history:[]}] },
+      lsp:{ base:72000, charges:[], deductions:[], receipts:[{stage:'advance',amount:57600,date:'12 May 2026',time:'17:00',utr:'RTGS7900001',mode:'RTGS',history:[]},{stage:'balance',amount:14400,date:'14 May 2026',time:'14:00',utr:'NEFT7900002',mode:'NEFT',history:[]}] } },
+
+    { id:'75708801', code:'7570801', shipment:'29450101', demand:'10960101', createdAt:'15 Jun 2026, 10:00', date:'15 Jun 2026, 10:00', age:36, status:'REACHED', pod:'REJECTED', consent:true, tags:[], exception:true,
+      origin:'Bangalore', dest:'Chennai', oCode:'BLR', dCode:'MAA', oCluster:'Bangalore', dCluster:'Chennai', supercluster:'South', zone:'South Zone', distance:'350 km', eta:'ETA 17 Jun', vehicle:'KA05 MN 7781', vahan:'VERIFIED', driver:'+91 99860 41220', rejectedDoc:'POD (Proof of Delivery)',
+      lspId:'LSP-0078', foId:'FO-0218', dala:0,
+      tracking:[{milestone:'Trip Created',at:'15 Jun 2026, 10:00',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'15 Jun 2026, 13:00',by:'Ops · Ravi',history:[]},{milestone:'Dispatched & In Transit',at:'15 Jun 2026, 18:30',by:'Ops · Ravi',history:[]},{milestone:'Reached Unloading Point',at:'16 Jun 2026, 20:15',by:'Driver App',history:[]}],
+      fo:{ base:90000, advancePct:80, charges:[], deductions:[], payments:[{stage:'advance',amount:72000,date:'15 Jun 2026',time:'18:40',utr:'RZPAY8010310',mode:'Razorpay',editable:false,history:[]}] },
+      lsp:{ base:108000, charges:[], deductions:[], receipts:[{stage:'advance',amount:86400,date:'15 Jun 2026',time:'19:00',utr:'RTGS8010001',mode:'RTGS',history:[]}] } },
+
+    { id:'75708805', code:'7570805', shipment:'29470105', demand:'10980105', createdAt:'25 Jun 2026, 07:30', date:'25 Jun 2026, 07:30', age:26, status:'UNLOADED', pod:'SUBMITTED', consent:true, tags:['SHORT-HAUL'], exception:false,
+      origin:'Hyderabad', dest:'Pune', oCode:'HYD', dCode:'PNQ', oCluster:'Hyderabad', dCluster:'Pune', supercluster:'South', zone:'South Zone', distance:'560 km', eta:'Delivered', vehicle:'TS07 PQ 9012', vahan:'VERIFIED', driver:'+91 90042 33517',
+      lspId:'LSP-0042', foId:'FO-0095', dala:0,
+      tracking:[{milestone:'Trip Created',at:'25 Jun 2026, 07:30',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'25 Jun 2026, 11:00',by:'Ops · Asha',history:[]},{milestone:'Dispatched & In Transit',at:'25 Jun 2026, 16:00',by:'Ops · Asha',history:[]},{milestone:'Reached Unloading Point',at:'26 Jun 2026, 18:00',by:'Driver App',history:[]},{milestone:'Vehicle Unloaded',at:'26 Jun 2026, 20:30',by:'Ops · Asha',history:[]}],
+      fo:{ base:85000, advancePct:80, charges:[], deductions:[], payments:[{stage:'advance',amount:68000,date:'25 Jun 2026',time:'17:30',utr:'RZPAY8050310',mode:'Razorpay',editable:false,history:[]}] },
+      lsp:{ base:102000, charges:[], deductions:[], receipts:[{stage:'advance',amount:81600,date:'25 Jun 2026',time:'18:00',utr:'RTGS8050001',mode:'RTGS',history:[]}] } },
+
+    { id:'75708808', code:'7570808', shipment:'29480108', demand:'10990108', createdAt:'28 Jun 2026, 11:00', date:'28 Jun 2026, 11:00', age:23, status:'IN_TRANSIT', pod:'PENDING', consent:true, tags:['TAT'], exception:false,
+      origin:'Delhi', dest:'Mumbai', oCode:'DEL', dCode:'BOM', oCluster:'Delhi NCR', dCluster:'Mumbai', supercluster:'North', zone:'North Zone', distance:'1,400 km', eta:'STA 01 Jul 2026, 12:00', vehicle:'DL5C RT 6640', vahan:'VERIFIED', driver:'+91 98100 66412',
+      lspId:'LSP-0042', foId:'FO-0218', dala:0,
+      tracking:[{milestone:'Trip Created',at:'28 Jun 2026, 11:00',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'28 Jun 2026, 14:30',by:'Ops · Ravi',history:[]},{milestone:'Dispatched & In Transit',at:'28 Jun 2026, 19:45',by:'Ops · Ravi',history:[]}],
+      fo:{ base:110000, advancePct:80, charges:[], deductions:[], payments:[] },
+      lsp:{ base:132000, charges:[], deductions:[], receipts:[{stage:'advance',amount:105600,date:'28 Jun 2026',time:'20:00',utr:'RTGS8080001',mode:'RTGS',history:[]}] } },
   ];
 }
 
