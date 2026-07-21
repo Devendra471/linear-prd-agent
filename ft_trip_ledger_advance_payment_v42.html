@@ -2588,7 +2588,7 @@ class Component extends DCLogic {
   backToList(){ this.setState({page:'list', tripOpen:null, partyOpen:null}); window.scrollTo(0,0); }
   openBulk(){ this.setState({page:'bulk', bulkTab:'upload', tripOpen:null, partyOpen:null, kebabId:null, modal:null}); window.scrollTo(0,0); }
   toggleQuick(f){ this.setState(s=>{ const a=s.quick.slice(); const i=a.indexOf(f); if(i>=0)a.splice(i,1); else a.push(f); return {quick:a}; }); }
-  openParty(id){ const p=this.state.parties[id]; this.setState({nav:p&&p.type==='FO'?'fo':'lsp', partyOpen:id, tripOpen:null, kebabId:null, modal:null, foLedgerPeriod:'all', tripWiseLedgerFilter:{}}); window.scrollTo(0,0); }
+  openParty(id){ const p=this.state.parties[id]; this.setState({nav:p&&p.type==='FO'?'fo':'lsp', partyOpen:id, tripOpen:null, kebabId:null, modal:null, foLedgerPeriod:'all', tripWiseLedgerFilter:{}, foFilterOpen:false}); window.scrollTo(0,0); }
   scrollToLedger(){ setTimeout(()=>{ const n=(typeof document!=='undefined')&&document.getElementById('fo-trip-ledger'); if(n&&n.scrollIntoView) n.scrollIntoView({behavior:'smooth',block:'start'}); },70); }
   toggleFlag(f){ this.setState(s=>{ const arr=s.flags.slice(); const i=arr.indexOf(f); if(i>=0)arr.splice(i,1); else arr.push(f); return {flags:arr}; }); }
   activeFilterCount(){ const s=this.state; let n=0; if(s.origin!=='All')n++; if(s.dest!=='All')n++; if(s.fPayType!=='All')n++; if(s.fPayReq!=='All')n++; if(s.fromDate||s.toDate)n++; n+=s.quick.length; return n; }
@@ -5684,44 +5684,51 @@ class Component extends DCLogic {
           this.btn('View details','ghost',()=>this.openModal({type:'walletTxnDetails',partyId:id,ref:w.ref}),{sm:true})]),
         ['left','left','left','right','left','left','left','right','left','right']):el('div',{style:{padding:'14px 0',fontSize:12,color:C.faint,textAlign:'center'}},'No wallet transactions yet.')
     ));
-    const filterRow=el('div',{style:{display:'grid',gridTemplateColumns:'repeat(9,minmax(125px,1fr))',gap:9,marginBottom:12,alignItems:'end'}},
-      this.field('Trip date from',el('input',{type:'date',value:filter.from||'',onChange:e=>setFilter({from:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}})),
-      this.field('Trip date to',el('input',{type:'date',value:filter.to||'',onChange:e=>setFilter({to:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}})),
-      this.field((isFo?'Payment':'Receipt')+' date from',el('input',{type:'date',value:filter.paymentFrom||'',onChange:e=>setFilter({paymentFrom:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}})),
-      this.field((isFo?'Payment':'Receipt')+' date to',el('input',{type:'date',value:filter.paymentTo||'',onChange:e=>setFilter({paymentTo:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}})),
-      this.field(isFo?'Payment status':'Receipt status',el('select',{value:filter.paymentStatus||'all',onChange:e=>setFilter({paymentStatus:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},
-        (isFo?[['all','All'],['advance','Advance Paid'],['balance','Balance Paid']]:[['all','All'],['advance','Advance Received'],['balance','Balance Received']]).map(o=>el('option',{value:o[0],key:o[0]},o[1])))),
-      this.field('Pending stage',el('select',{value:filter.paymentStage||'all',onChange:e=>setFilter({paymentStage:e.target.value==='all'?'':e.target.value,podBucket:'',blocker:''}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},[['all','All'],['advance','Advance Pending'],['balance','Balance Pending']].map(o=>el('option',{value:o[0],key:o[0]},o[1])))),
-      this.field('Eligibility',el('select',{value:filter.eligibility||'all',onChange:e=>setFilter({eligibility:e.target.value==='all'?'':e.target.value,blocker:''}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},[['all','All'],['eligible','Eligible'],['nonEligible','Non-eligible']].map(o=>el('option',{value:o[0],key:o[0]},o[1])))),
-      this.field('POD status',el('select',{value:filter.podStatus||'all',onChange:e=>setFilter({podStatus:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},
-        ['all','Received & Clean','Received & Disputed','Received & Audit Pending','Onsite & Disputed','Pending','Lost'].map(v=>el('option',{value:v,key:v},v==='all'?'All':v)))),
-      this.btn('Reset filters','outline',()=>this.setState({tripWiseLedgerFilter:{}}),{sm:true})
-    );
     const selectedColLabels=[];
     if(cols.freight) selectedColLabels.push('Freight Value'); if(cols.charges) selectedColLabels.push(cols.chargeType&&cols.chargeType!=='all'?'Charges · '+cols.chargeType:'Charges'); if(cols.deductions) selectedColLabels.push(cols.deductionType&&cols.deductionType!=='all'?'Deductions · '+cols.deductionType:'Deductions'); if(cols.advanceDetails) selectedColLabels.push('Advance Payment detail'); if(cols.balanceDetails) selectedColLabels.push('Balance Payment details'); if(cols.interimDetails) selectedColLabels.push('Interim Payment details'); if(cols.tds) selectedColLabels.push('TDS'); if(cols.walletSettlement) selectedColLabels.push('Wallet Settlement Amount'); if(cols.walletMoved) selectedColLabels.push('Wallet Moved Amount');
     const nExtra=selectedColLabels.length;
-    const addColumns=el('div',{style:{display:'flex',gap:8,alignItems:'center',flexWrap:'wrap',padding:'9px 10px',border:'1px solid '+C.line,borderRadius:9,background:'#fbfdff',marginBottom:12}},
-      el('button',{onClick:()=>this.openModal({type:'ledgerColumns',partyId:id}),style:{display:'inline-flex',alignItems:'center',gap:7,height:30,padding:'0 12px',border:'1px solid '+C.blue,borderRadius:8,background:C.blueBg,color:C.blueDark,fontSize:12,fontWeight:750,cursor:'pointer'}},
-        el('span',null,'＋ Add columns'),
-        nExtra?el('span',{style:{display:'inline-flex',alignItems:'center',justifyContent:'center',minWidth:18,height:18,padding:'0 5px',borderRadius:9,background:C.blue,color:'#fff',fontSize:10.5,fontWeight:800}},String(nExtra)):null),
-      nExtra?el('span',{style:{fontSize:10.5,color:C.muted}},nExtra+' extra column'+(nExtra>1?'s':'')+' added'):el('span',{style:{fontSize:11,color:C.faint}},'Showing the default columns'),
-      nExtra?selectedColLabels.slice(0,4).map((x,i)=>pill(x,C.wallet,C.walletBg)):null,
-      nExtra>4?el('span',{style:{fontSize:11,color:C.faint}},'+'+(nExtra-4)+' more'):null,
-      el('span',{style:{marginLeft:'auto',fontSize:10.5,color:C.faint}},'Open column is frozen · table scrolls sideways'));
+    // ---- Trip-wise ledger toolbar: Add columns · Filter (popover) · active chips · Reset (one line) ----
+    const foFilterOpen=this.state.foFilterOpen||false;
+    const cntBadge=(n)=>el('span',{style:{display:'inline-flex',alignItems:'center',justifyContent:'center',minWidth:18,height:18,padding:'0 5px',borderRadius:9,background:C.blue,color:'#fff',fontSize:10.5,fontWeight:800}},String(n));
+    const dateField=(lbl,key)=>this.field(lbl,el('input',{type:'date',value:filter[key]||'',onChange:e=>setFilter({[key]:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}}));
+    const selField=(lbl,key,opts,extra)=>this.field(lbl,el('select',{value:filter[key]||'all',onChange:e=>setFilter(Object.assign({[key]:e.target.value==='all'?'':e.target.value},extra||{})),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},opts.map(o=>el('option',{value:o[0],key:o[0]},o[1]))));
+    const filterGrid=el('div',{style:{display:'grid',gridTemplateColumns:'repeat(4,minmax(150px,1fr))',gap:10}},
+      dateField('Trip date from','from'), dateField('Trip date to','to'),
+      dateField((isFo?'Payment':'Receipt')+' date from','paymentFrom'), dateField((isFo?'Payment':'Receipt')+' date to','paymentTo'),
+      selField(isFo?'Payment status':'Receipt status','paymentStatus',isFo?[['all','All'],['advance','Advance Paid'],['balance','Balance Paid']]:[['all','All'],['advance','Advance Received'],['balance','Balance Received']]),
+      selField('Pending stage','paymentStage',[['all','All'],['advance','Advance Pending'],['balance','Balance Pending']],{podBucket:'',blocker:''}),
+      selField('Eligibility','eligibility',[['all','All'],['eligible','Eligible'],['nonEligible','Non-eligible']],{blocker:''}),
+      selField('POD status','podStatus',['all','Received & Clean','Received & Disputed','Received & Audit Pending','Onsite & Disputed','Pending','Lost'].map(v=>[v,v==='all'?'All':v])));
+    const filterPanel=foFilterOpen?el('div',{style:{border:'1px solid '+C.line,borderRadius:10,background:'#fbfdff',padding:'14px 14px 2px',marginBottom:12}}, filterGrid,
+      el('div',{style:{display:'flex',justifyContent:'flex-end',gap:8,padding:'0 0 10px'}}, this.btn('Clear all','ghost',()=>this.setState({tripWiseLedgerFilter:{}}),{sm:true}), this.btn('Done','blueOutline',()=>this.setState({foFilterOpen:false}),{sm:true}))):null;
+    const chips=[];
+    const addChip=(label,onClear)=>chips.push({label,onClear});
+    if(filter.from||filter.to) addChip('Trip date · '+(filter.from||'…')+' → '+(filter.to||'…'),()=>setFilter({from:'',to:''}));
+    if(filter.paymentFrom||filter.paymentTo) addChip((isFo?'Payment':'Receipt')+' date · '+(filter.paymentFrom||'…')+' → '+(filter.paymentTo||'…'),()=>setFilter({paymentFrom:'',paymentTo:''}));
+    if(filter.paymentStatus&&filter.paymentStatus!=='all') addChip((isFo?'Payment':'Receipt')+': '+(filter.paymentStatus==='advance'?'Advance':'Balance')+(isFo?' Paid':' Received'),()=>setFilter({paymentStatus:''}));
+    if(filter.paymentStage) addChip('Stage · '+(filter.paymentStage==='advance'?'Advance Pending':'Balance Pending'),()=>setFilter({paymentStage:'',blocker:''}));
+    if(filter.eligibility) addChip('Eligibility · '+(filter.eligibility==='eligible'?'Eligible':'Non-eligible'),()=>setFilter({eligibility:'',blocker:''}));
+    if(filter.podStatus&&filter.podStatus!=='all') addChip('POD · '+filter.podStatus,()=>setFilter({podStatus:''}));
+    if(filter.blocker) addChip('Reason · '+filter.blocker,()=>setFilter({blocker:'',blockerStage:''}));
+    const activeCount=chips.length;
+    const chipEl=(c,i)=>el('span',{key:i,style:{display:'inline-flex',alignItems:'center',gap:6,fontSize:11,fontWeight:650,color:C.body,background:'#fff',border:'1px solid '+C.line,borderRadius:16,padding:'4px 5px 4px 11px'}},c.label,el('button',{onClick:c.onClear,title:'Remove',style:{border:'none',background:C.softline,borderRadius:'50%',width:16,height:16,cursor:'pointer',color:C.muted,fontSize:10,lineHeight:1,display:'inline-flex',alignItems:'center',justifyContent:'center'}},'✕'));
+    const toolbar=el('div',{style:{display:'flex',alignItems:'center',gap:8,flexWrap:'wrap',marginBottom:12}},
+      el('button',{onClick:()=>this.openModal({type:'ledgerColumns',partyId:id}),style:{display:'inline-flex',alignItems:'center',gap:7,height:32,padding:'0 12px',border:'1px solid '+C.blue,borderRadius:8,background:C.blueBg,color:C.blueDark,fontSize:12,fontWeight:750,cursor:'pointer'}},'＋ Add columns',nExtra?cntBadge(nExtra):null),
+      el('button',{onClick:()=>this.setState({foFilterOpen:!foFilterOpen}),style:{display:'inline-flex',alignItems:'center',gap:7,height:32,padding:'0 12px',border:'1px solid '+(activeCount||foFilterOpen?C.blue:C.line),borderRadius:8,background:foFilterOpen?C.blueBg:'#fff',color:activeCount?C.blueDark:C.body,fontSize:12,fontWeight:750,cursor:'pointer'}},'Filter',activeCount?cntBadge(activeCount):null,el('span',{style:{fontSize:9,color:C.faint,marginLeft:1}},foFilterOpen?'▲':'▼')),
+      chips.map(chipEl),
+      el('div',{style:{marginLeft:'auto',display:'flex',alignItems:'center',gap:12}},
+        activeCount?this.btn('Reset filters','outline',()=>this.setState({tripWiseLedgerFilter:{},foFilterOpen:false}),{sm:true}):null,
+        el('span',{style:{fontSize:10.5,color:C.faint}},'Open column frozen · scrolls sideways')));
 
-    const tripLedgerPanel=this.panel(el('div',{id:'fo-trip-ledger',style:{padding:'14px 16px',scrollMarginTop:'80px'}},
-      el('div',{style:{display:'flex',justifyContent:'space-between',gap:12,alignItems:'flex-start',marginBottom:12,flexWrap:'wrap'}},
+    const tripLedgerPanel=this.panel(el('div',{id:'fo-trip-ledger',style:{padding:'16px 18px',scrollMarginTop:'80px'}},
+      el('div',{style:{display:'flex',justifyContent:'space-between',gap:12,alignItems:'center',marginBottom:14,flexWrap:'wrap'}},
         el('div',null,this.secLabel('Trip-wise Ledger')),
         this.btn('Export CSV','ghost',()=>this.toast('Trip-wise ledger exported'),{sm:true})),
-      filterRow,
-      filter.blocker?el('div',{style:{display:'flex',alignItems:'center',gap:8,marginBottom:10}},
-        el('span',{style:{fontSize:10.5,color:C.faint,fontWeight:700}},'Filtered by reason:'),
-        el('span',{style:{display:'inline-flex',alignItems:'center',gap:6,fontSize:11,fontWeight:700,color:C.fo,background:C.foBg,border:'1px solid '+C.fo+'33',borderRadius:6,padding:'3px 8px'}},(filter.blockerStage==='advance'?'Advance · ':'Balance · ')+filter.blocker,
-          el('button',{onClick:()=>setFilter({blocker:'',blockerStage:''}),style:{border:'none',background:'none',cursor:'pointer',color:C.fo,fontSize:13,lineHeight:1,padding:0}},'✕'))):null,
-      addColumns,
+      toolbar,
+      filterPanel,
       this.miniTbl(tripCols,tripTblRows,tripAlign)
     ));
-    return el('div',null,
+    return el('div',{style:{display:'flex',flexDirection:'column',gap:16}},
       profileHeader,
       ledgerSummaryPanel,
       pendingPanel,
