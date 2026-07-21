@@ -2241,7 +2241,7 @@ const VAHAN_META = {
 function seedTrips(){
   return [
     { id:'75708812', code:'7570812', shipment:'29470012', demand:'10990012', createdAt:'15 Jul 2026, 08:10', date:'15 Jul 2026, 12:10', age:26, status:'UNLOADED', pod:'SUBMITTED', consent:true, tags:['SHORT-HAUL'], exception:false,
-      origin:'Ahmedabad', dest:'Surat', oCode:'AMD', dCode:'STV', oCluster:'Ahmedabad', dCluster:'Surat', supercluster:'West', zone:'West Zone', distance:'270 km', eta:'Delivered', vehicle:'GJ01AB2211', vahan:'VERIFIED', driver:'+91 98765 41230',
+      origin:'Ahmedabad', dest:'Surat', oCode:'AMD', dCode:'STV', oCluster:'Ahmedabad', dCluster:'Surat', supercluster:'West', zone:'West Zone', distance:'270 km', eta:'Delivered', vehicle:'GJ01AB2211', vehicleType:'19 ft Closed', vahan:'VERIFIED', driver:'+91 98765 41230',
       lspId:'LSP-0042', foId:'FO-0218', dala:0,
       tracking:[{milestone:'Trip Created',at:'15 Jul 2026, 08:10',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'15 Jul 2026, 10:20',by:'Ops · Ravi',history:[]},{milestone:'Vehicle Unloaded',at:'16 Jul 2026, 08:40',by:'Ops · Ravi',history:[]}],
       fo:{ base:50000, advancePct:80, charges:[],
@@ -2251,7 +2251,7 @@ function seedTrips(){
       lsp:{ base:65000, charges:[], deductions:[], receipts:[{stage:'advance',amount:52000,date:'15 Jul 2026',time:'17:00',utr:'NEFT8812012',mode:'NEFT',history:[]}] } },
 
     { id:'75708847', code:'7570847', shipment:'29481047', demand:'11020047', createdAt:'18 Jul 2026, 08:40', date:'18 Jul 2026, 16:04', age:23, status:'IN_TRANSIT', pod:'PENDING', consent:true, tags:['TAT','SHORT-HAUL'], exception:false, missingDoc:'LR (Lorry Receipt)',
-      origin:'Delhi', dest:'Bangalore', oCode:'DEL', dCode:'BLR', oCluster:'Delhi NCR', dCluster:'Bangalore', supercluster:'North', zone:'North Zone', distance:'2,150 km', eta:'STA 21 Jul 2026, 18:00', vehicle:'DL1C AZ 4498', vahan:'VERIFIED', driver:'+91 98220 14012',
+      origin:'Delhi', dest:'Bangalore', oCode:'DEL', dCode:'BLR', oCluster:'Delhi NCR', dCluster:'Bangalore', supercluster:'North', zone:'North Zone', distance:'2,150 km', eta:'STA 21 Jul 2026, 18:00', vehicle:'DL1C AZ 4498', vehicleType:'32 ft SXL', vahan:'VERIFIED', driver:'+91 98220 14012',
       lspId:'LSP-0042', foId:'FO-0218', dala:500,
       tracking:[{milestone:'Trip Created',at:'18 Jul 2026, 08:40',by:'System',history:[]},{milestone:'Vehicle Placed',at:'18 Jul 2026, 09:05',by:'Ops · Ravi',history:[]},{milestone:'Vehicle Loaded',at:'18 Jul 2026, 12:10',by:'Ops · Ravi',history:[{by:'Ops · Ravi',from:'18 Jul 2026, 11:40',to:'18 Jul 2026, 12:10',at:'18 Jul 2026, 12:15'}]},{milestone:'Dispatched & In Transit',at:'18 Jul 2026, 18:00',by:'Ops · Ravi',history:[]}],
       fo:{ base:100000, advancePct:80, tdsSnapshot:{rate:1,panStatus:'Operative',declarationStatus:'Not available / Not valid',entityType:'Individual / HUF',fy:'FY 2026-27',savedOn:'18 Jul 2026, 08:40',source:'TDS Master row applicable for trip month'},
@@ -2262,14 +2262,14 @@ function seedTrips(){
       lsp:{ base:120000, charges:[{name:'Loading Charges',amount:2000,by:'Ops · Ravi',email:'ravi@freightiger.com',at:'18 Jul 2026, 09:30',history:[]},{name:'Toll / Fastag',amount:1500,by:'Ops · Ravi',email:'ravi@freightiger.com',at:'18 Jul 2026, 09:30',history:[]},{name:'Detention',amount:4000,by:'Ops · Ravi',email:'ravi@freightiger.com',at:'20 Jul 2026, 10:00',history:[]}], deductions:[{name:'Damage Claim',amount:1000,by:'Finance · DS',email:'ds@freightiger.com',at:'21 Jul 2026, 14:10',history:[]}], receipts:[{stage:'advance',amount:99500,date:'18 Jul 2026',time:'16:30',utr:'NEFT7847001',mode:'NEFT',history:[]}] } },
 
     { id:'75708850', code:'7570850', shipment:'29495050', demand:'11080050', createdAt:'20 Jul 2026, 09:30', date:'20 Jul', age:21, status:'IN_TRANSIT', pod:'PENDING', consent:true, tags:['SHORT-HAUL'], exception:false,
-      origin:'Mumbai', dest:'Hyderabad', oCode:'BOM', dCode:'HYD', oCluster:'Mumbai', dCluster:'Hyderabad', supercluster:'West', zone:'West Zone', distance:'710 km', eta:'STA 21 Jul 2026, 23:30', vehicle:'MH04 GD 8821', vahan:'PENDING', driver:'+91 99114 67330',
+      origin:'Mumbai', dest:'Hyderabad', oCode:'BOM', dCode:'HYD', oCluster:'Mumbai', dCluster:'Hyderabad', supercluster:'West', zone:'West Zone', distance:'710 km', eta:'STA 21 Jul 2026, 23:30', vehicle:'MH04 GD 8821', vehicleType:'32 ft MXL', vahan:'PENDING', driver:'+91 99114 67330',
       lspId:'LSP-0042', foId:'FO-0095', dala:500,
       tracking:[{milestone:'Trip Created',at:'20 Jul 2026, 09:30',by:'System',history:[]},{milestone:'Vehicle Placed',at:'20 Jul 2026, 10:15',by:'Ops · Asha',history:[]},{milestone:'Vehicle Loaded',at:'20 Jul 2026, 13:40',by:'Ops · Asha',history:[]},{milestone:'Dispatched & In Transit',at:'20 Jul 2026, 17:20',by:'Ops · Asha',history:[]}],
       fo:{ base:80000, advancePct:75, charges:[{name:'Loading Charges',amount:1200,by:'Ops · Asha',email:'asha@freightiger.com',at:'20 Jul 2026, 13:55',history:[]},{name:'Loading Detention',amount:800,by:'Ops · Asha',email:'asha@freightiger.com',at:'20 Jul 2026, 16:05',history:[]},{name:'Other Charges',amount:500,by:'Finance · DS',email:'ds@freightiger.com',at:'20 Jul 2026, 16:20',history:[]}], deductions:[], payments:[] },
       lsp:{ base:100000, charges:[], deductions:[], receipts:[{stage:'advance',amount:65000,date:'22 Jun 2026',time:'10:57',utr:'SBIN426173168056',mode:'HDFC Bank 1057',reviewStatus:'PENDING_REVIEW',addedBy:'ds@freightiger.com',narration:'',history:[]}] } },
 
     { id:'75708855', code:'7570855', shipment:'29512055', demand:'11150055', createdAt:'21 Jul 2026, 07:50', date:'21 Jul', age:20, status:'UNLOADED', pod:'SUBMITTED', consent:true, tags:[], exception:false,
-      origin:'Hyderabad', dest:'Bangalore', oCode:'HYD', dCode:'BLR', oCluster:'Hyderabad', dCluster:'Bangalore', supercluster:'South', zone:'South Zone', distance:'575 km', eta:'Delivered', vehicle:'TS09 EX 1144', vahan:'VERIFIED', driver:'+91 90041 22781',
+      origin:'Hyderabad', dest:'Bangalore', oCode:'HYD', dCode:'BLR', oCluster:'Hyderabad', dCluster:'Bangalore', supercluster:'South', zone:'South Zone', distance:'575 km', eta:'Delivered', vehicle:'TS09 EX 1144', vehicleType:'22 ft Closed', vahan:'VERIFIED', driver:'+91 90041 22781',
       lspId:'LSP-0078', foId:'FO-0218', dala:500,
       tracking:[{milestone:'Trip Created',at:'21 Jul 2026, 07:50',by:'System',history:[]},{milestone:'Vehicle Placed',at:'21 Jul 2026, 08:30',by:'Ops · Ravi',history:[]},{milestone:'Vehicle Loaded',at:'21 Jul 2026, 11:00',by:'Ops · Ravi',history:[]},{milestone:'Dispatched & In Transit',at:'21 Jul 2026, 15:20',by:'Ops · Ravi',history:[]},{milestone:'Reached Unloading Point',at:'22 Jul 2026, 06:30',by:'Driver App',history:[]},{milestone:'Vehicle Unloaded',at:'22 Jul 2026, 09:00',by:'Ops · Ravi',history:[]}],
       fo:{ base:75000, advancePct:80, charges:[], deductions:[],
@@ -2278,7 +2278,7 @@ function seedTrips(){
       lsp:{ base:90000, charges:[], deductions:[], receipts:[{stage:'advance',amount:72000,date:'21 Jul 2026',time:'18:00',utr:'RTGS8855001',mode:'RTGS',history:[]},{stage:'balance',amount:18000,date:'24 Jul 2026',time:'14:00',utr:'NEFT8855002',mode:'NEFT',history:[]}] } },
 
     { id:'75708860', code:'7570860', shipment:'29530060', demand:'11220060', createdAt:'22 Jul 2026, 10:05', date:'22 Jul 2026, 09:10', age:19, status:'REACHED', pod:'PENDING', consent:true, tags:[], exception:true,
-      origin:'Delhi', dest:'Pune', oCode:'DEL', dCode:'PNQ', oCluster:'Delhi NCR', dCluster:'Pune', supercluster:'North', zone:'North Zone', distance:'1,450 km', eta:'ETA 25 Jul', vehicle:'DL3C BX 7702', vahan:'FAILED', driver:'+91 97200 45204',
+      origin:'Delhi', dest:'Pune', oCode:'DEL', dCode:'PNQ', oCluster:'Delhi NCR', dCluster:'Pune', supercluster:'North', zone:'North Zone', distance:'1,450 km', eta:'ETA 25 Jul', vehicle:'DL3C BX 7702', vehicleType:'32 ft SXL', vahan:'FAILED', driver:'+91 97200 45204',
       lspId:'LSP-0042', foId:'FO-0095', dala:500, rejectedDoc:'LR (Lorry Receipt)',
       tracking:[{milestone:'Trip Created',at:'22 Jul 2026, 10:05',by:'System',history:[]},{milestone:'Vehicle Placed',at:'22 Jul 2026, 10:50',by:'Ops · Asha',history:[]},{milestone:'Vehicle Loaded',at:'22 Jul 2026, 14:00',by:'Ops · Asha',history:[]},{milestone:'Dispatched & In Transit',at:'22 Jul 2026, 19:30',by:'Ops · Asha',history:[]},{milestone:'Reached Unloading Point',at:'24 Jul 2026, 08:15',by:'Driver App',history:[{by:'Ops · Asha',from:'24 Jul 2026, 07:00',to:'24 Jul 2026, 08:15',at:'24 Jul 2026, 09:00'}]}],
       fo:{ base:95000, advancePct:80, charges:[], deductions:[],
@@ -2287,7 +2287,7 @@ function seedTrips(){
       lsp:{ base:115000, charges:[], deductions:[], receipts:[{stage:'advance',amount:92000,date:'22 Jul 2026',time:'19:00',utr:'RTGS8860001',mode:'RTGS',history:[]}] } },
 
     { id:'75708870', code:'7570870', shipment:'29560070', demand:'11290070', createdAt:'23 Jul 2026, 08:20', date:'23 Jul 2026, 13:30', age:18, status:'CANCELLED', pod:'NOT_REQUIRED', consent:true, tags:['SHORT-HAUL'], exception:false, cancelled:true,
-      origin:'Delhi', dest:'Jaipur', oCode:'DEL', dCode:'JAI', oCluster:'Delhi NCR', dCluster:'Jaipur', supercluster:'North', zone:'North Zone', distance:'280 km', eta:'Cancelled', vehicle:'DL01AB7788', vahan:'VERIFIED', driver:'+91 98111 22550',
+      origin:'Delhi', dest:'Jaipur', oCode:'DEL', dCode:'JAI', oCluster:'Delhi NCR', dCluster:'Jaipur', supercluster:'North', zone:'North Zone', distance:'280 km', eta:'Cancelled', vehicle:'DL01AB7788', vehicleType:'19 ft Open', vahan:'VERIFIED', driver:'+91 98111 22550',
       lspId:'LSP-0042', foId:'FO-0218', dala:0,
       tracking:[{milestone:'Trip Created',at:'23 Jul 2026, 08:20',by:'System',history:[]},{milestone:'Vehicle Placed',at:'23 Jul 2026, 09:05',by:'Ops · Ravi',history:[]},{milestone:'Trip Cancelled',at:'23 Jul 2026, 13:30',by:'Ops · Ravi',history:[]}],
       fo:{ base:0, advancePct:80, charges:[], deductions:[],
@@ -2296,39 +2296,53 @@ function seedTrips(){
       lsp:{ base:0, charges:[], deductions:[], receipts:[] } },
 
     { id:'75708788', code:'7570788', shipment:'29380088', demand:'10890088', createdAt:'06 May 2026, 09:15', date:'06 May 2026, 09:15', age:76, status:'LOADED', pod:'PENDING', consent:true, tags:['SHORT-HAUL'], exception:false,
-      origin:'Chennai', dest:'Coimbatore', oCode:'MAA', dCode:'CJB', oCluster:'Chennai', dCluster:'Coimbatore', supercluster:'South', zone:'South Zone', distance:'505 km', eta:'At loading point', vehicle:'TN10 AL 5521', vahan:'VERIFIED', driver:'+91 90031 55210',
+      origin:'Chennai', dest:'Coimbatore', oCode:'MAA', dCode:'CJB', oCluster:'Chennai', dCluster:'Coimbatore', supercluster:'South', zone:'South Zone', distance:'505 km', eta:'At loading point', vehicle:'TN10 AL 5521', vehicleType:'24 ft Closed', vahan:'VERIFIED', driver:'+91 90031 55210',
       lspId:'LSP-0042', foId:'FO-0095', dala:500,
       tracking:[{milestone:'Trip Created',at:'06 May 2026, 09:15',by:'System',history:[]},{milestone:'Vehicle Placed',at:'06 May 2026, 10:00',by:'Ops · Asha',history:[]},{milestone:'Vehicle Loaded',at:'06 May 2026, 13:20',by:'Ops · Asha',history:[]}],
       fo:{ base:70000, advancePct:75, charges:[{name:'Loading Charges',amount:1000,by:'Ops · Asha',email:'asha@freightiger.com',at:'06 May 2026, 13:25',history:[]}], deductions:[], payments:[] },
       lsp:{ base:88000, charges:[], deductions:[], receipts:[] } },
 
     { id:'75708790', code:'7570790', shipment:'29390090', demand:'10900090', createdAt:'12 May 2026, 08:00', date:'12 May 2026, 08:00', age:70, status:'UNLOADED', pod:'SUBMITTED', consent:true, tags:[], exception:false,
-      origin:'Pune', dest:'Mumbai', oCode:'PNQ', dCode:'BOM', oCluster:'Pune', dCluster:'Mumbai', supercluster:'West', zone:'West Zone', distance:'150 km', eta:'Delivered', vehicle:'MH12 KT 3390', vahan:'VERIFIED', driver:'+91 98220 77145',
+      origin:'Pune', dest:'Mumbai', oCode:'PNQ', dCode:'BOM', oCluster:'Pune', dCluster:'Mumbai', supercluster:'West', zone:'West Zone', distance:'150 km', eta:'Delivered', vehicle:'MH12 KT 3390', vehicleType:'17 ft Open', vahan:'VERIFIED', driver:'+91 98220 77145',
       lspId:'LSP-0078', foId:'FO-0218', dala:0,
       tracking:[{milestone:'Trip Created',at:'12 May 2026, 08:00',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'12 May 2026, 10:30',by:'Ops · Ravi',history:[]},{milestone:'Vehicle Unloaded',at:'13 May 2026, 09:15',by:'Ops · Ravi',history:[]}],
       fo:{ base:60000, advancePct:80, charges:[], deductions:[], payments:[{stage:'advance',amount:48000,date:'12 May 2026',time:'16:00',utr:'RZPAY7900012',mode:'Razorpay',editable:false,history:[]},{stage:'balance',amount:11400,date:'14 May 2026',time:'11:00',utr:'NEFT7900045',mode:'NEFT',editable:true,history:[]}] },
       lsp:{ base:72000, charges:[], deductions:[], receipts:[{stage:'advance',amount:57600,date:'12 May 2026',time:'17:00',utr:'RTGS7900001',mode:'RTGS',history:[]},{stage:'balance',amount:14400,date:'14 May 2026',time:'14:00',utr:'NEFT7900002',mode:'NEFT',history:[]}] } },
 
     { id:'75708801', code:'7570801', shipment:'29450101', demand:'10960101', createdAt:'15 Jun 2026, 10:00', date:'15 Jun 2026, 10:00', age:36, status:'REACHED', pod:'REJECTED', consent:true, tags:[], exception:true,
-      origin:'Bangalore', dest:'Chennai', oCode:'BLR', dCode:'MAA', oCluster:'Bangalore', dCluster:'Chennai', supercluster:'South', zone:'South Zone', distance:'350 km', eta:'ETA 17 Jun', vehicle:'KA05 MN 7781', vahan:'VERIFIED', driver:'+91 99860 41220', rejectedDoc:'POD (Proof of Delivery)',
+      origin:'Bangalore', dest:'Chennai', oCode:'BLR', dCode:'MAA', oCluster:'Bangalore', dCluster:'Chennai', supercluster:'South', zone:'South Zone', distance:'350 km', eta:'ETA 17 Jun', vehicle:'KA05 MN 7781', vehicleType:'20 ft Closed', vahan:'VERIFIED', driver:'+91 99860 41220', rejectedDoc:'POD (Proof of Delivery)',
       lspId:'LSP-0078', foId:'FO-0218', dala:0,
       tracking:[{milestone:'Trip Created',at:'15 Jun 2026, 10:00',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'15 Jun 2026, 13:00',by:'Ops · Ravi',history:[]},{milestone:'Dispatched & In Transit',at:'15 Jun 2026, 18:30',by:'Ops · Ravi',history:[]},{milestone:'Reached Unloading Point',at:'16 Jun 2026, 20:15',by:'Driver App',history:[]}],
       fo:{ base:90000, advancePct:80, charges:[], deductions:[], payments:[{stage:'advance',amount:72000,date:'15 Jun 2026',time:'18:40',utr:'RZPAY8010310',mode:'Razorpay',editable:false,history:[]}] },
       lsp:{ base:108000, charges:[], deductions:[], receipts:[{stage:'advance',amount:86400,date:'15 Jun 2026',time:'19:00',utr:'RTGS8010001',mode:'RTGS',history:[]}] } },
 
     { id:'75708805', code:'7570805', shipment:'29470105', demand:'10980105', createdAt:'25 Jun 2026, 07:30', date:'25 Jun 2026, 07:30', age:26, status:'UNLOADED', pod:'SUBMITTED', consent:true, tags:['SHORT-HAUL'], exception:false,
-      origin:'Hyderabad', dest:'Pune', oCode:'HYD', dCode:'PNQ', oCluster:'Hyderabad', dCluster:'Pune', supercluster:'South', zone:'South Zone', distance:'560 km', eta:'Delivered', vehicle:'TS07 PQ 9012', vahan:'VERIFIED', driver:'+91 90042 33517',
+      origin:'Hyderabad', dest:'Pune', oCode:'HYD', dCode:'PNQ', oCluster:'Hyderabad', dCluster:'Pune', supercluster:'South', zone:'South Zone', distance:'560 km', eta:'Delivered', vehicle:'TS07 PQ 9012', vehicleType:'Trailer 40 ft', vahan:'VERIFIED', driver:'+91 90042 33517',
       lspId:'LSP-0042', foId:'FO-0095', dala:0,
       tracking:[{milestone:'Trip Created',at:'25 Jun 2026, 07:30',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'25 Jun 2026, 11:00',by:'Ops · Asha',history:[]},{milestone:'Dispatched & In Transit',at:'25 Jun 2026, 16:00',by:'Ops · Asha',history:[]},{milestone:'Reached Unloading Point',at:'26 Jun 2026, 18:00',by:'Driver App',history:[]},{milestone:'Vehicle Unloaded',at:'26 Jun 2026, 20:30',by:'Ops · Asha',history:[]}],
       fo:{ base:85000, advancePct:80, charges:[], deductions:[], payments:[{stage:'advance',amount:68000,date:'25 Jun 2026',time:'17:30',utr:'RZPAY8050310',mode:'Razorpay',editable:false,history:[]}] },
       lsp:{ base:102000, charges:[], deductions:[], receipts:[{stage:'advance',amount:81600,date:'25 Jun 2026',time:'18:00',utr:'RTGS8050001',mode:'RTGS',history:[]}] } },
 
     { id:'75708808', code:'7570808', shipment:'29480108', demand:'10990108', createdAt:'28 Jun 2026, 11:00', date:'28 Jun 2026, 11:00', age:23, status:'IN_TRANSIT', pod:'PENDING', consent:true, tags:['TAT'], exception:false,
-      origin:'Delhi', dest:'Mumbai', oCode:'DEL', dCode:'BOM', oCluster:'Delhi NCR', dCluster:'Mumbai', supercluster:'North', zone:'North Zone', distance:'1,400 km', eta:'STA 01 Jul 2026, 12:00', vehicle:'DL5C RT 6640', vahan:'VERIFIED', driver:'+91 98100 66412',
+      origin:'Delhi', dest:'Mumbai', oCode:'DEL', dCode:'BOM', oCluster:'Delhi NCR', dCluster:'Mumbai', supercluster:'North', zone:'North Zone', distance:'1,400 km', eta:'STA 01 Jul 2026, 12:00', vehicle:'DL5C RT 6640', vehicleType:'32 ft SXL', vahan:'VERIFIED', driver:'+91 98100 66412',
       lspId:'LSP-0042', foId:'FO-0218', dala:0,
       tracking:[{milestone:'Trip Created',at:'28 Jun 2026, 11:00',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'28 Jun 2026, 14:30',by:'Ops · Ravi',history:[]},{milestone:'Dispatched & In Transit',at:'28 Jun 2026, 19:45',by:'Ops · Ravi',history:[]}],
       fo:{ base:110000, advancePct:80, charges:[], deductions:[], payments:[] },
       lsp:{ base:132000, charges:[], deductions:[], receipts:[{stage:'advance',amount:105600,date:'28 Jun 2026',time:'20:00',utr:'RTGS8080001',mode:'RTGS',history:[]}] } },
+
+    { id:'75708865', code:'7570865', shipment:'29545065', demand:'11250065', createdAt:'19 Jul 2026, 09:00', date:'19 Jul 2026, 09:00', age:22, status:'UNLOADED', pod:'PENDING', consent:true, tags:[], exception:false,
+      origin:'Ahmedabad', dest:'Indore', oCode:'AMD', dCode:'IDR', oCluster:'Ahmedabad', dCluster:'Indore', supercluster:'West', zone:'West Zone', distance:'400 km', eta:'Delivered · POD audit pending', vehicle:'GJ05 HK 2290', vehicleType:'22 ft Closed', vahan:'VERIFIED', driver:'+91 98250 71140',
+      lspId:'LSP-0042', foId:'FO-0218', dala:0,
+      tracking:[{milestone:'Trip Created',at:'19 Jul 2026, 09:00',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'19 Jul 2026, 12:00',by:'Ops · Ravi',history:[]},{milestone:'Dispatched & In Transit',at:'19 Jul 2026, 17:00',by:'Ops · Ravi',history:[]},{milestone:'Reached Unloading Point',at:'20 Jul 2026, 07:00',by:'Driver App',history:[]},{milestone:'Vehicle Unloaded',at:'20 Jul 2026, 10:00',by:'Ops · Ravi',history:[]}],
+      fo:{ base:88000, advancePct:80, charges:[], deductions:[], payments:[{stage:'advance',amount:70400,date:'19 Jul 2026',time:'17:30',utr:'RZPAY8650310',mode:'Razorpay',editable:false,history:[]}] },
+      lsp:{ base:105000, charges:[], deductions:[], receipts:[{stage:'advance',amount:84000,date:'19 Jul 2026',time:'18:00',utr:'RTGS8650001',mode:'RTGS',history:[]}] } },
+
+    { id:'75708803', code:'7570803', shipment:'29460103', demand:'10970103', createdAt:'20 Jun 2026, 08:30', date:'20 Jun 2026, 08:30', age:31, status:'UNLOADED', pod:'REJECTED', consent:true, tags:[], exception:true,
+      origin:'Surat', dest:'Nagpur', oCode:'STV', dCode:'NAG', oCluster:'Surat', dCluster:'Nagpur', supercluster:'West', zone:'West Zone', distance:'720 km', eta:'Delivered · POD disputed', vehicle:'GJ05 JD 8843', vehicleType:'32 ft SXL', vahan:'VERIFIED', driver:'+91 98253 66218', rejectedDoc:'POD (Proof of Delivery)',
+      lspId:'LSP-0078', foId:'FO-0218', dala:0,
+      tracking:[{milestone:'Trip Created',at:'20 Jun 2026, 08:30',by:'System',history:[]},{milestone:'Vehicle Loaded',at:'20 Jun 2026, 11:30',by:'Ops · Ravi',history:[]},{milestone:'Dispatched & In Transit',at:'20 Jun 2026, 16:30',by:'Ops · Ravi',history:[]},{milestone:'Reached Unloading Point',at:'21 Jun 2026, 12:00',by:'Driver App',history:[]},{milestone:'Vehicle Unloaded',at:'21 Jun 2026, 15:00',by:'Ops · Ravi',history:[]}],
+      fo:{ base:76000, advancePct:80, charges:[], deductions:[], payments:[{stage:'advance',amount:60800,date:'20 Jun 2026',time:'17:00',utr:'RZPAY8030310',mode:'Razorpay',editable:false,history:[]}] },
+      lsp:{ base:91000, charges:[], deductions:[], receipts:[{stage:'advance',amount:72800,date:'20 Jun 2026',time:'18:00',utr:'RTGS8030001',mode:'RTGS',history:[]}] } },
   ];
 }
 
@@ -4392,7 +4406,36 @@ class Component extends DCLogic {
     if(m.type==='foRepayment') return this.modalFORepayment(m);
     if(m.type==='settle') return this.modalSettle(m);
     if(m.type==='move') return this.modalMove(m);
+    if(m.type==='nonEligibleSplit') return this.modalNonEligibleSplit(m);
     return el('div',{style:{padding:24}},'…');
+  }
+
+  modalNonEligibleSplit(m){
+    const rows=(m.rows||[]).slice();
+    const total=m.total!=null?m.total:rows.reduce((s,r)=>s+(+r.amount||0),0);
+    const totalTrips=rows.reduce((s,r)=>s+(+r.count||0),0);
+    const colorFor=(label)=>/disput/i.test(label)?C.red:/lost/i.test(label)?C.gray:/audit/i.test(label)?C.amber:/not submitted/i.test(label)?C.fo:/not unloaded|not dispatched/i.test(label)?C.blue:C.amber;
+    const applyBlocker=(label)=>{ this.setState({tripWiseLedgerFilter:Object.assign({},this.state.tripWiseLedgerFilter||{},{paymentStage:m.stage,eligibility:'nonEligible',blocker:label,blockerStage:m.stage,podBucket:''})}); this.closeModal(); };
+    const applyAll=()=>{ this.setState({tripWiseLedgerFilter:Object.assign({},this.state.tripWiseLedgerFilter||{},{paymentStage:m.stage,eligibility:'nonEligible',blocker:'',podBucket:''})}); this.closeModal(); };
+    const eligLine = m.stage==='advance'
+      ? 'Eligible = vehicle in transit or beyond. Everything below is still blocked.'
+      : 'Eligible = vehicle unloaded + POD received & clean. Everything below is blocked until its reason clears.';
+    return this.mShell({
+      title:m.title||'Non-eligible split',
+      sub:inr(total)+' not yet releasable · '+totalTrips+' trip'+(totalTrips===1?'':'s'),
+      body:el('div',null,
+        el('div',{style:{fontSize:11.5,color:C.body,background:C.greenBg,border:'1px solid '+C.green+'22',borderRadius:9,padding:'9px 11px',marginBottom:14,lineHeight:1.45}},eligLine),
+        rows.length?el('div',{style:{display:'flex',flexDirection:'column',gap:8}},rows.map((r,i)=>{
+          const col=colorFor(r.label); const pctW=total>0?Math.max(3,Math.round(r.amount/total*100)):0;
+          return el('button',{key:i,onClick:()=>applyBlocker(r.label),title:'Filter the ledger to these trips',style:{textAlign:'left',border:'1px solid '+C.line,borderRadius:10,padding:'11px 12px',background:'#fff',cursor:'pointer'}},
+            el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',gap:10}},
+              el('span',{style:{display:'inline-flex',alignItems:'center',gap:7,fontSize:12,fontWeight:750,color:C.ink}},dot(col),r.label),
+              el('span',{style:{fontFamily:MONO,fontSize:13,fontWeight:900,color:col}},inr(r.amount))),
+            el('div',{style:{height:6,borderRadius:4,background:C.softline,overflow:'hidden',margin:'7px 0 4px'}},el('div',{style:{height:'100%',width:pctW+'%',background:col}})),
+            el('div',{style:{display:'flex',justifyContent:'space-between',fontSize:10,color:C.faint}},el('span',null,r.count+' trip'+(r.count===1?'':'s')),el('span',null,(total>0?Math.round(r.amount/total*100):0)+'% of non-eligible · view in ledger →')));
+        })):el('div',{style:{padding:'18px 0',textAlign:'center',fontSize:12,color:C.faint}},'Nothing blocked — all pending in this stage is eligible.')),
+      footer:[this.btn('Close','outline',()=>this.closeModal()), rows.length?this.btn('View all in ledger →','primary',()=>applyAll()):null]
+    });
   }
 
   modalHistory(m){
@@ -5400,13 +5443,17 @@ class Component extends DCLogic {
     const balanceNonEligible=Math.max(0,balancePending-balanceEligible);
     const eligible=advanceEligible+balanceEligible, nonEligible=advanceNonEligible+balanceNonEligible;
     const monthRows=periodKeys.slice(0,6).map(k=>{const rows=monthGroups[k];return {k,label:monthLabel(k),trips:rows.length,net:rows.reduce((s,r)=>s+r.net,0),paid:rows.reduce((s,r)=>s+r.settled,0),adv:rows.reduce((s,r)=>s+advancePendingOf(r),0),bal:rows.reduce((s,r)=>s+balancePendingOf(r),0),eligible:rows.filter(r=>advanceEligibleOf(r)||balanceEligibleOf(r)).reduce((s,r)=>s+(advanceEligibleOf(r)?advancePendingOf(r):0)+(balanceEligibleOf(r)?balancePendingOf(r):0),0)};});
-    const podBuckets=[
-      {label:'Not Submitted',test:r=>!r.pod||r.pod.label==='Pending',fg:C.red,bg:C.redBg},
-      {label:'Audit Pending',test:r=>r.pod&&/Audit Pending/i.test(r.pod.label),fg:C.amber,bg:C.amberBg},
-      {label:'Clean',test:r=>r.pod&&/Clean/i.test(r.pod.label),fg:C.green,bg:C.greenBg},
-      {label:'Disputed',test:r=>r.pod&&/Disputed/i.test(r.pod.label),fg:C.red,bg:C.redBg},
-      {label:'Lost',test:r=>r.pod&&/Lost/i.test(r.pod.label),fg:C.muted,bg:C.grayBg}
-    ].map(b=>{const rows=scoped.filter(b.test);return {...b,count:rows.length,blocked:rows.reduce((s,r)=>s+balancePendingOf(r),0)};});
+    // Split a stage's non-eligible pending by blocking reason (drives the "View split" popup).
+    const blockerSplit=(stage)=>{
+      const map={};
+      scoped.forEach(r=>{
+        const pend=stage==='advance'?advancePendingOf(r):balancePendingOf(r);
+        const elig=stage==='advance'?advanceEligibleOf(r):balanceEligibleOf(r);
+        if(pend>0&&!elig){ const k=blockingReasonOf(r,stage); (map[k]||(map[k]={amount:0,count:0})); map[k].amount+=pend; map[k].count++; }
+      });
+      return Object.keys(map).map(k=>({label:k,amount:map[k].amount,count:map[k].count})).sort((a,b)=>b.amount-a.amount);
+    };
+    const advanceBlockers=blockerSplit('advance'), balanceBlockers=blockerSplit('balance');
     const txnsRaw=this.state.walletTxns[id]||[];
     const txns=txnsRaw.slice().sort((a,b)=>tsKey(b.date)-tsKey(a.date));
     const wTypeName=isFo?'FO Overpaid Wallet':'LSP Overreceived Wallet';
@@ -5487,11 +5534,12 @@ class Component extends DCLogic {
       if(filter.podBucket==='Clean' && (!r.pod||!/Clean/i.test(r.pod.label))) return false;
       if(filter.podBucket==='Disputed' && (!r.pod||!/Disputed/i.test(r.pod.label))) return false;
       if(filter.podBucket==='Lost' && (!r.pod||!/Lost/i.test(r.pod.label))) return false;
+      if(filter.blocker){ const st=filter.blockerStage||filter.paymentStage||'balance'; const pend=st==='advance'?advancePendingOf(r):balancePendingOf(r); const elig=st==='advance'?advanceEligibleOf(r):balanceEligibleOf(r); if(!(pend>0&&!elig&&blockingReasonOf(r,st)===filter.blocker)) return false; }
       return true;
     }).sort((a,b)=>tsKey(b.date)-tsKey(a.date));
     const chargeHeader=cols.chargeType&&cols.chargeType!=='all'?'Charges · '+cols.chargeType:'Charges';
     const deductionHeader=cols.deductionType&&cols.deductionType!=='all'?'Deductions · '+cols.deductionType:'Deductions';
-    const tripCols=[['Trip ID & Trip Date','1.15fr'],['Trip Status','.9fr'],['POD Status','1.15fr'],['Net '+(isFo?'Payable':'Receivable'),'1fr'],[isFo?'Net Paid':'Net Received','1fr'],['Pending '+(isFo?'Payable':'Receivable'),'1fr']];
+    const tripCols=[['Trip ID & Trip Date','1.1fr'],['Route / Vehicle Type','1.1fr'],['Vehicle No.','.85fr'],['Trip Status','.9fr'],['POD Status','1.15fr'],['Net '+(isFo?'Payable':'Receivable'),'1fr'],[isFo?'Net Paid':'Net Received','1fr'],['Pending '+(isFo?'Payable':'Receivable'),'1fr']];
     if(isFo){tripCols.push(['Advance Pending','1fr'],['Balance Pending','1fr'],['Eligibility / Blocker','1.25fr']);}
     if(cols.freight) tripCols.push(['Freight Value','.95fr']);
     if(cols.tds) tripCols.push(['TDS','.75fr']);
@@ -5503,12 +5551,14 @@ class Component extends DCLogic {
     if(cols.walletSettlement) tripCols.push(['Wallet Settlement Amount','1.1fr']);
     if(cols.walletMoved) tripCols.push(['Wallet Moved Amount','1.05fr']);
     tripCols.push(['','.6fr']);
-    const tripAlign=['left','left','left','right','right','right']; if(isFo) tripAlign.push('right','right','left');
+    const tripAlign=['left','left','left','left','left','right','right','right']; if(isFo) tripAlign.push('right','right','left');
     if(cols.freight) tripAlign.push('right'); if(cols.tds) tripAlign.push('right'); if(cols.charges) tripAlign.push('right'); if(cols.deductions) tripAlign.push('right'); if(cols.advanceDetails) tripAlign.push('left'); if(cols.balanceDetails) tripAlign.push('left'); if(cols.interimDetails) tripAlign.push('left'); if(cols.walletSettlement) tripAlign.push('right'); if(cols.walletMoved) tripAlign.push('right'); tripAlign.push('right');
     const tripTblRows=tripRows.map(r=>{
       const sm=(r.t&&STATUS_META[r.status])||{label:r.status,fg:C.muted,bg:C.grayBg};
       const row=[
         el('div',null,el('button',{onClick:()=>r.t?this.openTrip(r.id):null,style:{background:'none',border:'none',padding:0,cursor:r.t?'pointer':'default',fontFamily:MONO,fontSize:11.8,fontWeight:800,color:r.t?C.blue:C.navy}},r.id),el('div',{style:{fontSize:10.3,color:C.faint,marginTop:3}},r.date||'—')),
+        el('div',null,el('div',{style:{fontFamily:MONO,fontSize:11.2,fontWeight:750,color:C.ink}},r.t?(r.t.oCode+'→'+r.t.dCode):'—'),el('div',{style:{fontSize:10,color:C.faint,marginTop:2}},r.t&&r.t.vehicleType?r.t.vehicleType:'—')),
+        el('span',{style:{fontFamily:MONO,fontSize:10.8,color:C.body,whiteSpace:'nowrap'}},r.t&&r.t.vehicle?r.t.vehicle:'—'),
         pill(sm.short||sm.label,sm.fg,sm.bg),
         pill(r.pod.label,r.pod.fg,r.pod.bg),
         money(r.net,{size:11.5}),
@@ -5573,40 +5623,35 @@ class Component extends DCLogic {
         [el('option',{value:'all',key:'all'},'All time')].concat(periodKeys.filter(k=>k!=='Historic').map(k=>el('option',{value:k,key:k},monthLabel(k))),periodKeys.includes('Historic')?[el('option',{value:'Historic',key:'Historic'},'Historic')]:[])));
     const ledgerSummaryPanel=this.panel(el('div',{style:{padding:'15px 17px',marginBottom:14}},
       el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'flex-start',gap:12,flexWrap:'wrap'}},
-        el('div',null,this.secLabel((isFo?'FO':'LSP')+' Ledger Overview'),el('div',{style:{fontSize:11,color:C.faint,marginTop:3}},'Cards, pending split and POD band scope to '+periodLabel+' · click any card to drill into the trip-wise ledger.')),
+        el('div',null,this.secLabel((isFo?'FO':'LSP')+' Ledger Overview'),el('div',{style:{fontSize:11,color:C.faint,marginTop:3}},'Cards and pending split scope to '+periodLabel+' · click any card to drill into the trip-wise ledger.')),
         periodSelect),
       el('div',{style:{display:'grid',gridTemplateColumns:'repeat(5,minmax(0,1fr))',gap:9,marginTop:12}},
         metricCard('Total Trips',String(scoped.length),null,C.navy,period==='all'?'active + historic':periodLabel),
-        metricCard('Net Payable',inr(totalNet),scoped.length,C.navy,'gross FO payable'),
-        metricCard('Total Settled',inr(totalSettled),scoped.filter(r=>r.settled>0).length,C.emerald,'cash + posted settlement'),
+        metricCard('Net '+(isFo?'Payable':'Receivable'),inr(totalNet),scoped.length,C.navy,isFo?'gross FO payable':'gross LSP receivable'),
+        metricCard(isFo?'Total Paid':'Total Received',inr(totalSettled),scoped.filter(r=>r.settled>0).length,C.emerald,'cash + wallet settlement'),
         metricCard('Total Pending',inr(totalOut),scoped.filter(r=>advancePendingOf(r)+balancePendingOf(r)>0).length,C.red,'advance + balance'),
-        metricCard('FO Wallet Balance',inr(p.wallet,{sign:true}),null,C.wallet,'party-level · not period-scoped'))
+        metricCard((isFo?'FO':'LSP')+' Wallet Balance',inr(p.wallet,{sign:true}),null,C.wallet,'party-level · not period-scoped'))
     ));
-    const stageBox=(title,amount,eligibleAmt,nonEligibleAmt,eligibleCount,nonEligibleCount,stage)=>el('div',{style:{border:'1px solid '+C.line,borderRadius:12,overflow:'hidden',background:'#fff'}},
+    const stageBox=(title,amount,eligibleAmt,nonEligibleAmt,eligibleCount,nonEligibleCount,stage,eligNote,blockers)=>el('div',{style:{border:'1px solid '+C.line,borderRadius:12,overflow:'hidden',background:'#fff'}},
       el('button',{onClick:()=>quickApply(stage,'all'),style:{width:'100%',border:'none',borderBottom:'1px solid '+C.line,background:'#fafbfc',padding:'12px 14px',textAlign:'left',cursor:'pointer'}},
         el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',gap:10}},el('div',{style:{fontSize:12.5,fontWeight:850,color:C.ink}},title),el('div',{style:{fontFamily:MONO,fontSize:17,fontWeight:900,color:C.red}},inr(amount)))),
       el('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:0}},
-        el('button',{onClick:()=>quickApply(stage,'eligible'),style:{border:'none',borderRight:'1px solid '+C.line,background:C.greenBg,padding:'12px',textAlign:'left',cursor:'pointer'}},el('div',{style:{fontSize:10,fontWeight:850,color:C.green,textTransform:'uppercase'}},'Eligible'),el('div',{style:{fontFamily:MONO,fontSize:15,fontWeight:900,color:C.green,marginTop:4}},inr(eligibleAmt)),el('div',{style:{fontSize:10,color:C.green,marginTop:2}},eligibleCount+' trips')),
-        el('button',{onClick:()=>quickApply(stage,'nonEligible'),style:{border:'none',background:C.redBg,padding:'12px',textAlign:'left',cursor:'pointer'}},el('div',{style:{fontSize:10,fontWeight:850,color:C.red,textTransform:'uppercase'}},'Non-eligible'),el('div',{style:{fontFamily:MONO,fontSize:15,fontWeight:900,color:C.red,marginTop:4}},inr(nonEligibleAmt)),el('div',{style:{fontSize:10,color:C.red,marginTop:2}},nonEligibleCount+' trips'))));
+        el('button',{onClick:()=>quickApply(stage,'eligible'),style:{border:'none',borderRight:'1px solid '+C.line,background:C.greenBg,padding:'12px',textAlign:'left',cursor:'pointer'}},el('div',{style:{fontSize:10,fontWeight:850,color:C.green,textTransform:'uppercase'}},'Eligible'),el('div',{style:{fontFamily:MONO,fontSize:15,fontWeight:900,color:C.green,marginTop:4}},inr(eligibleAmt)),el('div',{style:{fontSize:10,color:C.green,marginTop:2}},eligibleCount+' trips'),eligNote?el('div',{style:{fontSize:9.3,color:C.green,opacity:.85,marginTop:3,lineHeight:1.3}},eligNote):null),
+        el('button',{onClick:()=>this.openModal({type:'nonEligibleSplit',partyId:id,stage,title:title+' — why not eligible',total:nonEligibleAmt,rows:blockers||[],maxw:'560px'}),title:'View the split of why this amount is not eligible',style:{border:'none',background:C.redBg,padding:'12px',textAlign:'left',cursor:'pointer'}},
+          el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',gap:6}},el('div',{style:{fontSize:10,fontWeight:850,color:C.red,textTransform:'uppercase'}},'Non-eligible'),nonEligibleAmt>0?el('span',{style:{fontSize:9.3,fontWeight:800,color:C.red,textDecoration:'underline'}},'View split →'):null),
+          el('div',{style:{fontFamily:MONO,fontSize:15,fontWeight:900,color:C.red,marginTop:4}},inr(nonEligibleAmt)),
+          el('div',{style:{fontSize:10,color:C.red,marginTop:2}},nonEligibleCount+' trips'+(blockers&&blockers.length?(' · '+blockers.length+' reason'+(blockers.length>1?'s':'')):'')))));
     const pendingPanel=this.panel(el('div',{style:{padding:'15px 17px',marginBottom:14}},
       this.secLabel('Pending Payment Breakdown'),
       el('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginTop:12}},
-        stageBox('Advance Pending',advancePending,advanceEligible,advanceNonEligible,scoped.filter(advanceEligibleOf).length,scoped.filter(r=>advancePendingOf(r)>0&&!advanceEligibleOf(r)).length,'advance'),
-        stageBox('Balance Pending',balancePending,balanceEligible,balanceNonEligible,scoped.filter(balanceEligibleOf).length,scoped.filter(r=>balancePendingOf(r)>0&&!balanceEligibleOf(r)).length,'balance')),
-      el('div',{style:{fontSize:10.5,color:C.faint,marginTop:9}},'Eligibility is calculated independently for advance and balance. Wallet is applied only after a trip becomes eligible.')));
+        stageBox('Advance Pending',advancePending,advanceEligible,advanceNonEligible,scoped.filter(advanceEligibleOf).length,scoped.filter(r=>advancePendingOf(r)>0&&!advanceEligibleOf(r)).length,'advance','Vehicle in transit or beyond',advanceBlockers),
+        stageBox('Balance Pending',balancePending,balanceEligible,balanceNonEligible,scoped.filter(balanceEligibleOf).length,scoped.filter(r=>balancePendingOf(r)>0&&!balanceEligibleOf(r)).length,'balance','Vehicle unloaded + POD received & clean',balanceBlockers)),
+      el('div',{style:{fontSize:10.5,color:C.faint,marginTop:9}},'Balance is Eligible once the vehicle is unloaded and POD is received & clean. Tap a Non-eligible tile to see the split — not unloaded, POD not submitted, POD audit pending, POD disputed or POD lost.')));
     const monthlyPanel=this.panel(el('div',{style:{padding:'15px 17px',marginBottom:14}},
       el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center'}},this.secLabel('Month-over-Month Trip Cohort'),this.btn('Export CSV','ghost',()=>this.toast('Monthly FO ledger exported'),{sm:true})),
       el('div',{style:{marginTop:12}},this.miniTbl([['Trip Month','1fr'],['Trips','.6fr'],['Net Payable','.9fr'],['Paid','.9fr'],['Advance Pending','1fr'],['Balance Pending','1fr'],['Eligible Pending','1fr']],monthRows.map(m=>[
         el('button',{onClick:()=>{if(m.k==='Historic'){setPeriod('Historic');}else{const mp=m.k.split('-');const last=String(new Date(+mp[0],+mp[1],0).getDate()).padStart(2,'0');setPeriod(m.k);setFilter({from:m.k+'-01',to:m.k+'-'+last});}},style:{border:'none',background:'transparent',padding:0,color:C.blue,fontWeight:800,cursor:'pointer'}},m.label),
         el('span',{style:{fontFamily:MONO,fontWeight:800}},String(m.trips)),money(m.net,{size:11.5}),money(m.paid,{size:11.5,color:C.green}),money(m.adv,{size:11.5,color:C.red}),money(m.bal,{size:11.5,color:C.red}),money(m.eligible,{size:11.5,color:C.green})]),['left','right','right','right','right','right','right']))));
-    const podCards=podBuckets.map(b=>el('button',{key:b.label,onClick:()=>setFilter({paymentStage:'balance',podBucket:b.label}),style:{border:'1px solid '+b.fg+'22',background:b.bg,borderRadius:10,padding:'11px 12px',textAlign:'left',cursor:'pointer'}},
-      el('div',{style:{fontSize:10,fontWeight:850,color:b.fg,textTransform:'uppercase'}},b.label),
-      el('div',{style:{fontFamily:MONO,fontSize:17,fontWeight:900,color:b.fg,marginTop:4}},String(b.count)),
-      el('div',{style:{fontSize:10.5,color:b.fg,marginTop:3}},inr(b.blocked)+' balance pending')));
-    const podPanel=this.panel(el('div',{style:{padding:'15px 17px',marginBottom:14}},
-      this.secLabel('POD Analysis · Balance Payment Readiness'),
-      el('div',{style:{display:'grid',gridTemplateColumns:'repeat(5,minmax(0,1fr))',gap:9,marginTop:12}},...podCards)
-    ));
     const walletActions=el('div',{style:{display:'flex',gap:8,alignItems:'center',flexWrap:'wrap'}},
       isFo?this.btn('+ Add','wallet',()=>this.openModal({type:'walletActionPicker',partyId:id}),{sm:true}):this.btn('Export CSV','ghost',()=>this.toast('Wallet transactions exported'),{sm:true})
     );
@@ -5635,8 +5680,8 @@ class Component extends DCLogic {
       this.field((isFo?'Payment':'Receipt')+' date to',el('input',{type:'date',value:filter.paymentTo||'',onChange:e=>setFilter({paymentTo:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}})),
       this.field(isFo?'Payment status':'Receipt status',el('select',{value:filter.paymentStatus||'all',onChange:e=>setFilter({paymentStatus:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},
         (isFo?[['all','All'],['advance','Advance Paid'],['balance','Balance Paid']]:[['all','All'],['advance','Advance Received'],['balance','Balance Received']]).map(o=>el('option',{value:o[0],key:o[0]},o[1])))),
-      this.field('Pending stage',el('select',{value:filter.paymentStage||'all',onChange:e=>setFilter({paymentStage:e.target.value==='all'?'':e.target.value,podBucket:''}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},[['all','All'],['advance','Advance Pending'],['balance','Balance Pending']].map(o=>el('option',{value:o[0],key:o[0]},o[1])))),
-      this.field('Eligibility',el('select',{value:filter.eligibility||'all',onChange:e=>setFilter({eligibility:e.target.value==='all'?'':e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},[['all','All'],['eligible','Eligible'],['nonEligible','Non-eligible']].map(o=>el('option',{value:o[0],key:o[0]},o[1])))),
+      this.field('Pending stage',el('select',{value:filter.paymentStage||'all',onChange:e=>setFilter({paymentStage:e.target.value==='all'?'':e.target.value,podBucket:'',blocker:''}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},[['all','All'],['advance','Advance Pending'],['balance','Balance Pending']].map(o=>el('option',{value:o[0],key:o[0]},o[1])))),
+      this.field('Eligibility',el('select',{value:filter.eligibility||'all',onChange:e=>setFilter({eligibility:e.target.value==='all'?'':e.target.value,blocker:''}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},[['all','All'],['eligible','Eligible'],['nonEligible','Non-eligible']].map(o=>el('option',{value:o[0],key:o[0]},o[1])))),
       this.field('POD status',el('select',{value:filter.podStatus||'all',onChange:e=>setFilter({podStatus:e.target.value}),style:{width:'100%',height:34,border:'1px solid '+C.line,borderRadius:8,padding:'0 9px',fontSize:12}},
         ['all','Received & Clean','Received & Disputed','Received & Audit Pending','Onsite & Disputed','Pending','Lost'].map(v=>el('option',{value:v,key:v},v==='all'?'All':v)))),
       this.btn('Reset filters','outline',()=>this.setState({tripWiseLedgerFilter:{}}),{sm:true})
@@ -5654,6 +5699,10 @@ class Component extends DCLogic {
         el('div',null,this.secLabel('Trip-wise Ledger'),el('div',{style:{fontSize:11,color:C.faint,marginTop:3}},'One row per trip. Add optional columns when reconciliation needs deeper detail.')),
         this.btn('Export CSV','ghost',()=>this.toast('Trip-wise ledger exported'),{sm:true})),
       filterRow,
+      filter.blocker?el('div',{style:{display:'flex',alignItems:'center',gap:8,marginBottom:10}},
+        el('span',{style:{fontSize:10.5,color:C.faint,fontWeight:700}},'Filtered by reason:'),
+        el('span',{style:{display:'inline-flex',alignItems:'center',gap:6,fontSize:11,fontWeight:700,color:C.fo,background:C.foBg,border:'1px solid '+C.fo+'33',borderRadius:6,padding:'3px 8px'}},(filter.blockerStage==='advance'?'Advance · ':'Balance · ')+filter.blocker,
+          el('button',{onClick:()=>setFilter({blocker:'',blockerStage:''}),style:{border:'none',background:'none',cursor:'pointer',color:C.fo,fontSize:13,lineHeight:1,padding:0}},'✕'))):null,
       addColumns,
       this.miniTbl(tripCols,tripTblRows,tripAlign),
       el('div',{style:{fontSize:10.5,color:C.faint,marginTop:8}},tripRows.length+' trips shown · Advance and balance eligibility are calculated separately. Wallet settlement is shown separately from cash paid.')
@@ -5663,7 +5712,6 @@ class Component extends DCLogic {
       ledgerSummaryPanel,
       pendingPanel,
       monthlyPanel,
-      podPanel,
       tripLedgerPanel,
       walletPanel
     );
