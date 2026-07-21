@@ -5201,7 +5201,7 @@ class Component extends DCLogic {
           check('interimDetails','Interim Payment details','Ad-hoc/interim payment references'),
           check('walletSettlement','Wallet Settlement Amount','Wallet used to reduce payable/receivable'),
           check('walletMoved','Wallet Moved Amount','Amount moved from trip into party wallet')),
-        cols.charges?el('div',{style:{marginTop:14}},this.field('Charge types · select any (none = all types)',typeChips('chargeTypes',chargeTypeOpts))):null,
+        cols.charges?el('div',{style:{marginTop:14}},this.field('Charge types · each shows as its own column (none = all types)',typeChips('chargeTypes',chargeTypeOpts))):null,
         cols.deductions?el('div',{style:{marginTop:10}},this.field('Deduction types · each shows as its own column (none = all types)',typeChips('deductionTypes',deductionTypeOpts))):null,
         el('div',{style:{fontSize:11,color:C.faint,marginTop:8}},selected+' optional columns selected. Open action column stays frozen on the right.')),
       footer:[this.btn('Clear optional columns','outline',()=>this.setState({tripWiseLedgerCols:{tds:false,freight:false,charges:false,deductions:false,walletSettlement:false,walletMoved:false,advanceDetails:false,balanceDetails:false,interimDetails:false,chargeTypes:[],deductionTypes:[]}})),this.btn('Done','primary',()=>this.closeModal())]});
@@ -5547,6 +5547,18 @@ class Component extends DCLogic {
     }).sort((a,b)=>tsKey(b.date)-tsKey(a.date));
     const typeHeader=(base,arr)=>(arr&&arr.length)?(arr.length===1?base+' · '+arr[0]:base+' · '+arr.length+' types'):base;
     const chargeHeader=typeHeader('Charges',cols.chargeTypes);
+    // Charges render as one column per type — every type when none selected, else the selected types.
+    const chgTypesAll=['Loading','Detention during Loading','Unloading','Detention during Unloading','Extra Run','Weight Surcharge','Height Surcharge','Cancellation','Other Charges'];
+    const chgTypeVal=(t,type)=>{
+      if(!t) return 0;
+      const rows=(isFo?t.fo:t.lsp).charges||[];
+      if(type==='Other Charges'){
+        const specific=['Loading','Detention during Loading','Unloading','Detention during Unloading','Extra Run','Weight Surcharge','Height Surcharge','Cancellation'];
+        return sum(rows.filter(x=>!specific.some(sp=>matchComp(x.name||x.type,sp))));
+      }
+      return sum(rows.filter(x=>matchComp(x.name||x.type,type)));
+    };
+    const chargeCols = cols.charges ? ((cols.chargeTypes&&cols.chargeTypes.length)?cols.chargeTypes:chgTypesAll) : [];
     // Deductions render as one column per type — every type when none selected, else the selected types.
     const dedTypesAll=['Dala Charges','Transit Delay','Damages','TDS','POD Handling Fee','POD Late Submission Penalty','Early Balance Fee','Write off','Other Deductions'];
     const dedTypeVal=(t,c,type)=>{
@@ -5566,7 +5578,7 @@ class Component extends DCLogic {
     if(isFo){tripCols.push(['Eligibility / Blocker','1.5fr']);}
     if(cols.freight) tripCols.push(['Freight Value','.95fr']);
     if(cols.tds) tripCols.push(['TDS','.75fr']);
-    if(cols.charges) tripCols.push([chargeHeader,'1fr']);
+    chargeCols.forEach(tp=>tripCols.push(['Charge · '+tp,'1fr']));
     deductionCols.forEach(tp=>tripCols.push(['Deduction · '+tp,'1fr']));
     if(cols.advanceDetails) tripCols.push(['Advance Payment detail','1.35fr']);
     if(cols.balanceDetails) tripCols.push(['Balance Payment details','1.35fr']);
@@ -5575,7 +5587,7 @@ class Component extends DCLogic {
     if(cols.walletMoved) tripCols.push(['Wallet Moved Amount','1.05fr']);
     tripCols.push(['','.6fr']);
     const tripAlign=['left','left','left','left','left','right','right','right']; if(isFo) tripAlign.push('left');
-    if(cols.freight) tripAlign.push('right'); if(cols.tds) tripAlign.push('right'); if(cols.charges) tripAlign.push('right'); deductionCols.forEach(()=>tripAlign.push('right')); if(cols.advanceDetails) tripAlign.push('left'); if(cols.balanceDetails) tripAlign.push('left'); if(cols.interimDetails) tripAlign.push('left'); if(cols.walletSettlement) tripAlign.push('right'); if(cols.walletMoved) tripAlign.push('right'); tripAlign.push('right');
+    if(cols.freight) tripAlign.push('right'); if(cols.tds) tripAlign.push('right'); chargeCols.forEach(()=>tripAlign.push('right')); deductionCols.forEach(()=>tripAlign.push('right')); if(cols.advanceDetails) tripAlign.push('left'); if(cols.balanceDetails) tripAlign.push('left'); if(cols.interimDetails) tripAlign.push('left'); if(cols.walletSettlement) tripAlign.push('right'); if(cols.walletMoved) tripAlign.push('right'); tripAlign.push('right');
     const tripTblRows=tripRows.map(r=>{
       const sm=(r.t&&STATUS_META[r.status])||{label:r.status,fg:C.muted,bg:C.grayBg};
       const row=[
@@ -5597,7 +5609,7 @@ class Component extends DCLogic {
       }
       if(cols.freight) row.push(r.t?money((isFo?r.t.fo.base:r.t.lsp.base)||0,{size:11.2,color:C.navy}):el('span',{style:{color:C.faint}},'—'));
       if(cols.tds) row.push(r.c&&isFo?money(r.c.tdsAmount,{size:11,color:C.red}):el('span',{style:{color:C.faint}},'—'));
-      if(cols.charges) row.push(r.c?money(selectedCharges(r.t),{size:11,color:C.green}):el('span',{style:{color:C.faint}},'—'));
+      chargeCols.forEach(tp=>row.push(r.c?money(chgTypeVal(r.t,tp),{size:11,color:chgTypeVal(r.t,tp)>0?C.green:C.faint}):el('span',{style:{color:C.faint}},'—')));
       deductionCols.forEach(tp=>row.push(r.c?money(dedTypeVal(r.t,r.c,tp),{size:11,color:dedTypeVal(r.t,r.c,tp)>0?C.red:C.faint}):el('span',{style:{color:C.faint}},'—')));
       if(cols.advanceDetails) row.push(payStageCell(r.t,'advance'));
       if(cols.balanceDetails) row.push(payStageCell(r.t,'balance'));
