@@ -5596,9 +5596,9 @@ class Component extends DCLogic {
         el('span',{style:{fontFamily:MONO,fontSize:10.8,color:C.body,whiteSpace:'nowrap'}},r.t&&r.t.vehicle?r.t.vehicle:'—'),
         pill(sm.short||sm.label,sm.fg,sm.bg),
         pill(r.pod.label,r.pod.fg,r.pod.bg),
-        money(r.net,{size:11.5}),
-        money(r.settled,{size:11.5,color:C.emerald}),
-        money(r.out,{size:11.5,color:r.out>0?C.red:C.green})
+        money(r.net,{size:11.5,color:C.ink}),
+        money(r.settled,{size:11.5,color:C.ink}),
+        money(r.out,{size:11.5,color:C.ink,sign:r.out<0})
       ];
       if(isFo){
         const ap=advancePendingOf(r), bp=balancePendingOf(r);
@@ -5607,15 +5607,15 @@ class Component extends DCLogic {
         const ok=activeStage==='advance'?ae:activeStage==='balance'?be:true;
         row.push(activeStage?el('div',{style:{display:'flex',flexDirection:'column',gap:3}},pill((activeStage==='advance'?'Advance · ':'Balance · ')+(ok?'Eligible':'Non-eligible'),ok?C.green:C.red,ok?C.greenBg:C.redBg),!ok?el('span',{style:{fontSize:10,color:C.muted}},blockingReasonOf(r,activeStage)):null):pill('Settled',C.green,C.greenBg));
       }
-      if(cols.freight) row.push(r.t?money((isFo?r.t.fo.base:r.t.lsp.base)||0,{size:11.2,color:C.navy}):el('span',{style:{color:C.faint}},'—'));
-      if(cols.tds) row.push(r.c&&isFo?money(r.c.tdsAmount,{size:11,color:C.red}):el('span',{style:{color:C.faint}},'—'));
-      chargeCols.forEach(tp=>row.push(r.c?money(chgTypeVal(r.t,tp),{size:11,color:chgTypeVal(r.t,tp)>0?C.green:C.faint}):el('span',{style:{color:C.faint}},'—')));
-      deductionCols.forEach(tp=>row.push(r.c?money(dedTypeVal(r.t,r.c,tp),{size:11,color:dedTypeVal(r.t,r.c,tp)>0?C.red:C.faint}):el('span',{style:{color:C.faint}},'—')));
+      if(cols.freight) row.push(r.t?money((isFo?r.t.fo.base:r.t.lsp.base)||0,{size:11.2,color:C.ink}):el('span',{style:{color:C.faint}},'—'));
+      if(cols.tds) row.push(r.c&&isFo?money(r.c.tdsAmount,{size:11,color:C.ink}):el('span',{style:{color:C.faint}},'—'));
+      chargeCols.forEach(tp=>row.push(r.c?money(chgTypeVal(r.t,tp),{size:11,color:C.ink}):el('span',{style:{color:C.faint}},'—')));
+      deductionCols.forEach(tp=>row.push(r.c?money(dedTypeVal(r.t,r.c,tp),{size:11,color:C.ink}):el('span',{style:{color:C.faint}},'—')));
       if(cols.advanceDetails) row.push(payStageCell(r.t,'advance'));
       if(cols.balanceDetails) row.push(payStageCell(r.t,'balance'));
       if(cols.interimDetails) row.push(payStageCell(r.t,'interim'));
-      if(cols.walletSettlement) row.push(r.c?money(isFo?r.c.foWalletSettled:r.c.lspWalletSettled,{size:11,color:C.wallet}):el('span',{style:{color:C.faint}},'—'));
-      if(cols.walletMoved) row.push(r.c?money(isFo?r.c.foWalletMovedOut:r.c.lspWalletMovedOut,{size:11,color:C.wallet}):el('span',{style:{color:C.faint}},'—'));
+      if(cols.walletSettlement) row.push(r.c?money(isFo?r.c.foWalletSettled:r.c.lspWalletSettled,{size:11,color:C.ink}):el('span',{style:{color:C.faint}},'—'));
+      if(cols.walletMoved) row.push(r.c?money(isFo?r.c.foWalletMovedOut:r.c.lspWalletMovedOut,{size:11,color:C.ink}):el('span',{style:{color:C.faint}},'—'));
       row.push(r.t?this.btn('Open','ghost',()=>this.openTrip(r.id),{sm:true}):el('span',{style:{fontSize:10,color:C.faint}},'historic'));
       return row;
     });
