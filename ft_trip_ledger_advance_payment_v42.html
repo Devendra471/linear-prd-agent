@@ -4307,20 +4307,23 @@ class Component extends DCLogic {
       .filter(r=>!q || [r.p.name,r.supplier,r.company,r.p.id,r.p.phone].join(' ').toLowerCase().includes(q));
     const tblRows=rows.map(r=>{
       const p=r.p, a=r.a;
-      return [
+      const cells=[
         el('div',{style:{minWidth:0}},
           el('button',{onClick:()=>this.openParty(p.id),style:{background:'none',border:'none',padding:0,cursor:'pointer',fontSize:12.8,fontWeight:800,color:C.blue,maxWidth:'100%',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',display:'block',textAlign:'left'}},p.name+' →'),
           el('div',{style:{display:'flex',gap:7,alignItems:'center',marginTop:6,flexWrap:'wrap'}},
             el('span',{style:{fontSize:10.8,color:C.muted,fontFamily:MONO}},r.supplier),
-            this.partyCategoryPill(r.cat))) ,
-        el('span',{style:{fontFamily:MONO,fontSize:12,fontWeight:800,color:p.tds?C.navy:C.faint}},p.tds?String(p.tds)+'%':'—'),
+            this.partyCategoryPill(r.cat)))
+      ];
+      if(isFo) cells.push(el('span',{style:{fontFamily:MONO,fontSize:12,fontWeight:800,color:p.tds?C.navy:C.faint}},p.tds?String(p.tds)+'%':'—'));
+      cells.push(
         el('span',{style:{fontSize:12,color:C.muted,fontFamily:MONO}},a.trips),
         money(a.net,{size:12}),
         money(a.settled,{size:12,color:C.emerald}),
         el('div',null, money(a.out,{size:12,color:a.out>0?C.red:C.green}), a.over30>0?el('div',{style:{fontSize:9.5,color:C.red,fontFamily:MONO}},inr(a.over30)+' >30d'):null),
         el('span',{style:{fontFamily:MONO,fontSize:12,fontWeight:800,color:C.wallet}},inr(p.wallet,{sign:true})),
         el('div',{style:{display:'flex',justifyContent:'flex-end'}}, this.btn('Open','outline',()=>this.openParty(p.id),{sm:true}))
-      ];
+      );
+      return cells;
     });
     return el('div',null,
       el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',gap:14,marginBottom:14,flexWrap:'wrap'}},
@@ -4331,7 +4334,7 @@ class Component extends DCLogic {
           el('input',{value:this.state.partyLedgerSearch||'',onChange:(e)=>this.setState({partyLedgerSearch:e.target.value}),placeholder:'Search by Name, Mobile number, Company ID',style:{width:330,maxWidth:'42vw',height:36,border:'1px solid '+C.line,borderRadius:9,padding:'0 12px',fontSize:12.5,outline:'none',background:'#fff'}}),
           (this.state.partyLedgerSearch||'')?this.btn('Clear','ghost',()=>this.setState({partyLedgerSearch:''}),{sm:true}):null)),
       this.panel(el('div',{style:{padding:'6px 8px'}},
-        this.miniTbl([[isFo?'Fleet Owner':'LSP / Supplier','2.2fr'],['Applicable TDS','.85fr'],['Trips','.55fr'],['Net '+(isFo?'Payable':'Receivable'),'1fr'],[isFo?'Paid':'Received','1fr'],['Outstanding','1.05fr'],['Net Wallet','.95fr'],['','.65fr']], tblRows, ['left','left','left','right','right','right','right','right']))));
+        this.miniTbl([[isFo?'Fleet Owner':'LSP / Supplier','2.2fr']].concat(isFo?[['Applicable TDS','.85fr']]:[]).concat([['Trips','.55fr'],['Net '+(isFo?'Payable':'Receivable'),'1fr'],[isFo?'Paid':'Received','1fr'],['Outstanding','1.05fr'],['Net Wallet','.95fr'],['','.65fr']]), tblRows, isFo?['left','left','left','right','right','right','right','right']:['left','left','right','right','right','right','right']))));
   }
 
   // ================= FT LEDGER (Freight Tiger P&L) =================
