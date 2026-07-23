@@ -283,10 +283,7 @@ textarea.inp{resize:vertical;min-height:46px}
 .ms-opt .os{font-size:11.5px;color:var(--ink-3);margin-top:1px}
 .ms-opt .osel{margin-left:auto;font-size:11px;color:var(--good);font-weight:700}
 .ms-none{padding:16px;text-align:center;color:var(--ink-3);font-size:13px}
-.ms-foot{display:flex;justify-content:space-between;align-items:center;padding:8px 10px 4px;border-top:1px solid var(--line);margin-top:4px}
-.ms-foot button{border:none;background:transparent;color:var(--primary);font-weight:700;font-size:12.5px;cursor:pointer;padding:4px 6px;border-radius:6px}
-:root[data-theme="dark"] .ms-foot button{color:#8FA6E6}
-.ms-foot button:hover{background:var(--surface-2)}
+.ms-hint{padding:9px 11px;color:var(--ink-3);font-size:11.5px;border-top:1px solid var(--line);margin-top:4px;line-height:1.4}
 
 /* ---------- Mapping accordions ---------- */
 .map-intro{display:flex;align-items:flex-start;gap:12px;background:var(--surface-2);border:1px solid var(--line);
@@ -311,67 +308,8 @@ textarea.inp{resize:vertical;min-height:46px}
 .acc.open .acc-body{display:block}
 .acc-body-inner{padding-top:16px}
 
-/* ---------- Detail view ---------- */
-.detail-card{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:22px}
-.detail-card h2{font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin:0 0 16px;font-weight:750}
-.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px 28px}
-.dgrid .k{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700;margin-bottom:5px}
-.dgrid .v{font-size:14.5px;color:var(--ink);font-weight:650}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:18px}
-.tab{border:none;background:transparent;color:var(--ink-2);font-weight:700;font-size:14px;padding:12px 16px;cursor:pointer;
-  border-bottom:2.5px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:8px}
-.tab .cnt{font-size:11px;font-weight:800;background:var(--surface-3);color:var(--ink-2);border-radius:6px;padding:2px 7px;font-variant-numeric:tabular-nums}
-.tab.on{color:var(--primary);border-bottom-color:var(--primary)}
-:root[data-theme="dark"] .tab.on{color:#96AAE8;border-bottom-color:#96AAE8}
-.tab.on .cnt{background:color-mix(in srgb,var(--primary) 16%,var(--surface));color:var(--primary)}
-:root[data-theme="dark"] .tab.on .cnt{color:#96AAE8}
-
-.mrow{display:flex;align-items:center;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s}
-.mrow:last-child{border-bottom:none}
-.mrow:hover{background:var(--surface-2)}
-.mrow .m-ico{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex:0 0 auto;
-  background:color-mix(in srgb,var(--hue) 14%,var(--surface));color:color-mix(in srgb,var(--hue) 58%,var(--ink));
-  border:1px solid color-mix(in srgb,var(--hue) 26%,transparent)}
-.mrow .m-tt{flex:1;min-width:0}
-.mrow .m-tt .t{font-weight:700;font-size:14px;color:var(--ink)}
-.mrow .m-tt .d{font-size:12px;color:var(--ink-3);margin-top:2px}
-.mrow .m-cnt{font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
-.mrow .m-go{color:var(--ink-3)}
-
-/* ---------- Slide-over ---------- */
-.scrim{position:fixed;inset:0;background:rgba(16,22,34,.5);z-index:90;opacity:0;pointer-events:none;transition:opacity .25s}
-.scrim.show{opacity:1;pointer-events:auto}
-.sheet{position:fixed;top:0;right:0;bottom:0;width:640px;max-width:94vw;background:var(--surface);z-index:95;
-  box-shadow:var(--shadow-lg);transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
-.sheet.show{transform:none}
-.sheet-head{display:flex;align-items:flex-start;gap:12px;padding:22px 24px 18px;border-bottom:1px solid var(--line)}
-.sheet-head h2{margin:0;font-size:18px;font-weight:800}
-.sheet-head .sh-sub{font-size:12.5px;color:var(--ink-3);margin-top:3px}
-.sheet-head .x{margin-left:auto;width:34px;height:34px;border-radius:9px;border:1px solid var(--line-strong);background:var(--surface);
-  color:var(--ink-2);display:grid;place-items:center;cursor:pointer;flex:0 0 auto}
-.sheet-head .x:hover{background:var(--surface-2);color:var(--ink)}
-.sheet-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:16px 24px;border-bottom:1px solid var(--line)}
-.pill{border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-2);font-weight:650;font-size:12.5px;
-  padding:7px 14px;border-radius:var(--r-pill);cursor:pointer;display:flex;align-items:center;gap:7px}
-.pill:hover{background:var(--surface-2)}
-.pill.on{background:color-mix(in srgb,var(--hue,#2E3A56) 14%,var(--surface));border-color:color-mix(in srgb,var(--hue,#2E3A56) 40%,transparent);
-  color:color-mix(in srgb,var(--hue,#2E3A56) 60%,var(--ink))}
-.pill .pc{font-size:10.5px;background:var(--surface-3);border-radius:5px;padding:1px 6px;font-weight:800;font-variant-numeric:tabular-nums}
-.sheet-add{padding:16px 24px 6px}
-.sheet-body{flex:1;overflow:auto;padding:6px 24px}
-.sheet-foot{padding:14px 24px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
-.mapped-row{display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid var(--line)}
-.mapped-row:last-child{border-bottom:none}
-.mapped-row .mr-tt{flex:1;min-width:0}
-.mapped-row .mr-tt .t{font-weight:650;font-size:13.5px;color:var(--ink)}
-.mapped-row .mr-tt .s{font-size:11.5px;color:var(--ink-3);margin-top:1px}
-.mapped-row .del{width:32px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--surface);
-  color:var(--ink-3);display:grid;place-items:center;cursor:pointer;flex:0 0 auto}
-.mapped-row .del:hover{color:var(--danger);border-color:var(--danger);background:var(--danger-bg)}
-.pager{display:flex;align-items:center;gap:8px;color:var(--ink-2);font-size:12.5px;font-weight:600}
-.pager button{width:32px;height:32px;border-radius:8px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-2);cursor:pointer;display:grid;place-items:center}
-.pager button:disabled{opacity:.4;cursor:not-allowed}
-.pager .pg{min-width:34px;text-align:center;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);font-variant-numeric:tabular-nums}
+/* ---------- Editor subhead meta ---------- */
+.subhead-meta{font-size:12.5px;color:var(--ink-3);margin-top:3px;font-weight:600}
 
 /* ---------- Toast ---------- */
 .toasts{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:120;display:flex;flex-direction:column;gap:10px;align-items:center}
@@ -411,8 +349,6 @@ textarea.inp{resize:vertical;min-height:46px}
 
 <main class="wrap" id="app"></main>
 
-<div class="scrim" id="scrim"></div>
-<aside class="sheet" id="sheet" aria-hidden="true"></aside>
 <div class="toasts" id="toasts"></div>
 
 <script>
@@ -538,19 +474,19 @@ let SEQ = 100;
 const nid = ()=> 'ATR-'+(++SEQ);
 let ATTRS = [
   {id:nid(),name:'FMCG ops',description:'FMCG operations — north region distribution',level:'company',scopes:[],
-   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',users:20,fields:2,
+   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',
    map:{place:['PLC-02','PLC-05'],route:['RTE-01'],material:['MAT-01','MAT-06'],vehicle_type:['VHT-01'],route_master:[],related_entity:['RLE-01']}},
-  {id:nid(),name:'TMC',description:'Transport management cell',level:'branch',scopes:['1312','1006','2201'],
-   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',users:20,fields:0,
+  {id:nid(),name:'TMC',description:'Transport management cell',level:'branch',scopes:['1312'],
+   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',
    map:{place:['PLC-01','PLC-02'],route:['RTE-02','RTE-03','RTE-04'],material:['MAT-02'],vehicle_type:['VHT-02','VHT-03'],route_master:['RTM-04'],related_entity:['RLE-02','RLE-03']}},
   {id:nid(),name:'SPD_TATA',description:'SPD segment of spare parts in the north region',level:'company',scopes:[],
-   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',users:20,fields:0,
+   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',
    map:{place:['PLC-04'],route:['RTE-05','RTE-06'],material:['MAT-04'],vehicle_type:['VHT-04'],route_master:['RTM-01','RTM-02'],related_entity:['RLE-04']}},
   {id:nid(),name:'SKN-BEA',description:'Skincare beauty lane controls',level:'group',scopes:['GRP-2'],
-   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',users:20,fields:0,
+   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',
    map:{place:['PLC-07'],route:['RTE-07'],material:['MAT-03','MAT-05'],vehicle_type:['VHT-05'],route_master:[],related_entity:['RLE-05','RLE-06']}},
   {id:nid(),name:'Def-TATA',description:'Default Tata Motors control set',level:'branch',scopes:['1312'],
-   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',users:20,fields:0,
+   createdBy:'Sparsh Agarwal',createdAt:'25/05/25 20:30',
    map:{place:['PLC-02'],route:['RTE-01','RTE-08','RTE-09'],material:[],vehicle_type:['VHT-06'],route_master:['RTM-03'],related_entity:['RLE-08']}},
 ];
 
@@ -593,14 +529,12 @@ function toast(msg){
 let VIEW='list';
 let listState={q:'',level:'all',showFilter:false};
 let draft=null;       // create/edit working copy
-let detailId=null;
 
 function go(v){ VIEW=v; closeMenus(); render(); window.scrollTo({top:0,behavior:'instant'}); }
 function render(){
   if(VIEW==='list') return renderList();
   if(VIEW==='create1') return renderStep1();
   if(VIEW==='create2') return renderStep2();
-  if(VIEW==='detail') return renderDetail();
 }
 
 /* ============================================================
@@ -644,11 +578,11 @@ function renderList(){
         <table class="grid">
           <thead><tr>
             <th style="min-width:200px">Attribute name</th><th style="min-width:190px">Scope</th>
-            <th>Master data</th><th>Fields</th><th>Users</th>
+            <th>Master data</th>
             <th style="min-width:150px">Created by</th><th style="text-align:right">Action</th>
           </tr></thead>
           <tbody>
-            ${rows.length? rows.map(rowHTML).join('') : `<tr><td colspan="7" style="padding:0">${emptyHTML()}</td></tr>`}
+            ${rows.length? rows.map(rowHTML).join('') : `<tr><td colspan="5" style="padding:0">${emptyHTML()}</td></tr>`}
           </tbody>
         </table>
       </div>
@@ -675,8 +609,6 @@ function rowHTML(a){
     <td data-open="${a.id}" style="cursor:pointer"><div class="cell-name">${esc(a.name)}<div class="sub">${esc(a.description||'—')}</div></div></td>
     <td>${scopeCell(a)}</td>
     <td><span class="num">${mapTotal(a)} items</span></td>
-    <td><span class="num">${a.fields} ${a.fields===1?'field':'fields'}</span></td>
-    <td><span class="num">${a.users} users</span></td>
     <td><div class="by">${esc(a.createdBy)}<div class="sub">${esc(a.createdAt)}</div></div></td>
     <td>
       <div class="row-actions">
@@ -699,7 +631,7 @@ function openRowMenu(btn,id){
   closeMenus(); if(existing) return;
   const a=ATTRS.find(x=>x.id===id);
   const m=document.createElement('div'); m.className='menu';
-  m.innerHTML=`<button data-a="view">${I.eye} View mapping</button>
+  m.innerHTML=`<button data-a="view">${I.eye} Open</button>
     <button data-a="dup">${I.copy} Duplicate</button><div class="sep"></div>
     <button class="danger" data-a="del">${I.trash} Delete</button>`;
   btn.parentElement.style.position='relative'; btn.parentElement.appendChild(m);
@@ -713,7 +645,7 @@ function delAttr(id){
   const a=ATTRS.find(x=>x.id===id); if(!a) return;
   ATTRS = ATTRS.filter(x=>x.id!==id);
   toast(`Deleted “${a.name}”`);
-  if(VIEW==='detail') go('list'); else renderList();
+  if(VIEW==='list') renderList(); else go('list');
 }
 function dupAttr(id){
   const a=ATTRS.find(x=>x.id===id); if(!a) return;
@@ -728,7 +660,7 @@ function dupAttr(id){
 function blankDraft(){
   return {id:null,name:'',description:'',level:'company',scopes:[],
     map:{place:[],route:[],material:[],vehicle_type:[],route_master:[],related_entity:[]},
-    users:0,fields:0,editing:false};
+    editing:false};
 }
 function startCreate(){ draft=blankDraft(); go('create1'); }
 
@@ -737,11 +669,14 @@ function renderStep1(){
   app.innerHTML=`
     <div class="subhead">
       <button class="back" id="back" aria-label="Back">${I.chevL}</button>
-      <h1>${d.editing?'Edit attribute':'Create attribute'}</h1>
+      <div>
+        <h1>${d.editing?'Edit attribute':'Create attribute'}</h1>
+        ${d.editing&&d.createdBy?`<div class="subhead-meta">Created by ${esc(d.createdBy)} · ${esc(d.createdAt)}</div>`:''}
+      </div>
     </div>
     <div class="stepper">
-      <div class="step active"><div class="bar"><i></i></div><div class="lbl"><span class="sn">1</span> Create attribute</div></div>
-      <div class="step"><div class="bar"><i></i></div><div class="lbl"><span class="sn">2</span> Create mapping</div></div>
+      <div class="step active"><div class="bar"><i></i></div><div class="lbl"><span class="sn">1</span> ${d.editing?'Attribute details':'Create attribute'}</div></div>
+      <div class="step ${d.editing?'done':''}"><div class="bar"><i></i></div><div class="lbl"><span class="sn">${d.editing?I.check:'2'}</span> ${d.editing?'Mapping':'Create mapping'}</div></div>
     </div>
 
     <div class="form-card">
@@ -768,12 +703,14 @@ function renderStep1(){
         <div class="field" id="scopeField" style="${d.level==='company'?'display:none':''}">
           <label class="lb"><span class="req">*</span>${d.level==='group'?'Select groups':'Select branches'}</label>
           <div id="scopeMount"></div>
-          <div class="hint">Multi-select — the attribute will be available for every ${d.level==='group'?'group':'branch'} you add.</div>
+          <div class="hint">Choose the ${d.level==='group'?'group':'branch'} this attribute is onboarded under.</div>
         </div>
       </div>
       <div class="form-foot">
         <button class="btn btn-ghost" id="cancel">Cancel</button>
-        <button class="btn btn-primary" id="next">Create attribute ${I.chevR}</button>
+        ${d.editing
+          ? `<button class="btn btn-ghost" id="toMap">Mapping ${I.chevR}</button><button class="btn btn-primary" id="save1">Save changes</button>`
+          : `<button class="btn btn-primary" id="next">Create attribute ${I.chevR}</button>`}
       </div>
     </div>
   `;
@@ -787,16 +724,15 @@ function renderStep1(){
   });
   if(d.level!=='company') mountScopeSelect();
 
-  $('#next').onclick=()=>{
-    if(!d.name.trim()){ $('#f-name').classList.add('invalid'); $('#in-name').focus(); return; }
-    if(d.level!=='company' && d.scopes.length===0){ toast(`Select at least one ${d.level}`); return; }
-    go('create2');
-  };
+  const goMap=()=>{ if(validateDraft()) go('create2'); };
+  $('#next')?.addEventListener('click',goMap);
+  $('#toMap')?.addEventListener('click',goMap);
+  $('#save1')?.addEventListener('click',saveDraft);
 }
 function mountScopeSelect(){
   const opts=(draft.level==='group'?GROUPS:BRANCHES).map(o=>({id:o.id,label:o.label,sub:''}));
-  multiSelect($('#scopeMount'),{options:opts,selected:draft.scopes,hue:'#5A6B94',
-    placeholder:draft.level==='group'?'Search groups...':'Search branches...',
+  multiSelect($('#scopeMount'),{options:opts,selected:draft.scopes,hue:'#5A6B94',single:true,
+    placeholder:draft.level==='group'?'Select a group...':'Select a branch...',
     onChange:sel=>{draft.scopes=sel;}});
 }
 
@@ -812,8 +748,8 @@ function renderStep2(){
       <h1>${d.editing?'Edit mapping':'Create mapping'} <span style="color:var(--ink-3);font-weight:600;font-size:15px">· ${esc(d.name)}</span></h1>
     </div>
     <div class="stepper">
-      <div class="step done"><div class="bar"><i></i></div><div class="lbl"><span class="sn">${I.check}</span> Create attribute</div></div>
-      <div class="step active"><div class="bar"><i></i></div><div class="lbl"><span class="sn">2</span> Create mapping</div></div>
+      <div class="step done"><div class="bar"><i></i></div><div class="lbl"><span class="sn">${I.check}</span> ${d.editing?'Attribute details':'Create attribute'}</div></div>
+      <div class="step active"><div class="bar"><i></i></div><div class="lbl"><span class="sn">2</span> ${d.editing?'Mapping':'Create mapping'}</div></div>
     </div>
 
     <div class="map-intro">${I.info}<div>Map this attribute to the master-data records it should govern. Pick as many as you need in each category — <b>Place, Route, Material, Vehicle type, Route master</b> and <b>Related entity</b> all support multi-select.</div></div>
@@ -862,23 +798,32 @@ function renderStep2(){
   });
 }
 
+function validateDraft(){
+  const d=draft;
+  if(!d.name.trim()){ $('#f-name')?.classList.add('invalid'); $('#in-name')?.focus(); return false; }
+  if(d.level!=='company' && d.scopes.length===0){ toast(`Select a ${d.level}`); return false; }
+  return true;
+}
 function saveDraft(){
+  if(!validateDraft()) return;
   const d=draft;
   if(d.editing){
     const a=ATTRS.find(x=>x.id===d.id);
     Object.assign(a,{name:d.name,description:d.description,level:d.level,scopes:d.scopes,map:d.map});
-    toast(`Saved “${d.name}”`); go('detail');
+    toast(`Saved “${d.name}” · ${mapTotal(a)} records mapped`);
   }else{
     const a={id:nid(),name:d.name,description:d.description,level:d.level,scopes:d.scopes,
-      createdBy:'Devendra Singh',createdAt:todayStr(),users:0,fields:0,map:d.map};
-    ATTRS.unshift(a); detailId=a.id; toast(`Created “${a.name}” · ${mapTotal(a)} records mapped`); go('detail');
+      createdBy:'Devendra Singh',createdAt:todayStr(),map:d.map};
+    ATTRS.unshift(a); toast(`Created “${a.name}” · ${mapTotal(a)} records mapped`);
   }
+  go('list');
 }
 
 /* ============================================================
    Reusable multi-select
    ============================================================ */
-function multiSelect(mount,{options,selected,hue='#5A6B94',placeholder='Search...',onChange,openInitially=false}){
+const MS_MAX_RENDER=50;
+function multiSelect(mount,{options,selected,hue='#5A6B94',placeholder='Search...',onChange,openInitially=false,single=false}){
   let open=openInitially, q='';
   mount.innerHTML=`<div class="ms"><div class="ms-control" tabindex="-1"></div></div>`;
   const root=mount.querySelector('.ms');
@@ -904,27 +849,24 @@ function multiSelect(mount,{options,selected,hue='#5A6B94',placeholder='Search..
     root.querySelector('.ms-pop')?.remove();
     if(!open) return;
     const ql=q.trim().toLowerCase();
-    const list=options.filter(o=> !ql || o.label.toLowerCase().includes(ql) || (o.sub||'').toLowerCase().includes(ql));
+    const matches=options.filter(o=> !ql || o.label.toLowerCase().includes(ql) || (o.sub||'').toLowerCase().includes(ql));
+    const list=matches.slice(0,MS_MAX_RENDER);
     const pop=document.createElement('div'); pop.className='ms-pop';
-    if(!list.length){ pop.innerHTML=`<div class="ms-none">No matches for “${esc(q)}”</div>`; }
+    if(!matches.length){ pop.innerHTML=`<div class="ms-none">No matches for “${esc(q)}”</div>`; }
     else{
       pop.innerHTML=list.map(o=>{ const on=selected.includes(o.id);
         return `<div class="ms-opt ${on?'sel':''}" data-id="${o.id}">
           <span class="ck">${on?I.check:''}</span>
           <span><span class="ol">${esc(o.label)}</span>${o.sub?`<span class="os">${esc(o.sub)}</span>`:''}</span>
           ${on?'<span class="osel">Added</span>':''}</div>`; }).join('')
-        + `<div class="ms-foot"><span style="color:var(--ink-3);font-size:12px">${selected.length} of ${options.length} selected</span>
-             <span><button data-all>Select all</button><button data-clr>Clear</button></span></div>`;
+        + (matches.length>MS_MAX_RENDER?`<div class="ms-hint">Showing first ${MS_MAX_RENDER} of ${matches.length.toLocaleString()} — keep typing to narrow the list.</div>`:'');
     }
     root.appendChild(pop);
     pop.querySelectorAll('.ms-opt').forEach(el=> el.onclick=ev=>{ ev.stopPropagation();
       const id=el.dataset.id; const i=selected.indexOf(id);
-      if(i>=0) selected.splice(i,1); else selected.push(id);
+      if(single){ selected.length=0; if(i<0) selected.push(id); open=false; }
+      else { if(i>=0) selected.splice(i,1); else selected.push(id); }
       onChange&&onChange(selected.slice()); draw(); });
-    const all=pop.querySelector('[data-all]'), clr=pop.querySelector('[data-clr]');
-    if(all) all.onclick=ev=>{ ev.stopPropagation(); list.forEach(o=>{ if(!selected.includes(o.id)) selected.push(o.id); });
-      onChange&&onChange(selected.slice()); draw(); };
-    if(clr) clr.onclick=ev=>{ ev.stopPropagation(); selected.length=0; onChange&&onChange(selected.slice()); draw(); };
   }
   // Attach the outside-click listener on the next tick so the very click that
   // opened this control (e.g. an accordion header or the "next" button) doesn't
@@ -938,130 +880,15 @@ function multiSelect(mount,{options,selected,hue='#5A6B94',placeholder='Search..
 }
 
 /* ============================================================
-   View — Attribute detail + slide-over
+   Open an attribute — view & edit share the same editor screen
+   (the details + mapping wizard), so there is a single UI to build.
    ============================================================ */
-let detailTab='master';
-function openDetail(id){ detailId=id; detailTab='master'; go('detail'); }
-function renderDetail(){
-  const a=ATTRS.find(x=>x.id===detailId);
-  if(!a){ go('list'); return; }
-  const total=mapTotal(a);
-  app.innerHTML=`
-    <div class="subhead">
-      <button class="back" id="back" aria-label="Back">${I.chevL}</button>
-      <h1>Edit attribute</h1>
-      <div style="margin-left:auto;display:flex;gap:10px">
-        <button class="btn btn-ghost btn-sm" id="editDetails">${I.pencil} Edit details</button>
-        <button class="btn btn-primary btn-sm" id="editMap">${I.plus} Edit mapping</button>
-      </div>
-    </div>
-
-    <div class="detail-card">
-      <h2>Attribute details</h2>
-      <div class="dgrid">
-        <div><div class="k">Attribute name</div><div class="v">${esc(a.name)}</div></div>
-        <div><div class="k">Onboarding level</div><div class="v">${scopeCell(a)}</div></div>
-        <div><div class="k">Created by</div><div class="v">${esc(a.createdBy)} · ${esc(a.createdAt)}</div></div>
-        <div style="grid-column:1/-1"><div class="k">Attribute description</div><div class="v" style="font-weight:550">${esc(a.description||'—')}</div></div>
-      </div>
-    </div>
-
-    <div class="tabs">
-      <button class="tab ${detailTab==='master'?'on':''}" data-t="master">Master data <span class="cnt">${String(ENTITIES.filter(e=>a.map[e.key].length).length).padStart(2,'0')}</span></button>
-      <button class="tab ${detailTab==='fields'?'on':''}" data-t="fields">Input Fields <span class="cnt">${String(a.fields).padStart(2,'0')}</span></button>
-    </div>
-
-    <div class="card" id="detailBody"></div>
-  `;
-  $('#back').onclick=()=>go('list');
-  $('#editDetails').onclick=()=>{ draft=cloneToDraft(a); go('create1'); };
-  $('#editMap').onclick=()=>{ draft=cloneToDraft(a); go('create2'); };
-  app.querySelectorAll('.tab').forEach(t=> t.onclick=()=>{ detailTab=t.dataset.t; renderDetail(); });
-
-  const body=$('#detailBody');
-  if(detailTab==='fields'){
-    body.innerHTML=`<div class="empty"><div class="em-ico">${I.clipboard}</div>
-      <h3>No input fields yet</h3><div>Custom input fields let you capture extra values against this attribute.</div>
-      <div style="margin-top:16px"><button class="btn btn-ghost btn-sm" id="addField">${I.plus} Add input field</button></div></div>`;
-    $('#addField').onclick=()=>toast('Input fields — configure custom capture fields');
-    return;
-  }
-  body.innerHTML = ENTITIES.map(e=>{
-    const n=a.map[e.key].length;
-    return `<div class="mrow" data-k="${e.key}" style="--hue:${e.hue}">
-      <div class="m-ico">${I[e.key]}</div>
-      <div class="m-tt"><div class="t">${e.label}</div><div class="d">${e.desc}</div></div>
-      <div class="m-cnt">${n} ${n===1?'item':'items'}</div>
-      <div class="m-go">${I.chevR}</div>
-    </div>`;
-  }).join('');
-  body.querySelectorAll('.mrow').forEach(r=> r.onclick=()=> openSheet(a.id,r.dataset.k));
+function openDetail(id){
+  const a=ATTRS.find(x=>x.id===id); if(!a) return;
+  draft=cloneToDraft(a); go('create1');
 }
 function cloneToDraft(a){
   const d=JSON.parse(JSON.stringify(a)); d.editing=true; return d;
-}
-
-/* ---------- Slide-over: Mapped master data ---------- */
-let sheetState=null;
-function openSheet(attrId,key){
-  sheetState={attrId,key,page:1,per:8};
-  drawSheet(); const s=$('#sheet'),sc=$('#scrim');
-  sc.classList.add('show'); s.classList.add('show'); s.setAttribute('aria-hidden','false');
-}
-function closeSheet(){ const s=$('#sheet'),sc=$('#scrim'); sc.classList.remove('show'); s.classList.remove('show'); s.setAttribute('aria-hidden','true'); sheetState=null; }
-$('#scrim').onclick=closeSheet;
-document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ if(sheetState) closeSheet(); }});
-
-function drawSheet(){
-  const s=$('#sheet'); if(!sheetState) return;
-  const a=ATTRS.find(x=>x.id===sheetState.attrId); const key=sheetState.key; const meta=EMETA[key];
-  const ids=a.map[key];
-  const per=sheetState.per, pages=Math.max(1,Math.ceil(ids.length/per));
-  if(sheetState.page>pages) sheetState.page=pages;
-  const start=(sheetState.page-1)*per;
-  const pageIds=ids.slice(start,start+per);
-
-  s.style.setProperty('--hue',meta.hue);
-  s.innerHTML=`
-    <div class="sheet-head">
-      <div><h2>Mapped master data</h2><div class="sh-sub">${esc(a.name)} · data as per uploaded file</div></div>
-      <button class="x" id="sheetX" aria-label="Close">${I.x}</button>
-    </div>
-    <div class="sheet-tabs">
-      ${ENTITIES.map(e=>`<button class="pill ${e.key===key?'on':''}" data-k="${e.key}" style="--hue:${e.hue}">${e.label}<span class="pc">${a.map[e.key].length}</span></button>`).join('')}
-    </div>
-    <div class="sheet-add"><div id="sheetAdd"></div></div>
-    <div class="sheet-body" id="sheetBody">
-      ${ids.length? pageIds.map(id=>{ const o=catItem(key,id);
-        return `<div class="mapped-row"><div class="mr-tt"><div class="t">${esc(o.label)}</div>${o.sub?`<div class="s">${esc(o.sub)}</div>`:''}</div>
-          <button class="del" data-rm="${id}" title="Remove" aria-label="Remove ${esc(o.label)}">${I.trash}</button></div>`; }).join('')
-        : `<div class="empty" style="padding:48px 12px"><div class="em-ico">${I[key]}</div><h3>No ${meta.label.toLowerCase()} mapped</h3><div>Use the search above to add records.</div></div>`}
-    </div>
-    <div class="sheet-foot">
-      <span style="color:var(--ink-2);font-size:12.5px;font-weight:600">${ids.length} ${meta.label.toLowerCase()} mapped</span>
-      <div class="pager">
-        <button id="pgPrev" ${sheetState.page<=1?'disabled':''} aria-label="Previous page">${I.chevL}</button>
-        <span class="pg">${sheetState.page}</span><span>/ ${pages}</span>
-        <button id="pgNext" ${sheetState.page>=pages?'disabled':''} aria-label="Next page">${I.chevR}</button>
-      </div>
-    </div>
-  `;
-  $('#sheetX').onclick=closeSheet;
-  s.querySelectorAll('.pill').forEach(p=> p.onclick=()=>{ sheetState.key=p.dataset.k; sheetState.page=1; drawSheet(); });
-  s.querySelectorAll('[data-rm]').forEach(b=> b.onclick=()=>{
-    const i=ids.indexOf(b.dataset.rm); if(i>=0) ids.splice(i,1); drawSheet();
-    if(VIEW==='detail'){ const bodyRow=[...app.querySelectorAll('.mrow')].find(r=>r.dataset.k===key);
-      if(bodyRow) bodyRow.querySelector('.m-cnt').textContent=`${ids.length} ${ids.length===1?'item':'items'}`; }
-  });
-  const prev=$('#pgPrev'),next=$('#pgNext');
-  if(prev) prev.onclick=()=>{ if(sheetState.page>1){sheetState.page--;drawSheet();} };
-  if(next) next.onclick=()=>{ if(sheetState.page<pages){sheetState.page++;drawSheet();} };
-
-  multiSelect($('#sheetAdd'),{options:CATALOG[key],selected:ids,hue:meta.hue,
-    placeholder:`Add ${meta.label.toLowerCase()}...`,
-    onChange:()=>{ // refresh counts without losing focus: update footer + pills lazily
-      s.querySelectorAll('.pill').forEach(p=>{ p.querySelector('.pc').textContent=a.map[p.dataset.k].length; });
-    }});
 }
 
 /* ============================================================
