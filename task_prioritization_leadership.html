@@ -1,0 +1,400 @@
+<title>Marketplace Product Task Summary — Leadership Prioritisation</title>
+<style>
+  :root {
+    --ground: #F4F6F3;
+    --surface: #FFFFFF;
+    --surface-2: #EEF1ED;
+    --ink: #1B242A;
+    --muted: #5D6873;
+    --hair: #D9DED8;
+    --hair-strong: #C4CBC2;
+    --accent: #165C4B;
+    --accent-soft: #E2EDE8;
+    --p0: #B23A2B;   --p0-bg: #F6E6E2;
+    --p1: #9A6B18;   --p1-bg: #F5ECD8;
+    --p2: #3F6E63;   --p2-bg: #E4EDE9;
+    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #10151A; --surface: #171E24; --surface-2: #1E262D;
+      --ink: #E7ECE9; --muted: #9AA6A0; --hair: #2A343B; --hair-strong: #3A464E;
+      --accent: #5FBFA6; --accent-soft: #1B2E2A;
+      --p0: #E68A78; --p0-bg: #34211E; --p1: #D8B25C; --p1-bg: #33291630; --p1-bg: #2E2718;
+      --p2: #7FC3B2; --p2-bg: #1A2A27;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #10151A; --surface: #171E24; --surface-2: #1E262D;
+    --ink: #E7ECE9; --muted: #9AA6A0; --hair: #2A343B; --hair-strong: #3A464E;
+    --accent: #5FBFA6; --accent-soft: #1B2E2A;
+    --p0: #E68A78; --p0-bg: #34211E; --p1: #D8B25C; --p1-bg: #2E2718;
+    --p2: #7FC3B2; --p2-bg: #1A2A27;
+  }
+  :root[data-theme="light"] {
+    --ground: #F4F6F3; --surface: #FFFFFF; --surface-2: #EEF1ED;
+    --ink: #1B242A; --muted: #5D6873; --hair: #D9DED8; --hair-strong: #C4CBC2;
+    --accent: #165C4B; --accent-soft: #E2EDE8;
+    --p0: #B23A2B; --p0-bg: #F6E6E2; --p1: #9A6B18; --p1-bg: #F5ECD8;
+    --p2: #3F6E63; --p2-bg: #E4EDE9;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .page {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    padding: clamp(20px, 4vw, 56px) clamp(16px, 4vw, 40px) 72px;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(28px, 4.4vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+    margin: 0 0 16px;
+  }
+  .lede {
+    font-size: clamp(16px, 1.6vw, 18px);
+    color: var(--muted);
+    max-width: 66ch;
+    margin: 0;
+  }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px 22px;
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--hair);
+  }
+  .meta b { color: var(--ink); font-weight: 600; }
+
+  /* ticket data strip */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--hair);
+    border: 1px solid var(--hair); border-radius: 10px; overflow: hidden;
+    margin: 34px 0 8px;
+  }
+  .stat { background: var(--surface); padding: 18px 20px; }
+  .stat .n {
+    font-family: var(--serif); font-size: clamp(24px, 3vw, 32px);
+    font-variant-numeric: tabular-nums; color: var(--accent); line-height: 1;
+  }
+  .stat .l { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+  .src { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin: 10px 2px 0; }
+
+  section.bucket { margin-top: 52px; }
+  .bhead {
+    display: flex; align-items: baseline; gap: 14px;
+    border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 4px;
+  }
+  .bnum {
+    font-family: var(--mono); font-size: 13px; font-weight: 600;
+    color: var(--accent); letter-spacing: .06em; flex: none;
+  }
+  .btitle { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; margin: 0; }
+  .bintent { color: var(--muted); font-size: 14.5px; margin: 12px 0 18px; max-width: 78ch; }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--hair); border-radius: 10px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 720px; }
+  thead th {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); text-align: left; font-weight: 600;
+    padding: 12px 16px; background: var(--surface-2); border-bottom: 1px solid var(--hair-strong);
+  }
+  tbody td { padding: 15px 16px; border-bottom: 1px solid var(--hair); vertical-align: top; font-size: 14.5px; }
+  tbody tr:last-child td { border-bottom: none; }
+  .task { font-weight: 600; color: var(--ink); width: 22%; }
+  .doing { color: var(--ink); width: 40%; }
+  .doing ul { margin: 0; padding-left: 17px; }
+  .doing li { margin: 2px 0; }
+  .outcome { color: var(--muted); width: 30%; }
+  .outcome b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+  td.pri { width: 8%; white-space: nowrap; }
+
+  .chip {
+    display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 600;
+    letter-spacing: .05em; padding: 3px 9px; border-radius: 999px; border: 1px solid transparent;
+  }
+  .p0 { color: var(--p0); background: var(--p0-bg); border-color: color-mix(in srgb, var(--p0) 35%, transparent); }
+  .p1 { color: var(--p1); background: var(--p1-bg); border-color: color-mix(in srgb, var(--p1) 35%, transparent); }
+  .p2 { color: var(--p2); background: var(--p2-bg); border-color: color-mix(in srgb, var(--p2) 35%, transparent); }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center;
+    margin: 30px 0 6px; padding: 16px 18px; background: var(--surface);
+    border: 1px solid var(--hair); border-radius: 10px; font-size: 13.5px; color: var(--muted);
+  }
+  .legend .item { display: flex; align-items: center; gap: 9px; }
+  .legend b { color: var(--ink); }
+
+  .seq { margin-top: 52px; }
+  .seq h2 { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 26px); margin: 0 0 6px; }
+  .seq .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+  .lane { background: var(--surface); border: 1px solid var(--hair); border-radius: 10px; padding: 18px 20px; border-top: 3px solid var(--lanec); }
+  .lane.now { --lanec: var(--p0); }
+  .lane.next { --lanec: var(--p1); }
+  .lane.later { --lanec: var(--p2); }
+  .lane h3 { margin: 0 0 4px; font-size: 15px; font-family: var(--mono); letter-spacing: .04em; }
+  .lane .sub { font-size: 12.5px; color: var(--muted); margin: 0 0 12px; }
+  .lane ol { margin: 0; padding-left: 18px; font-size: 14px; }
+  .lane li { margin: 7px 0; }
+
+  .note {
+    margin-top: 40px; padding: 16px 20px; border-left: 3px solid var(--accent);
+    background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 13.5px; color: var(--ink);
+  }
+  .note b { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px; }
+
+  @media (max-width: 720px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .seq .grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="page">
+<div class="wrap">
+
+  <p class="eyebrow">Product Roadmap · Prioritisation Brief</p>
+  <h1>Marketplace Task Summary — What We're Building &amp; Why</h1>
+  <p class="lede">Fifteen initiatives across the FO, LSP and CRM stack, grouped into six investment themes. Each row states what we are doing and the measurable product outcome, so leadership can sequence by impact. Outcomes are grounded in the last full week of Marketplace support-ticket data.</p>
+
+  <div class="meta">
+    <span><b>Prepared for</b> — Leadership prioritisation review</span>
+    <span><b>Scope</b> — Marketplace: FO App, LSP App, Runner App, CRM</span>
+    <span><b>Date</b> — 20 Jul 2026</span>
+  </div>
+
+  <div class="stats" aria-label="Support ticket context">
+    <div class="stat"><div class="n">~78%</div><div class="l">of FO tickets are payment-related — the single largest driver of support load</div></div>
+    <div class="stat"><div class="n">47%</div><div class="l">of FO volume is "Balance Payment Pending" — 24 tickets/week, ~600+/year</div></div>
+    <div class="stat"><div class="n">~11</div><div class="l">TDS + duplicate tickets/week, mostly repeat filings from the same FOs</div></div>
+    <div class="stat"><div class="n">~58%</div><div class="l">SLA met-rate on balance-pending tickets; visibility, not money, is the blocker</div></div>
+  </div>
+  <p class="src">Source: Weekly Pylon analysis — Marketplace FO tickets, 01–08 Jun 2026 (67 Marketplace tickets, 51 external FO).</p>
+
+  <!-- BUCKET 1 -->
+  <section class="bucket">
+    <div class="bhead"><span class="bnum">01</span><h2 class="btitle">Payments &amp; Financial Automation</h2></div>
+    <p class="bintent">Remove manual money-movement work from CRM and make every trip's payment accurate, immutable and self-releasing. This theme attacks the ~78% of FO tickets that are payment-related at the root.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>What are we doing?</th><th>Measurable outcome</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="task">Ledger Automation in CRM</td>
+          <td class="doing"><ul><li>Overpayment settlement across FO / LSP wallets</li><li>Immutable trip-level payment record (Net Payable / Receivable)</li></ul></td>
+          <td class="outcome">One source of truth per trip; <b>zero</b> ledger-mismatch disputes and manual reconciliation removed. Foundation that de-risks every other payment fix.</td>
+          <td class="pri"><span class="chip p0">P0</span></td>
+        </tr>
+        <tr>
+          <td class="task">Auto-calculate TDS</td>
+          <td class="doing"><ul><li>Capture TDS details in CRM (Supplier KYC)</li><li>Auto-calculate TDS for new &amp; active trips</li><li>Recalculate / reverse TDS on mid-month declaration change</li></ul></td>
+          <td class="outcome">Accurate, audit-ready deductions with no manual computation. Targets <b>~80%</b> cut in TDS tickets (~11/wk) and ends agent WhatsApp format-sharing.</td>
+          <td class="pri"><span class="chip p0">P0</span></td>
+        </tr>
+        <tr>
+          <td class="task">Balance Payment Automation</td>
+          <td class="doing"><ul><li>FO can raise balance-payment status once POD is cleaned &amp; HPOD received</li><li>Auto-trigger release when POD is the only blocker</li></ul></td>
+          <td class="outcome">Directly targets the #1 bucket: <b>50–60%</b> fewer Balance-Pending tickets (~12–15/wk) and a faster payout cycle.</td>
+          <td class="pri"><span class="chip p0">P0</span></td>
+        </tr>
+        <tr>
+          <td class="task">Automated Advance Payment — Gold &amp; Silver FOs</td>
+          <td class="doing"><ul><li>Rule-based auto-disbursal of advance to eligible Gold/Silver FOs on assignment/loading, gated by tier &amp; exposure</li></ul></td>
+          <td class="outcome">Faster advance to top FOs, fewer "advance not received" tickets, lower approval TAT and stronger retention of high-value (Gold/Silver) supply.</td>
+          <td class="pri"><span class="chip p1">P1</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- BUCKET 2 -->
+  <section class="bucket">
+    <div class="bhead"><span class="bnum">02</span><h2 class="btitle">FO App — Transparency &amp; Self-Serve</h2></div>
+    <p class="bintent">Give fleet owners direct visibility into their money and tax so they stop filing tickets to "see" status. Most balance tickets are already paid — the gap is visibility, not payment.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>What are we doing?</th><th>Measurable outcome</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="task">Trip Statement — 3-yr Financial Ledger tab</td>
+          <td class="doing"><ul><li>FO App tab showing 3 years of advance + balance + UTR + deductions, per trip</li></ul></td>
+          <td class="outcome">Self-serve "where's my money" answers; deflects payment-status &amp; statement/NDC tickets and removes ops dependency for statements.</td>
+          <td class="pri"><span class="chip p0">P0</span></td>
+        </tr>
+        <tr>
+          <td class="task">FO App — TDS transparency + self-serve declaration</td>
+          <td class="doing"><ul><li>Show TDS rate at trip level + tax breakup</li><li>Downloadable TDS certificate</li><li>Self-serve declaration / section upload with OCR</li></ul></td>
+          <td class="outcome">Pairs with auto-TDS to reach <b>~80%</b> TDS ticket deflection; declarations become self-serve with no agent loop.</td>
+          <td class="pri"><span class="chip p0">P0</span></td>
+        </tr>
+        <tr>
+          <td class="task">Ticketing for FOs not on the app</td>
+          <td class="doing"><ul><li>Omni-channel intake (WhatsApp / IVR / agent) unified into CRM with SLA tracking</li></ul></td>
+          <td class="outcome">Captures the <b>~53%</b> "Unknown-tier" ticket base with no lost issues; extends SLA coverage to non-app FOs.</td>
+          <td class="pri"><span class="chip p1">P1</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- BUCKET 3 -->
+  <section class="bucket">
+    <div class="bhead"><span class="bnum">03</span><h2 class="btitle">POD Lifecycle &amp; Collection</h2></div>
+    <p class="bintent">Digitise proof-of-delivery capture and audit. POD lag is the upstream root cause of the largest payment-ticket bucket and of multi-week payout delays.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>What are we doing?</th><th>Measurable outcome</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="task">Runner App</td>
+          <td class="doing"><ul><li>List all PODs due for collection</li><li>Upload POD directly against trips</li><li>POD audit via OCR service</li><li>Notify CT team on disputed POD for fastest resolution</li></ul></td>
+          <td class="outcome">Shorter POD-to-payment cycle, fewer RTO / lost-POD delays, digital audit trail — unblocks balance payments at source.</td>
+          <td class="pri"><span class="chip p0">P0</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- BUCKET 4 -->
+  <section class="bucket">
+    <div class="bhead"><span class="bnum">04</span><h2 class="btitle">Risk, Fraud &amp; Partner (LSP) Controls</h2></div>
+    <p class="bintent">Protect the payout rails and cap partner exposure. These are low-volume in tickets but high-severity in financial-leakage terms.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>What are we doing?</th><th>Measurable outcome</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="task">Payment Fraud Check</td>
+          <td class="doing"><ul><li>Fraud checks at FO level &amp; User level</li><li>Verification gate on bank-detail changes</li></ul></td>
+          <td class="outcome">Prevents misrouted / fraudulent payouts and secures the bank-change flow — reduces financial leakage on the payout rail.</td>
+          <td class="pri"><span class="chip p1">P1</span></td>
+        </tr>
+        <tr>
+          <td class="task">Configurable LSP Exposure Limit</td>
+          <td class="doing"><ul><li>Per-LSP configurable credit / exposure limit</li><li>Auto-disable new trips on breach</li></ul></td>
+          <td class="outcome">Caps exposure per partner and enforces risk limits automatically — no manual monitoring of over-extension.</td>
+          <td class="pri"><span class="chip p1">P1</span></td>
+        </tr>
+        <tr>
+          <td class="task">LSP App</td>
+          <td class="doing"><ul><li>Login via FT load-book app</li><li>View all open trips, tracking &amp; POD status</li><li>Raise tickets and check status</li></ul></td>
+          <td class="outcome">LSP self-serve visibility cuts ops back-and-forth and speeds POD / tracking resolution.</td>
+          <td class="pri"><span class="chip p2">P2</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- BUCKET 5 -->
+  <section class="bucket">
+    <div class="bhead"><span class="bnum">05</span><h2 class="btitle">Demand &amp; Fulfilment Intelligence</h2></div>
+    <p class="bintent">Help fulfilment agents work the right load first and respond faster to demand events — growth-side leverage rather than support deflection.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>What are we doing?</th><th>Measurable outcome</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="task">Demand Actionability Score</td>
+          <td class="doing"><ul><li>Score &amp; rank open demand by placeability so agents prioritise placeable loads first</li></ul></td>
+          <td class="outcome">Higher load-fill rate and agent productivity; less ageing of placeable loads.</td>
+          <td class="pri"><span class="chip p1">P1</span></td>
+        </tr>
+        <tr>
+          <td class="task">Auto CRM Alerts</td>
+          <td class="doing"><ul><li>Automated alerts on bids received, inventory matched, and approval assigned</li></ul></td>
+          <td class="outcome">Faster response to demand events, fewer missed bids, shorter fulfilment TAT.</td>
+          <td class="pri"><span class="chip p1">P1</span></td>
+        </tr>
+        <tr>
+          <td class="task">Agentic AI Calling for Fulfilment Agents</td>
+          <td class="doing"><ul><li>AI voice agent to call FOs / drivers for placement and follow-ups</li></ul></td>
+          <td class="outcome">Scales outreach without added headcount and speeds placement — replaces the manual call loops seen across ticket resolutions.</td>
+          <td class="pri"><span class="chip p2">P2</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- BUCKET 6 -->
+  <section class="bucket">
+    <div class="bhead"><span class="bnum">06</span><h2 class="btitle">Compliance Automation</h2></div>
+    <p class="bintent">Generate statutory and clearance documents automatically on trigger events, removing manual document creation.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Task</th><th>What are we doing?</th><th>Measurable outcome</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="task">Automate Compliance Document Generation</td>
+          <td class="doing"><ul><li>Auto-generate compliance documents (e.g. NDC / statutory docs) on trigger events such as POD acceptance</li></ul></td>
+          <td class="outcome">On-demand documents (deflects NDC-class tickets), no manual creation, audit-ready compliance output.</td>
+          <td class="pri"><span class="chip p2">P2</span></td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <div class="legend" aria-label="Priority legend">
+    <span class="item"><span class="chip p0">P0</span><span><b>Now</b> — attacks the biggest ticket / financial-leakage buckets with direct, measurable deflection</span></span>
+    <span class="item"><span class="chip p1">P1</span><span><b>Next</b> — retention, risk and efficiency leverage</span></span>
+    <span class="item"><span class="chip p2">P2</span><span><b>Later</b> — coverage &amp; scale, high value but lower urgency</span></span>
+  </div>
+
+  <!-- SEQUENCING -->
+  <section class="seq">
+    <h2>Suggested Sequencing</h2>
+    <p class="bintent">Indicative only — grounded in ticket volume and financial impact. P0 items are mutually reinforcing: the Runner App feeds clean PODs, ledger automation makes records immutable, and balance-payment + FO-App visibility convert that into deflected tickets.</p>
+    <div class="grid">
+      <div class="lane now">
+        <h3>NOW · P0</h3>
+        <p class="sub">Biggest ticket &amp; money impact</p>
+        <ol>
+          <li>Ledger Automation in CRM</li>
+          <li>Balance Payment Automation</li>
+          <li>Runner App (POD capture &amp; audit)</li>
+          <li>Auto-calculate TDS</li>
+          <li>FO App — Trip Statement + TDS transparency</li>
+        </ol>
+      </div>
+      <div class="lane next">
+        <h3>NEXT · P1</h3>
+        <p class="sub">Retention, risk &amp; efficiency</p>
+        <ol>
+          <li>Automated Advance Payment (Gold/Silver)</li>
+          <li>Payment Fraud Check</li>
+          <li>Configurable LSP Exposure Limit</li>
+          <li>Demand Actionability Score</li>
+          <li>Auto CRM Alerts</li>
+          <li>Off-app FO Ticketing</li>
+        </ol>
+      </div>
+      <div class="lane later">
+        <h3>LATER · P2</h3>
+        <p class="sub">Coverage &amp; scale</p>
+        <ol>
+          <li>LSP App</li>
+          <li>Agentic AI Calling</li>
+          <li>Compliance Document Automation</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="note">
+    <b>Note on outcomes</b>
+    Percentage and per-week figures are drawn from one week of Marketplace FO ticket data (01–08 Jun 2026) and should be validated against a longer window before commitment. Priority tiers are a recommendation to frame the discussion — the sequencing decision sits with leadership. A live Linear connector was not available in this session, so the framing here is built from Pylon support data and the existing Marketplace FO analysis; if Linear is connected, I can enrich each row with its live status, owner and effort estimate.
+  </div>
+
+</div>
+</div>
