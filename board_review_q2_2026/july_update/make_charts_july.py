@@ -5,7 +5,7 @@ import numpy as np
 
 NAVY="#1F3763"; GREEN="#26815C"; PURPLE="#6043A3"; INK="#25303B"; GREY="#6B7480"
 
-MONTHS=["Apr","May","Jun","Jul"]; x=np.arange(4)
+MONTHS=["May","Jun","Jul"]; x=np.arange(3)
 plt.rcParams.update({"font.family":"DejaVu Sans","axes.edgecolor":"#C9CFD6",
     "axes.linewidth":0.8,"text.color":INK,"xtick.color":GREY,"ytick.color":GREY})
 
@@ -25,7 +25,7 @@ def save(fig,name,top=0.82,bottom=0.20,left=0.035,right=0.985):
     fig.savefig(f"charts/{name}.png",dpi=300,transparent=True); plt.close(fig)
 
 # ---- row1: MAU + DAU (Apr-Jul) ----
-MAU=[1027,1093,1377,1573]; DAU=[178,200,271,298]
+MAU=[1093,1377,1573]; DAU=[200,271,298]
 fig,ax=newfig("r1"); clean(ax)
 ax.plot(x,MAU,color=NAVY,lw=2.0,marker="o",ms=3.6)
 ax.plot(x,DAU,color=PURPLE,lw=2.0,marker="o",ms=3.6)
@@ -39,7 +39,7 @@ ax.set_ylim(0,max(MAU)*1.20)
 save(fig,"j_row1")
 
 # ---- row2: fulfilment % (network lane) Apr-Jul ----
-PF=[13.7,11.2,17.1,18.0]
+PF=[11.2,17.1,18.0]
 fig,ax=newfig("r2"); clean(ax)
 ax.fill_between(x,PF,color=GREEN,alpha=0.12)
 ax.plot(x,PF,color=GREEN,lw=2.1,marker="o",ms=3.8)
@@ -52,7 +52,7 @@ ax.text(0,1.12,"Fulfilment %",transform=ax.transAxes,color=GREEN,fontsize=8,font
 save(fig,"j_row2")
 
 # ---- row3: AI vs Manual inventory (stacked) Apr-Jul ----
-AI=[728,1043,869,687]; MAN=[1174,304,449,972]
+AI=[1043,869,687]; MAN=[304,449,972]
 fig,ax=newfig("r3"); clean(ax)
 ax.bar(x,MAN,width=0.46,color="#C7CDD6")
 ax.bar(x,AI,width=0.46,bottom=MAN,color=PURPLE)
