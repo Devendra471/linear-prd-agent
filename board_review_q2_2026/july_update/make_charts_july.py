@@ -69,10 +69,10 @@ fig,ax=newfig("r5")
 ax.axis("off")
 ax.add_patch(plt.Rectangle((0.02,0.16),0.96,0.68,transform=ax.transAxes,
              fill=True,facecolor="#F1ECF9",edgecolor=PURPLE,lw=1.1))
-ax.text(0.5,0.60,"In build  ·  Jul'26",transform=ax.transAxes,ha="center",
-        fontsize=11,fontweight="bold",color=PURPLE)
-ax.text(0.5,0.32,"Trip & party-level ledger",transform=ax.transAxes,ha="center",
-        fontsize=8.5,color=GREY)
+ax.text(0.5,0.60,"Phase-1 live  ·  Jul'26",transform=ax.transAxes,ha="center",
+        fontsize=10.5,fontweight="bold",color=PURPLE)
+ax.text(0.5,0.30,"Immutable ledger + wallets + TDS",transform=ax.transAxes,ha="center",
+        fontsize=8,color=GREY)
 save(fig,"j_row5",top=0.98,bottom=0.02)
 
 print("done")
