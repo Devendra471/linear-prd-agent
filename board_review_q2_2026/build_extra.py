@@ -179,6 +179,24 @@ SEP=[
 ]
 MONTHS=[("JULY",JULY,12),("AUGUST",AUG,11),("SEPTEMBER",SEP,6)]
 
+# Linear status per (month, goal) — reconciled Aug 2026
+SHIP=RGBColor(0x1E,0x7A,0x46); PART=RGBColor(0x0F,0x76,0x6E)
+BUILD=RGBColor(0x3E,0x4C,0x63); PLAN=RGBColor(0x8A,0x93,0x9E)
+STATUS={
+ ("JULY","Ledger"):("✓ Shipped",SHIP),
+ ("JULY","Fulfilment %"):("◐ Part shipped",PART),
+ ("JULY","DAU"):("◐ In build",BUILD),
+ ("JULY","Reduce Ops Bandwidth"):("◐ Part shipped",PART),
+ ("AUGUST","Ledger"):("◐ In build",BUILD),
+ ("AUGUST","Fulfilment %"):("○ Planned",PLAN),
+ ("AUGUST","DAU"):("○ Planned",PLAN),
+ ("AUGUST","Reduce Ops Bandwidth"):("○ Planned",PLAN),
+ ("SEPTEMBER","Ledger"):("○ Planned",PLAN),
+ ("SEPTEMBER","Fulfilment %"):("○ Planned",PLAN),
+ ("SEPTEMBER","DAU"):("○ Planned",PLAN),
+ ("SEPTEMBER","Reduce Ops Bandwidth"):("○ Planned",PLAN),
+}
+
 colw=(8686800-2*46000)//3
 top_hdr=980000; hh=250000
 body_top=1290000; body_bot=4300000
@@ -202,8 +220,10 @@ for ci,(mn,goals,total) in enumerate(MONTHS):
             dv.line.color.rgb=RGBColor(0xE4,0xE8,0xED); dv.line.width=Pt(0.5); dv.shadow.inherit=False
         rect(s,cl+56000,gy+42000,44000,slot-92000,gc,rounded=True,radius=0.4)  # accent bar
         _,tf=textbox(s,cl+140000,gy+34000,colw-200000,slot-58000,anchor=MSO_ANCHOR.MIDDLE)
+        stat,stc=STATUS.get((mn,gname),("○ Planned",PLAN))
         para(tf,[(gname+"   ",9,True,gc,False),
-                 ("· %d %s"%(n,"story" if n==1 else "stories"),7,True,GREY,False)],
+                 ("· %d %s   "%(n,"story" if n==1 else "stories"),7,True,GREY,False),
+                 (stat,7,True,stc,False)],
              first=True,space_after=3,line=1.0)
         para(tf,[(summ,7.6,False,INK,False)],space_after=0,line=1.08)
 
